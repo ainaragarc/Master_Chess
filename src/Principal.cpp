@@ -9,6 +9,7 @@ void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
 void onSpecialKeyboardDown(int key, int x, int y);
+void onMouseClick(int button, int state, int x, int y);
 
 int main(int argc, char* argv[])
 {
@@ -32,6 +33,7 @@ int main(int argc, char* argv[])
 	glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	glutKeyboardFunc(OnKeyboardDown);
 	glutSpecialFunc(onSpecialKeyboardDown); //gestion de los cursores
+	glutMouseFunc(onMouseClick);
 
 	mundo.inicializa();
 
@@ -62,6 +64,12 @@ void OnKeyboardDown(unsigned char key, int x_t, int y_t)
 
 	glutPostRedisplay();
 }
+
+void onMouseClick(int button, int state, int x, int y)
+{
+	mundo.TABLERO.mouse(button, state, x, y);
+}
+
 void onSpecialKeyboardDown(int key, int x, int y)
 {
 	mundo.tecla_especial(key);

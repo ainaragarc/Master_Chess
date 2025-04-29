@@ -44,6 +44,7 @@ void Tablero::init() {
     glMatrixMode(GL_MODELVIEW);
 }
 
+
 void Tablero::mouse(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
         // Convertir coordenadas de pantalla (x, y) a coordenadas de OpenGL

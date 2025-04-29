@@ -9,9 +9,11 @@ void Mundo::dibuja()
 		0.0, 1.0, 0.0); //PARA MIRAR AL CENTRO DE LA ESCENA
 
 	//AQUI IRAN TODAS LAS FUNCIONES DIBUJA
-	TABLERO.display();
+	glLoadIdentity();  // Restablece la matriz de modelo-vista
+	glDisable(GL_LIGHTING); // Opcional: desactiva iluminación si no la necesitas para 2D
 
-	glEnd();
+	TABLERO.dibuja();  // Dibuja el tablero
+
 	glEnable(GL_LIGHTING);
 
 }

@@ -35,7 +35,6 @@ int main(int argc, char* argv[])
 
 	mundo.inicializa();
 
-
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
 

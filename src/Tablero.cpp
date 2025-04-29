@@ -36,7 +36,7 @@ void Tablero::dibuja() {
 }
 
 void Tablero::init() {
-    glClearColor(0.2f, 0.6f, 0.2f, 1.0f); // Fondo verde
+    glClearColor(0.2f, 0.1f, 0.2f, 1.0f); // Fondo verde
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     // Aquí definimos una proyección ortográfica 2D

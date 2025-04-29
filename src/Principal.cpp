@@ -1,86 +1,79 @@
 #include "freeglut.h"
+#include "Mundo.h"
 #include <iostream>
 
-#define BOARD_SIZE 5
-//Ver si se puede hacer plenamente con macros en vez de variables const (u otra forma más eficiente)
-const float SQUARE_SIZE = 1.0f;
-const float BOARD_OFFSET = -((BOARD_SIZE * SQUARE_SIZE) / 2.0f);
+Mundo mundo;
 
-//Función que dibuja el tablero
-void drawBoard() {
-    bool color_casilla = true;
+//NO HACE FALTA LLAMARLAS EXPLICITAMENTE
+void OnDraw(void); //esta funcion sera llamada para dibujar
+void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
+void OnKeyboardDown(unsigned char key, int x, int y); //cuando se pulse una tecla	
+void onSpecialKeyboardDown(int key, int x, int y);
 
-    for (int i = 0; i < BOARD_SIZE; i++) {
-        for (int j = 0; j < BOARD_SIZE; j++) {
-            if (color_casilla)
-                glColor3ub(190, 27, 27);//Rojo
-            else
-                glColor3ub(0.0f, 0.0f, 0.0f); // Negro
+int main(int argc, char* argv[])
+{
+	//Inicializar el gestor de ventanas GLUT
+	//y crear la ventana
+	glutInit(&argc, argv);
+	glutInitWindowSize(800, 600);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
+	glutCreateWindow("MiJuego");
 
-            glBegin(GL_QUADS);
-            glVertex2f(j * SQUARE_SIZE + BOARD_OFFSET, i * SQUARE_SIZE + BOARD_OFFSET);
-            glVertex2f((j + 1) * SQUARE_SIZE + BOARD_OFFSET, i * SQUARE_SIZE + BOARD_OFFSET);
-            glVertex2f((j + 1) * SQUARE_SIZE + BOARD_OFFSET, (i + 1) * SQUARE_SIZE + BOARD_OFFSET);
-            glVertex2f(j * SQUARE_SIZE + BOARD_OFFSET, (i + 1) * SQUARE_SIZE + BOARD_OFFSET);
-            glEnd();
+	//habilitar luces y definir perspectiva
+	glEnable(GL_LIGHT0);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_COLOR_MATERIAL);
+	glMatrixMode(GL_PROJECTION);
+	gluPerspective(40.0, 800 / 600.0f, 0.1, 150);
 
-            color_casilla = !color_casilla;
-        }
-        if (BOARD_SIZE % 2 == 0)
-            color_casilla = !color_casilla;
-    }
+	//Registrar los callbacks
+	glutDisplayFunc(OnDraw);
+	glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
+	glutKeyboardFunc(OnKeyboardDown);
+	glutSpecialFunc(onSpecialKeyboardDown); //gestion de los cursores
+
+	mundo.inicializa();
+
+
+	//pasarle el control a GLUT,que llamara a los callbacks
+	glutMainLoop();
+
+	return 0;
 }
 
-//(callback) función llamada para dibujar, igual que la función OnDraw de las prácticas pero que le he puesto el nombre de display
-void display() {
-    glClear(GL_COLOR_BUFFER_BIT);
-    glLoadIdentity();
+void OnDraw(void)
+{
+	//Borrado de la pantalla	
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    drawBoard();
+	//Para definir el punto de vista
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
 
-    glutSwapBuffers();
+	mundo.dibuja();
+
+	//no borrar esta linea ni poner nada despues
+	glutSwapBuffers();
+}
+void OnKeyboardDown(unsigned char key, int x_t, int y_t)
+{
+	//poner aqui el código de teclado
+	mundo.tecla(key);
+
+	glutPostRedisplay();
+}
+void onSpecialKeyboardDown(int key, int x, int y)
+{
+	mundo.tecla_especial(key);
 }
 
-//función para el control del ratón
-void mouse(int button, int state, int x, int y) {
-    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-        // Convertir coordenadas de pantalla (x, y) a coordenadas de OpenGL
-        int windowWidth = glutGet(GLUT_WINDOW_WIDTH);
-        int windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
+void OnTimer(int value)
+{
+	//poner aqui el código de animacion
+	mundo.mueve();
 
-        float glX = (float)x / windowWidth * 6.0f - 3.0f;
-        float glY = (float)(windowHeight - y) / windowHeight * 6.0f - 3.0f;
-
-        // Traducir coordenadas OpenGL a casilla de tablero
-        int col = (int)((glX - BOARD_OFFSET) / SQUARE_SIZE);
-        int row = (int)((glY - BOARD_OFFSET) / SQUARE_SIZE);
-
-        if (row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE) {
-            std::cout << "Has hecho clic en la casilla (" << row << ", " << col << ")\n";
-        }
-    }
-}
-
-//Inicialización de la vista
-void init() {
-    glClearColor(0.29f, 0.0f, 0.51f, 1.0f); // Fondo morado (relativo al 255 del RGB)
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    // Aquí definimos una proyección ortográfica 2D
-    gluOrtho2D(-3.0, 3.0, -3.0, 3.0);
-    glMatrixMode(GL_MODELVIEW);
-}
-
-int main(int argc, char** argv) {
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-    glutInitWindowSize(600, 600);
-    glutCreateWindow("Master_Chess");
-
-    init();
-
-    glutDisplayFunc(display);
-    glutMouseFunc(mouse);
-    glutMainLoop();
-    return 0;
+	//no borrar estas lineas
+	glutTimerFunc(25, OnTimer, 0);
+	glutPostRedisplay();
 }

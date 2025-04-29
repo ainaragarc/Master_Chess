@@ -15,7 +15,7 @@ void drawBoard() {
             if (color_casilla)
                 glColor3ub(190, 27, 27);//Rojo
             else
-                glColor3ub(0.0f, 0.0f, 0.0f); // Negro //
+                glColor3ub(0.0f, 0.0f, 0.0f); // Negro
 
             glBegin(GL_QUADS);
             glVertex2f(j * SQUARE_SIZE + BOARD_OFFSET, i * SQUARE_SIZE + BOARD_OFFSET);

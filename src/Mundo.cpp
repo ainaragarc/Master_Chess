@@ -9,7 +9,7 @@ void Mundo::dibuja()
 		0.0, 1.0, 0.0); //PARA MIRAR AL CENTRO DE LA ESCENA
 
 	//AQUI IRAN TODAS LAS FUNCIONES DIBUJA
-	TABLERO.dibuja();
+	TABLERO.display();
 
 	glEnd();
 	glEnable(GL_LIGHTING);
@@ -27,6 +27,7 @@ void Mundo::inicializa()
 	y_ojo = 0;
 	z_ojo = 10;
 
+	TABLERO.init();	
 }
 
 

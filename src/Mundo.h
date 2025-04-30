@@ -1,5 +1,6 @@
 #pragma once
 #include "Tablero.h"
+#include "pieza.h"
 
 class Mundo {
 	int x_ojo;
@@ -13,4 +14,5 @@ public:
 	void tecla_especial(unsigned char key);
 
 	Tablero TABLERO;
+	Pieza PIEZA;
 };

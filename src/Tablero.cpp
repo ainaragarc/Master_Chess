@@ -2,6 +2,8 @@
 #include "freeglut.h"
 #include <iostream>
 
+enum culum { A = 1, B, C, D, E };
+
 void Tablero::display() {
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();

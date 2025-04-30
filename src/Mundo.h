@@ -10,8 +10,6 @@ public:
 	void dibuja();
 	void mueve();
 	void inicializa();
-	void tecla(unsigned char key);
-	void tecla_especial(unsigned char key);
 
 	Tablero TABLERO;
 	Pieza PIEZA;

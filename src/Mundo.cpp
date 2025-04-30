@@ -33,13 +33,3 @@ void Mundo::inicializa()
 	TABLERO.init();	
 }
 
-
-void Mundo::tecla(unsigned char key)
-{
-
-}
-
-void Mundo::tecla_especial(unsigned char key)
-{
-
-}

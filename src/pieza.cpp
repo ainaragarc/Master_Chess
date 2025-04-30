@@ -1,7 +1,6 @@
 #pragma once
 #include "freeglut.h"
 #include "pieza.h"
-#include "Posicion.h"
 #include <cmath>
 
 void Pieza::dibuja(float radio, int segmentos)

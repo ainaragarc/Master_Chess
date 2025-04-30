@@ -1,5 +1,9 @@
 #pragma once
 #include "freeglut.h"
+struct Posicion
+{
+	int X, Y;
+};
 typedef unsigned char uchar;
 struct Color
 {

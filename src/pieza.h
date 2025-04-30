@@ -1,11 +1,10 @@
 #pragma once
-#include "color.h"
-#include "Posicion.h"
+#include "propiedades.h"
 
 //Enum class para los tipos de pieza, posible uso con switch case en mundo/tablero para dibujar, mover
-enum class Tipo { PEON, CABALLO, TORRE, ALFIL, REY, REINA };
-enum color {BLANCO = 0, NEGRO = 1};
-enum culum { A = 1, B, C, D, E };
+//enum class Tipo { PEON, CABALLO, TORRE, ALFIL, REY, REINA };
+//enum color {BLANCO = 0, NEGRO = 1};
+//enum culum { A = 1, B, C, D, E };
 
 class Pieza {
 	float Tamano;
@@ -13,7 +12,7 @@ class Pieza {
 
 	Color color;
 	Posicion posicion;
-	Tipo tipo;
+	//Tipo tipo;
 	
 public:
 	void dibuja(float radio, int segmentos);

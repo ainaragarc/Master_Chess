@@ -21,15 +21,13 @@
   <ItemGroup>
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\pieza.cpp" />
-    <ClCompile Include="src\posicion.cpp" />
     <ClCompile Include="src\Principal.cpp" />
     <ClCompile Include="src\Tablero.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\color.h" />
+    <ClInclude Include="propiedades.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\pieza.h" />
-    <ClInclude Include="src\posicion.h" />
     <ClInclude Include="src\Tablero.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -2,7 +2,7 @@
 #include "color.h"
 
 class Pieza {
-	float Tamano;
+	float Tamaño;
 	char tipo;
 	Color color;
 

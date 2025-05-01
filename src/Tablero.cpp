@@ -2,7 +2,7 @@
 #include "freeglut.h"
 #include <iostream>
 
-enum culum { A = 1, B, C, D, E };
+enum Columna :char { A = 'A', B = 'B', C = 'C', D = 'D', E = 'E' };
 
 void Tablero::display() {
     glClear(GL_COLOR_BUFFER_BIT);
@@ -61,7 +61,9 @@ void Tablero::mouse(int button, int state, int x, int y) {
         int row = (int)((glY - BOARD_OFFSET) / TamCuadrado);
 
         if (row >= 0 && row < TamTablero && col >= 0 && col < TamTablero) {
-            std::cout << "Has hecho clic en la casilla (" << row << ", " << col << ")\n";
+            char letraColumna = 'A' + col;
+            std::cout << "Has hecho clic en la casilla (" << letraColumna << ", " << row << ")\n";
         }
     }
+    
 }

@@ -2,6 +2,7 @@
 #include "freeglut.h"
 #include <iostream>
 
+//Por ahora no se usa pero puede ser util en el futuro
 enum Columna :char { A = 'A', B = 'B', C = 'C', D = 'D', E = 'E' };
 
 void Tablero::display() {
@@ -57,12 +58,12 @@ void Tablero::mouse(int button, int state, int x, int y) {
         float glY = (float)(windowHeight - y) / windowHeight * 6.0f - 3.0f;
 
         // Traducir coordenadas OpenGL a casilla de tablero
-        int col = (int)((glX - BOARD_OFFSET) / TamCuadrado);
-        int row = (int)((glY - BOARD_OFFSET) / TamCuadrado);
+        posicion.X = (glX - BOARD_OFFSET) / TamCuadrado;
+        posicion.Y = (glY - BOARD_OFFSET) / TamCuadrado;
 
-        if (row >= 0 && row < TamTablero && col >= 0 && col < TamTablero) {
-            char letraColumna = 'A' + col;
-            std::cout << "Has hecho clic en la casilla (" << letraColumna << ", " << row << ")\n";
+        if (posicion.Y >= 0 && posicion.Y < TamTablero && posicion.X >= 0 && posicion.X < TamTablero) {
+            char letraColumna = 'A' + posicion.X;
+            std::cout << "Has hecho clic en la casilla (" << letraColumna << ", " << posicion.Y << ")\n";
         }
     }
     

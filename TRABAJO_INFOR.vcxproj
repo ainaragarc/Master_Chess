@@ -25,9 +25,9 @@
     <ClCompile Include="src\Tablero.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="propiedades.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\pieza.h" />
+    <ClInclude Include="src\propiedades.h" />
     <ClInclude Include="src\Tablero.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

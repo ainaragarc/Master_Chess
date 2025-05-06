@@ -9,6 +9,7 @@ using std::vector;
 //enum culum { A = 1, B, C, D, E };
 
 class Pieza {
+protected://Para que las clases derivadas puedan acceder a los atributos
 	float Tamano;
 	int cantidad; // No tengo muy claro para que sirve esto (help)
 

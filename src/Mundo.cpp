@@ -13,7 +13,7 @@ void Mundo::dibuja()
 	glDisable(GL_LIGHTING); // Opcional: desactiva iluminación si no la necesitas para 2D
 
 	TABLERO.dibuja();  // Dibuja el tablero
-	PIEZA.dibuja(0.4, 10); // En algun momento tendremos que sustituir PIEZA por los nombres de cada figura y FALTA colocar las esferas en su sitio //
+	//PIEZA.dibuja(0.4, 10); // En algun momento tendremos que sustituir PIEZA por los nombres de cada figura y FALTA colocar las esferas en su sitio //
 
 	glEnable(GL_LIGHTING);
 

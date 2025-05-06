@@ -10,7 +10,7 @@ class Tablero {
 public:
 
 	Posicion get_Pos(int x, int y);
-	void dibuja();
+	void dibuja();//Desacoplar la parte lógica de la glut
 	void display();
 	void mouse(int button, int state, int x, int y);
 	void init();

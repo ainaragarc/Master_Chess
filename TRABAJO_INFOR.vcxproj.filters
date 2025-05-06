@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Archivos de encabezado\Piezas">
+      <UniqueIdentifier>{5f8dc327-37ea-4924-9154-1aeb3b054a32}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Principal.cpp">
@@ -65,23 +68,23 @@
     <ClInclude Include="src\brocha.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="src\alfil.h">
+      <Filter>Archivos de encabezado\Piezas</Filter>
+    </ClInclude>
     <ClInclude Include="src\caballo.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\dama.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\peon.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\rey.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\torre.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\alfil.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Piezas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

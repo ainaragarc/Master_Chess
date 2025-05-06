@@ -1,6 +1,12 @@
 #include "brocha.h"
 
-void Brocha::dibuja_t(int numCasillas, float TamCuadrado, float BOARD_OFFSET) {
+const int Brocha::numCasillas = 5;
+const float Brocha::TamCuadrado = 1.0f;
+const float Brocha::BOARD_OFFSET = -((Brocha::numCasillas * Brocha::TamCuadrado) / 2.0f);
+
+const int Brocha::longitudVentana = 4;
+
+void Brocha::dibuja_t() {
 
     bool white = true;
 
@@ -32,6 +38,6 @@ void Brocha::init_t()
     glMatrixMode(GL_PROJECTION);
     glLoadIdentity();
     // Aquí definimos una proyección ortográfica 2D
-    gluOrtho2D(-3.0, 3.0, -3.0, 3.0);
+    gluOrtho2D(-longitudVentana, longitudVentana, -longitudVentana, longitudVentana);
     glMatrixMode(GL_MODELVIEW);
 }

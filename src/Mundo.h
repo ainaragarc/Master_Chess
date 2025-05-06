@@ -4,9 +4,6 @@
 #include "brocha.h"
 
 class Mundo {
-	int x_ojo = 0;
-	int y_ojo = 0;
-	int z_ojo = 10;
 public:
 	void dibuja();
 	void mueve();

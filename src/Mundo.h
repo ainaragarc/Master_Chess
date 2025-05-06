@@ -1,11 +1,12 @@
 #pragma once
 #include "Tablero.h"
 #include "pieza.h"
+#include "brocha.h"
 
 class Mundo {
-	int x_ojo;
-	int y_ojo;
-	int z_ojo;
+	int x_ojo = 0;
+	int y_ojo = 0;
+	int z_ojo = 10;
 public:
 	void dibuja();
 	void mueve();
@@ -13,4 +14,5 @@ public:
 
 	Tablero TABLERO;
 	Pieza PIEZA;
+	Brocha BROCHA;
 };

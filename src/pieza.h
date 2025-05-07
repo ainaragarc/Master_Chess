@@ -10,7 +10,7 @@ enum class Tipo { PEON, CABALLO, TORRE, ALFIL, REY, REINA };
 class Pieza {
 protected://Para que las clases derivadas puedan acceder a los atributos
 	float Tamano;
-	int tipo;//1=Peon,2=caballo,3=torre,4=alfil,5=rey,6=reina 
+	Tipo tipo;//1=Peon,2=caballo,3=torre,4=alfil,5=rey,6=reina 
 
 	// de momento vamos a asignar mejor el color de forma logica con un enum y luego lo pintamos
 	Color color;
@@ -39,7 +39,9 @@ public:
 	void set_posicion(Posicion posicion);
 
 	//obtener el tipo de las piezas
-	int get_tipo();
+	Tipo get_tipo();
+
+	Color get_color();
 
 	void inicializa();
 	

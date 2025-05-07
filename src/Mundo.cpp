@@ -25,5 +25,7 @@ void Mundo::mueve()
 void Mundo::inicializa()
 {
 	BROCHA.init_t();
+	TABLERO.inicializa_piezas();
+
 }
 

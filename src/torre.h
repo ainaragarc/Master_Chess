@@ -2,5 +2,5 @@
 #include "pieza.h"
 
 class Torre : public Pieza  {
-	void set_tipo()  { tipo = static_cast<int>(Tipo::TORRE); }
+	void set_tipo()  { tipo = Tipo::TORRE; }
 };

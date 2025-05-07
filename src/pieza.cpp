@@ -40,9 +40,14 @@ void Pieza::inicializa() {
 	
 }
 
-int Pieza::get_tipo() {
+Tipo Pieza::get_tipo() {
 	return tipo;
 }
+
+Color Pieza::get_color() {
+	return color;
+}
+
 
 
 

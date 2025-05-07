@@ -4,6 +4,7 @@
 #include "brocha.h"
 
 class Mundo {
+
 public:
 	void dibuja();
 	void mueve();

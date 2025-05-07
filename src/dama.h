@@ -2,6 +2,6 @@
 #include "pieza.h"
 
 class Dama : public Pieza {
-	void set_tipo() { tipo = static_cast<int>(Tipo::REINA); }
+	void set_tipo() { tipo = Tipo::REINA; }
 	
 };

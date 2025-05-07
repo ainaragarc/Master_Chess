@@ -36,4 +36,13 @@ bool Pieza::mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_fina
 	return false;
 }
 
+void Pieza::inicializa() {
+	
+}
+
+int Pieza::get_tipo() {
+	return tipo;
+}
+
+
 

@@ -1,14 +1,20 @@
 #pragma once
 #include "freeglut.h"
+
 struct Posicion
 {
 	int Fila, Columna;
 };
 typedef unsigned char uchar;
-struct Color
+
+//propuesta de primero asignar el color con un enum y luego pintarlo con brocha
+enum Color { BLANCO, NEGRO };
+/*struct Color
 {
+	
 	uchar r{ 255 }, g{ 255 }, b{ 255 };
 	void pon_color() {
 		glColor3ub(r, g, b);
+
 	}
-};
+};*/

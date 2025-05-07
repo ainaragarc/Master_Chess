@@ -32,3 +32,7 @@ Posicion Tablero::get_Pos(int x, int y, const Brocha& brocha) {
 
     return posicion;
 }
+
+void Tablero::inicializa_piezas() {
+
+}

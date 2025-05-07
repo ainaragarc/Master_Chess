@@ -2,7 +2,7 @@
 #include "freeglut.h"
 struct Posicion
 {
-	int X, Y;
+	int Fila, Columna;
 };
 typedef unsigned char uchar;
 struct Color

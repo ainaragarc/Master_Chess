@@ -27,7 +27,7 @@ vector<Posicion> Pieza::posiciones_posibles(Pieza& pieza_inical) {
 bool Pieza::mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_final) {
 	//for de rango para comprobara que este entre las posiciones posibles
 	for (auto& pos : posibles_posiciones) {
-		if (pos.X == posicion_final.X && pos.Y == posicion_final.Y) {
+		if (pos.Columna == posicion_final.Columna && pos.Fila == posicion_final.Fila) {
 			posicion = posicion_final;
 			return true;
 			//si cumple la condicion, se mueve la pieza, y bool=1

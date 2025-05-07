@@ -3,15 +3,14 @@
 #include <vector>
 using std::vector;
 
-//Enum class para los tipos de pieza, posible uso con switch case en mundo/tablero para dibujar, mover
-//enum class Tipo { PEON, CABALLO, TORRE, ALFIL, REY, REINA };
-//enum color {BLANCO = 0, NEGRO = 1};
+enum class Tipo { PEON, CABALLO, TORRE, ALFIL, REY, REINA };
+enum color {BLANCO, NEGRO};
 //enum culum { A = 1, B, C, D, E };
 
 class Pieza {
 protected://Para que las clases derivadas puedan acceder a los atributos
 	float Tamano;
-	int cantidad; // No tengo muy claro para que sirve esto (help)
+	int tipo;//1=Peon,2=caballo,3=torre,4=alfil,5=rey,6=reina 
 
 	Color color;
 	Posicion posicion;
@@ -27,7 +26,9 @@ public:
 	virtual bool mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_final);
 	//mueve comprueba que se puede mover (devolvienod false si no se puede), y realiza el movimiento
 	//Hay que mioodificar la memoria
-	void inicializa();
+
+	virtual void set_tipo(){}//POR DEFECTO NO HACE  NADA Y PERMITE QUE LAS DEMAS SUBCLASES LA SOBREESCRIBAN
+	virtual void inicializa(){}
 	
 	
 };

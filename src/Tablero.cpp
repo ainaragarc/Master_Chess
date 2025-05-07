@@ -10,9 +10,9 @@ void Tablero::mouse(int button, int state, int x, int y, const Brocha& brocha) {
         
         get_Pos(x, y, brocha);
 
-        if (posicion.Y >= 0 && posicion.Y < brocha.getNumCasillas() && posicion.X >= 0 && posicion.X < brocha.getNumCasillas()) {
-            char letraColumna = 'A' + posicion.X;
-            std::cout << "Has hecho clic en la casilla (" << letraColumna << ", " << posicion.Y << ")\n";
+        if (posicion.Fila >= 0 && posicion.Fila < brocha.getNumCasillas() && posicion.Columna >= 0 && posicion.Columna < brocha.getNumCasillas()) {
+            char letraColumna = 'A' + posicion.Columna;
+            std::cout << "Has hecho clic en la casilla (" << letraColumna << ", " << posicion.Fila << ")\n";
         }
     }
     
@@ -27,8 +27,8 @@ Posicion Tablero::get_Pos(int x, int y, const Brocha& brocha) {
     float glY = (float)(windowHeight - y) / windowHeight * 2 * brocha.get_longitudVentana() - brocha.get_longitudVentana();
 
     // Traducir coordenadas OpenGL a casilla de tablero
-    posicion.X = (int)std::floor(glX - brocha.getBoardOffset()) / brocha.getTamCuadrado();
-    posicion.Y = (int)std::floor(glY - brocha.getBoardOffset()) / brocha.getTamCuadrado();
+    posicion.Columna = (int)std::floor(glX - brocha.getBoardOffset()) / brocha.getTamCuadrado();
+    posicion.Fila = (int)std::floor(glY - brocha.getBoardOffset()) / brocha.getTamCuadrado();
 
     return posicion;
 }

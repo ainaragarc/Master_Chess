@@ -41,33 +41,44 @@ Posicion Tablero::get_Pos(int x, int y, const Brocha& brocha) {
 }
 
 void Tablero::inicializa_piezas() {
-    añadir_pieza_B(piezas_B, new Peon());
-    añadir_pieza_B(piezas_B, new Caballo());
 
-    añadir_pieza_N(piezas_N, new Peon());
-    añadir_pieza_N(piezas_N, new Caballo());
+    añadir_piezas_B(piezas_B, new Peon());
+    añadir_piezas_B(piezas_B, new Caballo());
+    añadir_piezas_B(piezas_B, new Torre());
+    añadir_piezas_B(piezas_B, new Alfil());
+    añadir_piezas_B(piezas_B, new Rey());
+    añadir_piezas_B(piezas_B, new Dama());
+
+    añadir_piezas_N(piezas_N, new Peon());
+    añadir_piezas_N(piezas_N, new Caballo());
+    añadir_piezas_N(piezas_N, new Torre());
+    añadir_piezas_N(piezas_N, new Alfil());
+    añadir_piezas_N(piezas_N, new Rey());
+    añadir_piezas_N(piezas_N, new Dama());
     //Prueba:
     for (auto i : piezas_B) {
-        cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color()) << endl;
+        cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color()) << " Cantidad: " << i->get_cantidad() << endl;
     }
     cout << "\n";
     for (auto i : piezas_N) {
-        cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color())<< endl;
+        cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color()) << " Cantidad: " << i->get_cantidad() << endl;
     }
 
 }
 
 //funcion para limpiar mas el codigo de inicializa pieza
-void Tablero::añadir_pieza_B(vector<Pieza*>& equipo, Pieza* pieza) {
+void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
     equipo.push_back(pieza);
-    equipo.back()->set_color(BLANCO);
+    equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
     equipo.back()->set_tipo();
+    equipo.back()->set_cantidad();//inicializamos la cantidad de cada pieza
 
 }
 
-void Tablero::añadir_pieza_N(vector<Pieza*>& equipo, Pieza* pieza) {
+void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
     equipo.push_back(pieza);
-    equipo.back()->set_color(NEGRO);
+    equipo.back()->set_color(NEGRO);//inicializamos el color de la pieza como negro
     equipo.back()->set_tipo();
+    equipo.back()->set_cantidad();
 
 }

@@ -14,6 +14,10 @@ class Tablero {
 
 public:
 	void inicializa_piezas();
+	//funciones para limpiar mas el codigo de inicializa pieza
+	void añadir_pieza_B(vector<Pieza*>& equipo, Pieza* pieza);
+	void añadir_pieza_N(vector<Pieza*>& equipo, Pieza* pieza);
+
 	Posicion get_Pos(int x, int y, const Brocha& brocha);
 	void mouse(int button, int state, int x, int y, const Brocha& brocha);
 };

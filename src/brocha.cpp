@@ -1,5 +1,6 @@
 #include "brocha.h"
 
+
 void Brocha::dibuja_t(int numCasillas, float TamCuadrado) {
     float BOARD_OFFSET = -((numCasillas * TamCuadrado) / 2.0f);
 
@@ -37,31 +38,31 @@ void Brocha::init_t(float longitudVentana)
     glMatrixMode(GL_MODELVIEW);
 }
 
-//void Brocha::mouse(int button, int state, int x, int y, const Brocha& brocha) {
-//    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-//
-//        get_Pos(x, y, brocha);
-//
-//        if (posicion.Fila >= 0 && posicion.Fila < numCasillas && posicion.Columna >= 0 && posicion.Columna < numCasillas) {
-//            char letraColumna = 'A' + posicion.Columna;
-//            std::cout << "Has hecho clic en la casilla (" << letraColumna << ", " << posicion.Fila << ")\n";
-//        }
-//    }
-//
-//}
+void Brocha::mouse(int button, int state, int x, int y, float longitudVentana, float TamCuadrado, int numCasillas,int& fila,int& columna) {
+    if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 
-//Posicion Brocha::get_Pos(int x, int y, const Brocha& brocha) {
-//    // Convertir coordenadas de pantalla (x, y) a coordenadas de OpenGL
-//    int windowWidth = glutGet(GLUT_WINDOW_WIDTH);
-//    int windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
-//
-//    float glX = (float)x / windowWidth * 2 * longitudVentana - longitudVentana;
-//    float glY = (float)(windowHeight - y) / windowHeight * 2 * longitudVentana - longitudVentana;
-//
-//    // Traducir coordenadas OpenGL a casilla de tablero
-//    float BOARDOFFSET = -((numCasillas * TamCuadrado) / 2.0f);
-//    posicion.Columna = (int)std::floor(glX - BOARDOFFSET) / TamCuadrado;
-//    posicion.Fila = (int)std::floor(glY - BOARDOFFSET) / TamCuadrado;
-//
-//    return posicion;
-//}
+        get_Pos(x, y,longitudVentana,TamCuadrado,numCasillas,fila,columna);
+
+        if (fila >= 0 && fila < numCasillas && columna >= 0 && columna < numCasillas) {
+            char letraColumna = 'A' + columna;
+            std::cout << "Has hecho clic en la casilla (" << letraColumna << ", " << fila << ")\n";
+        }
+    }
+
+}
+
+Posicion Brocha::get_Pos(int x, int y,float longitudVentana,float TamCuadrado,int numCasillas,int& fila,int& columna) {
+    // Convertir coordenadas de pantalla (x, y) a coordenadas de OpenGL
+    int windowWidth = glutGet(GLUT_WINDOW_WIDTH);
+    int windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
+
+    float glX = (float)x / windowWidth * 2 * longitudVentana - longitudVentana;
+    float glY = (float)(windowHeight - y) / windowHeight * 2 * longitudVentana - longitudVentana;
+
+    // Traducir coordenadas OpenGL a casilla de tablero
+    float BOARDOFFSET = -((numCasillas * TamCuadrado) / 2.0f);
+    columna = (int)std::floor(glX - BOARDOFFSET) / TamCuadrado;
+    fila = (int)std::floor(glY - BOARDOFFSET) / TamCuadrado;
+    Posicion posicion{ fila,columna };
+    return posicion;
+}

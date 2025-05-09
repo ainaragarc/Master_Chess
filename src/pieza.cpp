@@ -48,6 +48,10 @@ Color Pieza::get_color() {
 	return color;
 }
 
+int Pieza::get_cantidad() {
+	return cantidad;
+}
+
 
 
 

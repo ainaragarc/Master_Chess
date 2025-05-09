@@ -3,5 +3,6 @@
 
 class Peon : public Pieza {
 	void set_tipo() { tipo = Tipo::PEON; }
+	void set_cantidad() { cantidad = 5; }
 	
 };

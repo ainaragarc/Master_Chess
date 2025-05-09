@@ -1,12 +1,7 @@
 #include "brocha.h"
 
-const int Brocha::numCasillas = 5;
-const float Brocha::TamCuadrado = 1.0f;
-const float Brocha::BOARD_OFFSET = -((Brocha::numCasillas * Brocha::TamCuadrado) / 2.0f);
-
-const int Brocha::longitudVentana = 4;
-
-void Brocha::dibuja_t() {
+void Brocha::dibuja_t(int numCasillas, float TamCuadrado) {
+    float BOARD_OFFSET = -((numCasillas * TamCuadrado) / 2.0f);
 
     bool white = true;
 
@@ -32,7 +27,7 @@ void Brocha::dibuja_t() {
 
 }
 
-void Brocha::init_t()
+void Brocha::init_t(float longitudVentana)
 {
     glClearColor(0.2f, 0.1f, 0.2f, 1.0f); // Fondo morado
     glMatrixMode(GL_PROJECTION);

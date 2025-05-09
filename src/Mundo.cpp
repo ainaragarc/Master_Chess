@@ -11,7 +11,7 @@ void Mundo::dibuja()
 	//AQUI IRAN TODAS LAS FUNCIONES DIBUJA
 	glDisable(GL_LIGHTING); // Opcional: desactiva iluminación si no la necesitas para 2D
 
-	BROCHA.dibuja_t(); // Dibuja el tablero
+	BROCHA.dibuja_t(TABLERO.get_numCas(), TABLERO.get_TamCuad()); // Dibuja el tablero
 
 	glEnable(GL_LIGHTING);
 
@@ -24,7 +24,7 @@ void Mundo::mueve()
 }
 void Mundo::inicializa()
 {
-	BROCHA.init_t();
+	BROCHA.init_t(TABLERO.get_longVent());
 	TABLERO.inicializa_piezas();
 
 }

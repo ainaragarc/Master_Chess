@@ -11,7 +11,7 @@ void Mundo::dibuja()
 	//AQUI IRAN TODAS LAS FUNCIONES DIBUJA
 	glDisable(GL_LIGHTING); // Opcional: desactiva iluminación si no la necesitas para 2D
 
-	BROCHA.dibuja_t(TABLERO); // Dibuja el tablero
+	BROCHA.dibuja_t(); // Dibuja el tablero
 
 	glEnable(GL_LIGHTING);
 

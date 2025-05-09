@@ -26,6 +26,6 @@ public:
 	void añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza);
 	void añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza);
 
-	Posicion get_Pos(int x, int y, const Brocha& brocha);
-	void mouse(int button, int state, int x, int y, const Brocha& brocha);
+	Posicion get_Pos(int x, int y);
+	void mouse(int button, int state, int x, int y);
 };

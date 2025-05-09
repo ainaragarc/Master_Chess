@@ -12,10 +12,10 @@
 //Por ahora no se usa pero puede ser util en el futuro
 enum Columna :char { A = 'A', B = 'B', C = 'C', D = 'D', E = 'E' };
 
-void Tablero::mouse(int button, int state, int x, int y, const Brocha& brocha) {
+void Tablero::mouse(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
         
-        get_Pos(x, y, brocha);
+        get_Pos(x, y);
 
         if (posicion.Fila >= 0 && posicion.Fila < numCasillas && posicion.Columna >= 0 && posicion.Columna < numCasillas) {
             char letraColumna = 'A' + posicion.Columna;
@@ -25,7 +25,7 @@ void Tablero::mouse(int button, int state, int x, int y, const Brocha& brocha) {
     
 }
 
-Posicion Tablero::get_Pos(int x, int y, const Brocha& brocha) {
+Posicion Tablero::get_Pos(int x, int y) {
     // Convertir coordenadas de pantalla (x, y) a coordenadas de OpenGL
     int windowWidth = glutGet(GLUT_WINDOW_WIDTH);
     int windowHeight = glutGet(GLUT_WINDOW_HEIGHT);

@@ -49,7 +49,7 @@ void OnDraw(void)
 
 void onMouseClick(int button, int state, int x, int y)
 {
-	mundo.TABLERO.mouse(button, state, x, y, mundo.BROCHA);
+	mundo.TABLERO.mouse(button, state, x, y);
 }
 
 

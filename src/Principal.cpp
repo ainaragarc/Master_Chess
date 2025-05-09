@@ -49,7 +49,7 @@ void OnDraw(void)
 
 void onMouseClick(int button, int state, int x, int y)
 {
-	mundo.BROCHA.mouse(button, state, x, y,mundo.TABLERO.get_longVent(), mundo.TABLERO.get_TamCuad(), mundo.TABLERO.get_numCas(),mundo.TABLERO.get_fila(), mundo.TABLERO.get_columna());
+	mundo.BROCHA.mouse(button, state, x, y,mundo.BROCHA.get_longVent(), mundo.TABLERO.get_TamCuad(), mundo.TABLERO.get_numCas(),mundo.TABLERO.get_fila(), mundo.TABLERO.get_columna());
 }
 
 

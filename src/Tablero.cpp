@@ -9,8 +9,6 @@
 #include<vector>
 #include <iostream>
 
-//Por ahora no se usa pero puede ser util en el futuro
-enum Columna :char { A = 'A', B = 'B', C = 'C', D = 'D', E = 'E' };
 
 void Tablero::inicializa_piezas() {
 

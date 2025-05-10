@@ -83,7 +83,9 @@ void Brocha::dibuja_ini(float TamCuadrado,int numCasillas,int fila,int columna) 
 
     //Foto de pieza
     glEnable(GL_TEXTURE_2D);
-    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/b_queen_1x_ns.png").id);
+    glEnable(GL_BLEND); // <-- Habilita blending
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); // <-- Configura cómo se mezcla
+    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/w_queen_1x_ns.png").id);
     glDisable(GL_LIGHTING);
     glBegin(GL_POLYGON);
     glColor3f(1, 1, 1);

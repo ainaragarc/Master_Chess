@@ -12,7 +12,7 @@ void Mundo::dibuja()
 	glDisable(GL_LIGHTING); // Opcional: desactiva iluminación si no la necesitas para 2D
 
 	BROCHA.dibuja_t(TABLERO.get_numCas(), TABLERO.get_TamCuad()); // Dibuja el tablero
-	BROCHA.dibuja_ini(TABLERO.get_TamCuad(), TABLERO.get_numCas(), 1, 3);//Dibuja las piezas de inicio, por ahora es una prueba con la dama
+	BROCHA.dibuja_ini(TABLERO.get_TamCuad(), TABLERO.get_numCas(), 0, 3);//Dibuja las piezas de inicio, por ahora es una prueba con la dama
 	glEnable(GL_LIGHTING);
 
 }

@@ -21,6 +21,7 @@ public:
 	float get_TamCuad() { return TamCuadrado; }
 	int& get_fila() { return posicion.Fila; }
 	int& get_columna() { return posicion.Columna; }
+	bool hay_pieza(Posicion& pos);
 
 	void inicializa_piezas();
 	//funciones para limpiar mas el codigo de inicializa pieza

@@ -42,7 +42,7 @@ public:
 	//posicion inicual de las piezas
 	void set_posicion(Posicion posicion);
 
-
+	Posicion get_posicion() { return posicion; }
 
 	//obtener el tipo de las piezas
 	Tipo get_tipo();

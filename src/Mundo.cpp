@@ -26,5 +26,7 @@ void Mundo::inicializa()
 {
 	BROCHA.init_t(BROCHA.get_longVent());
 	TABLERO.inicializa_piezas();
+	TABLERO.PRUEBADEMOVIMINETO();
 }
+
 

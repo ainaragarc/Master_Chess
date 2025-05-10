@@ -31,4 +31,6 @@ public:
 	void añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza);
 	
 	friend class Brocha;
+
+	void PRUEBADEMOVIMINETO();
 };

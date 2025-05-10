@@ -16,7 +16,7 @@ class Tablero {
 	vector<Pieza*> piezas_N;
 
 public:
-	//Metodos para que las funciones de dibujo puedan acceder a ellos por medio de la variable TABLERO creada en Mundo
+	//Metodos para que las funciones de dibujo puedan acceder a los atributos por medio de la variable TABLERO creada en Mundo
 	int get_numCas() { return numCasillas; }
 	float get_TamCuad() { return TamCuadrado; }
 	int& get_fila() { return posicion.Fila; }

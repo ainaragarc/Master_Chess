@@ -20,9 +20,10 @@ Posicion  Pieza::mueve(Pieza& ficha)
 }*/
 
 
-bool Pieza::mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_final) {
+bool Pieza::mueve(Posicion& posicion_final) {
 	//for de rango para comprobara que este entre las posiciones posibles
-	for (auto& pos : posibles_posiciones) {
+	auto posibles=posiciones_posibles();
+	for (auto& pos : posibles) {
 		if (pos.Columna == posicion_final.Columna && pos.Fila == posicion_final.Fila) {
 			posicion = posicion_final;
 			return true;

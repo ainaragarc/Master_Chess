@@ -26,7 +26,7 @@ public:
 	
 	//saca las posiciones posibles para la pieza seleccionada, devuelve el vector de posiciones posibles
 
-	virtual bool mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_final);
+	virtual bool mueve( Posicion& posicion_final);
 	//mueve comprueba que se puede mover (devolvienod false si no se puede), y realiza el movimiento
 	//Hay que mioodificar la memoria
 

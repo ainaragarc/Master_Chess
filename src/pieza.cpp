@@ -3,15 +3,6 @@
 #include "pieza.h"
 #include <cmath>
 
-/*
-Posicion  Pieza::mueve(Pieza& ficha)
-{
-	//funcion de movimiento
-	
-	//devuelve la posicion de la ficha que la llama tras moverse
-	return ficha.posicion;
-}*/
-
 
 bool Pieza::mueve(Posicion& posicion_final) {
 	//for de rango para comprobara que este entre las posiciones posibles

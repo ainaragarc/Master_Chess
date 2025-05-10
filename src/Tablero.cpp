@@ -1,3 +1,4 @@
+#pragma once
 #include "Tablero.h"
 #include "peon.h"
 #include "alfil.h"
@@ -9,6 +10,9 @@
 #include<vector>
 #include <iostream>
 
+
+vector<Pieza*> Tablero::piezas_B;
+vector<Pieza*> Tablero::piezas_N;
 
 
 void Tablero::inicializa_piezas() {

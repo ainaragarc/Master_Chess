@@ -1,6 +1,7 @@
 #pragma once
 #include "propiedades.h"
 #include <vector>
+
 using std::vector;
 
 enum class Tipo { PEON=1, CABALLO, TORRE, ALFIL, REY, REINA };

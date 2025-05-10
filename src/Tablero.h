@@ -1,6 +1,6 @@
 #pragma once
 #include "propiedades.h"
-#include "brocha.h";
+#include "brocha.h"
 #include <vector>
 #include "pieza.h"
 

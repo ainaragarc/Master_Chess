@@ -3,7 +3,7 @@
 #include <vector>
 using std::vector;
 
-enum class Tipo { PEON, CABALLO, TORRE, ALFIL, REY, REINA };
+enum class Tipo { PEON=1, CABALLO, TORRE, ALFIL, REY, REINA };
 
 //enum culum { A = 1, B, C, D, E };
 

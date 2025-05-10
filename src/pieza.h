@@ -16,6 +16,7 @@ protected://Para que las clases derivadas puedan acceder a los atributos
 	// de momento vamos a asignar mejor el color de forma logica con un enum y luego lo pintamos
 	Color color;
 	Posicion posicion;
+	const char* foto_pieza;
 	//Tipo tipo;
 	
 public:
@@ -35,10 +36,9 @@ public:
 
 	virtual void set_posicion_ini() {};//Para definir la posición inicial de cada pieza
 
+	virtual void set_fotopieza() {};
 	//asigna el color de blanco o negro a las piezas
-	void set_color(Color asignación_color) {
-		color = asignación_color;
-	}
+	void set_color(Color asignación_color) { color = asignación_color; };
 
 	//posicion inicial de las piezas
 	void set_posicion(Posicion posicion);

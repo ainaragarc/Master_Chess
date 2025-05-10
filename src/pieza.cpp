@@ -4,13 +4,6 @@
 #include <cmath>
 
 /*
-void Pieza::dibuja(float radio, int segmentos)
-{
-    glColor3f(0.0, 0.0, 1.0);
-	glutSolidSphere(radio, segmentos, 10);
-    glEnd();
-}
-
 Posicion  Pieza::mueve(Pieza& ficha)
 {
 	//funcion de movimiento
@@ -33,22 +26,8 @@ bool Pieza::mueve(Posicion& posicion_final) {
 	return false;
 }
 
-void Pieza::inicializa() {
-	
-}
-
-Tipo Pieza::get_tipo() {
-	return tipo;
-}
-
-Color Pieza::get_color() {
-	return color;
-}
-
-int Pieza::get_cantidad() {
-	return cantidad;
-}
-
-
-
-
+void Pieza::inicializa() {}
+Tipo Pieza::get_tipo() {return tipo;}
+Color Pieza::get_color() {return color;}
+int Pieza::get_cantidad() {return cantidad;}
+Posicion Pieza::get_posicion_ini() { return posicion;}

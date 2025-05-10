@@ -16,6 +16,7 @@ protected://Para que las clases derivadas puedan acceder a los atributos
 	// de momento vamos a asignar mejor el color de forma logica con un enum y luego lo pintamos
 	Color color;
 	Posicion posicion;
+	const char* foto_pieza;
 
 	//Tipo tipo;
 	
@@ -34,12 +35,13 @@ public:
 
 	virtual void set_cantidad() {}//tendremos una cantidad distinta de cada pieza
 
-	//asigna el color de blanco o negro a las piezas
-	void set_color(Color asignación_color) {
-		color = asignación_color;
-	}
+	virtual void set_posicion_ini() {};//Para definir la posición inicial de cada pieza
 
-	//posicion inicual de las piezas
+	virtual void set_fotopieza() {};
+	//asigna el color de blanco o negro a las piezas
+	void set_color(Color asignación_color) { color = asignación_color; };
+
+	//posicion inicial de las piezas
 	void set_posicion(Posicion posicion);
 
 	Posicion get_posicion() { return posicion; }
@@ -53,7 +55,10 @@ public:
 	//obtener numero de piezas restantes en juego
 	int get_cantidad();
 
+	Posicion get_posicion_ini();
+
 	void inicializa();
 	
+	friend class Brocha;
 	
 };

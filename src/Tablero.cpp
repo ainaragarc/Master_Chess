@@ -10,6 +10,7 @@
 #include <iostream>
 
 
+
 void Tablero::inicializa_piezas() {
 
     añadir_piezas_B(piezas_B, new Peon());
@@ -42,7 +43,7 @@ void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
     equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
     equipo.back()->set_tipo();
     equipo.back()->set_cantidad();//inicializamos la cantidad de cada pieza
-
+    equipo.back()->set_posicion_ini();
 }
 
 void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {

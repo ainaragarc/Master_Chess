@@ -10,4 +10,5 @@ public:
 
 	Caballo(Posicion pos) { posicion = pos; }
 	Caballo() = default;
+	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 1; };
 };

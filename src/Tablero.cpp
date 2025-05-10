@@ -16,7 +16,6 @@ vector<Pieza*> Tablero::piezas_N;
 
 
 void Tablero::inicializa_piezas() {
-
     añadir_piezas_B(piezas_B, new Peon());
     añadir_piezas_B(piezas_B, new Caballo());
     añadir_piezas_B(piezas_B, new Torre());
@@ -74,12 +73,27 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
 
 void Tablero::PRUEBADEMOVIMINETO() {
-    Alfil mipieza= Alfil({ 1, 1 });
-    std::cout << "mi alfiil esta en " << mipieza.get_posicion().Columna<<":" << mipieza.get_posicion().Fila << std::endl;
+    Alfil* mipieza = new Alfil({ 1, 1 });
+    Alfil* mipieza2 = new Alfil({ 3, 3 });
+
+    piezas_N.push_back(mipieza);
+    piezas_N.push_back(mipieza2);
+
+    Posicion pos3{ 2,2 };
+    if (hay_pieza(pos3)) { std::cout << "hola"; }
+
+    std::cout << "mi alfiil esta en " << mipieza->get_posicion().Columna<<":" << mipieza->get_posicion().Fila << std::endl;
     Posicion posfinal{ 1,2 };
-    mipieza.mueve(posfinal);
-    std::cout << "el alfil sigue porque posicion incorrecta " << mipieza.get_posicion().Columna << ":" << mipieza.get_posicion().Fila << std::endl;
+    mipieza->mueve(posfinal);
+    std::cout << "el alfil sigue porque posicion incorrecta " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
     posfinal={ 2,2 };
-    mipieza.mueve(posfinal);
-    std::cout << "ahora mi pieza esta en " << mipieza.get_posicion().Columna << ":" << mipieza.get_posicion().Fila << std::endl;
+    mipieza->mueve(posfinal);
+    std::cout << "ahora mi pieza esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
+    posfinal = { 4,4 };
+    mipieza->mueve(posfinal);
+    std::cout << "el alfil sigue porque posicion incorrecta " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
+    posfinal = { 3,3 };
+    mipieza->mueve(posfinal);
+    std::cout << "ahora mi pieza esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
+    
 }

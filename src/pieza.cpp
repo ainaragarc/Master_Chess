@@ -19,10 +19,6 @@ Posicion  Pieza::mueve(Pieza& ficha)
 	return ficha.posicion;
 }*/
 
-vector<Posicion> Pieza::posiciones_posibles(Pieza& pieza_inical) {
-	vector <Posicion> Posiciones_Posibles;
-	return Posiciones_Posibles;
-}
 
 bool Pieza::mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_final) {
 	//for de rango para comprobara que este entre las posiciones posibles

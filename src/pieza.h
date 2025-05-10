@@ -16,13 +16,14 @@ protected://Para que las clases derivadas puedan acceder a los atributos
 	// de momento vamos a asignar mejor el color de forma logica con un enum y luego lo pintamos
 	Color color;
 	Posicion posicion;
+
 	//Tipo tipo;
 	
 public:
 	//void dibuja(float radio, int segmentos);
-
+	virtual vector<Posicion> posiciones_posibles()=0; //funcion virtual pura
 	//propuesta de devolver una posición al mover una ficha, esta hará una cosa u otra dependiendo de qué tipo es.l
-	virtual vector<Posicion> posiciones_posibles(Pieza& pieza_inical);
+	
 	//saca las posiciones posibles para la pieza seleccionada, devuelve el vector de posiciones posibles
 
 	virtual bool mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_final);

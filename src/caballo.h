@@ -4,5 +4,10 @@
 class Caballo : public Pieza {
 	void set_tipo() { tipo = Tipo::CABALLO; }
 	void set_cantidad() { cantidad = 1; }
-	
+
+public:
+	vector<Posicion> posiciones_posibles() override;
+
+	Caballo(Posicion pos) { posicion = pos; }
+	Caballo() = default;
 };

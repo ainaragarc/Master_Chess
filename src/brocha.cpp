@@ -66,3 +66,42 @@ Posicion Brocha::get_Pos(int x, int y,float longitudVentana,float TamCuadrado,in
     Posicion posicion{ fila,columna };
     return posicion;
 }
+
+void Brocha::dibuja_ini(float TamCuadrado,int numCasillas, const std::vector<Pieza*>& equipo) {
+    float BOARD_OFFSET = -((numCasillas * TamCuadrado) / 2.0f);
+
+    for (auto i : equipo) {
+        // Coordenadas del centro de la casilla deseada
+        float posX = BOARD_OFFSET + (i->get_posicion_ini().Columna + 0.5f) * TamCuadrado;
+        float posY = BOARD_OFFSET + (i->get_posicion_ini().Fila + 0.5f) * TamCuadrado;
+
+        glPushMatrix(); // Guardar la matriz de transformación actual
+
+        // Trasladar al centro de la casilla
+        glTranslatef(posX, posY, 0.0f);
+        // Escalar al tamaño de la casilla
+        glScalef(TamCuadrado, TamCuadrado, 1.0f);
+
+        //for (auto i : equipo) {
+            //Foto de pieza
+            glEnable(GL_TEXTURE_2D);
+            glEnable(GL_BLEND); //Habilita blending
+            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Configura cómo se mezcla
+            glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/w_queen_1x_ns.png").id);
+            glDisable(GL_LIGHTING);
+            glBegin(GL_POLYGON);
+            glColor3f(1, 1, 1);
+            double xcoord1{ -0.5 }, xcoord2{ 0.5 };
+            double ycoord1{ -0.5 }, ycoord2{ 0.5 };
+            glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
+            glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
+            glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
+            glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
+            glEnd();
+            glEnable(GL_LIGHTING);
+            glDisable(GL_TEXTURE_2D);
+
+            glPopMatrix(); // Restaurar matriz de transformación
+       // }
+    }
+}

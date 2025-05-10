@@ -7,8 +7,8 @@ class Caballo : public Pieza {
 
 public:
 	vector<Posicion> posiciones_posibles() override;
+	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 1; };
 
 	Caballo(Posicion pos) { posicion = pos; }
 	Caballo() = default;
-	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 1; };
 };

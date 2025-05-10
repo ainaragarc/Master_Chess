@@ -7,8 +7,8 @@ class Torre : public Pieza  {
 
 public:
 	vector<Posicion> posiciones_posibles() override;
+	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 5; };
 
 	Torre (Posicion pos) { posicion = pos;}
 	Torre() = default;
-	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 5; };
 };

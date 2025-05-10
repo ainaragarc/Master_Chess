@@ -7,8 +7,8 @@ class Peon : public Pieza {
 
 public:
 	vector<Posicion> posiciones_posibles() override;
+	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 3; };
 
 	Peon(Posicion pos) { posicion = pos; }
 	Peon() = default;
-	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 3; };
 };

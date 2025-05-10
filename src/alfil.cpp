@@ -22,6 +22,7 @@ vector<Posicion> Alfil::posiciones_posibles() {
 			posibles.push_back(pos);
 			if (Tablero::hay_pieza(pos)) { break; }// Salir si hay una pieza en esa posicion PERO DESPUES DE GUARDADRLA
 			//COMO SE PUEDE COMER A TODAS LAS PIEZAS PODRA IR A TODAS LAS POSCIONES, SALVO SI ES UN REY!!!
+			//IMPLEMENTAR EL REY
 		}
 	}
 

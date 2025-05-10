@@ -25,7 +25,6 @@ public:
 	//void dibuja(float radio, int segmentos);
 	virtual vector<Posicion> posiciones_posibles()=0; //funcion virtual pura
 	//propuesta de devolver una posición al mover una ficha, esta hará una cosa u otra dependiendo de qué tipo es.l
-	
 	//saca las posiciones posibles para la pieza seleccionada, devuelve el vector de posiciones posibles
 
 	virtual bool mueve( Posicion& posicion_final);

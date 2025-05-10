@@ -16,6 +16,9 @@
     <Filter Include="Archivos de encabezado\Piezas">
       <UniqueIdentifier>{5f8dc327-37ea-4924-9154-1aeb3b054a32}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de origen\Piezas">
+      <UniqueIdentifier>{d4793cc0-7308-473d-835b-082eb8edf376}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Principal.cpp">
@@ -34,22 +37,22 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\alfil.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\dama.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\caballo.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Piezas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\dama.cpp">
+      <Filter>Archivos de origen\Piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\peon.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\rey.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\torre.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Piezas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 #include "pieza.h"
 #include <vector>
 #include "tablero.h"
+#include <iostream>
 
 vector<Posicion> Alfil::posiciones_posibles() {
 	vector<Posicion> posibles;	
@@ -24,6 +25,8 @@ vector<Posicion> Alfil::posiciones_posibles() {
 			//IMPLEMENTAR EL REY
 		}
 	}
-
+	for (auto& i : posibles) {
+		std::cout << "posible: " << i.Columna << ":" << i.Fila << std::endl;
+	}
 	return posibles;
 }

@@ -10,12 +10,19 @@ vector<Posicion> Rey::posiciones_posibles() {
 
 	for (auto a : direccion) {
 		Posicion pos = get_posicion();
+<<<<<<< Updated upstream
 		for (int i = 0; i < Tablero::get_numCas(); i++) {
 			pos.Fila += a.Fila;
 			pos.Columna += a.Columna;
 			if (pos.Fila >= 0 && pos.Fila < Tablero::get_numCas() && pos.Columna >= 0 && pos.Columna < Tablero::get_numCas()) {
 				posibles.push_back(pos);
 			}
+=======
+		pos += a;
+		if (estoy_en_tablero(pos, Tablero::get_numCas())) {
+			posibles.push_back(pos);
+		}
+>>>>>>> Stashed changes
 			
 			//COMO SE PUEDE COMER A TODAS LAS PIEZAS PODRA IR A TODAS LAS POSCIONES, SALVO SI ES UN REY!!!
 			//IMPLEMENTAR EL REY

@@ -41,6 +41,8 @@ public:
 	//asigna el color de blanco o negro a las piezas
 	void set_color(Color asignación_color) { color = asignación_color; };
 
+	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
+
 	//posicion inicial de las piezas
 	void set_posicion(Posicion posicion);
 

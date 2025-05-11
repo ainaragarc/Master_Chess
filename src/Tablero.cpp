@@ -59,17 +59,25 @@ void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
 }
 
 bool Tablero::hay_pieza(Posicion& pos) {
-    for (auto& i : piezas_N) {
-        if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
-            return true;
-        }
-    }
-    for (auto& i : piezas_B) {
-        if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
-            return true;
-        }
-    }
-    return false;
+    return (hay_pieza_BLANCA(pos) && hay_pieza_NEGRA(pos));
+}
+
+ bool Tablero::hay_pieza_BLANCA(Posicion& pos) {
+     for (auto& i : piezas_N) {
+         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+             return true;
+         }
+     }
+     return false;
+}
+
+ bool Tablero::hay_pieza_NEGRA(Posicion& pos) {
+     for (auto& i : piezas_B) {
+         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+             return true;
+         }
+     }
+     return false;
 }
 
 

@@ -36,4 +36,5 @@ public:
 	friend class Brocha;
 
 	void PRUEBADEMOVIMIENTO();
+	void Pruebapiezas();
 };

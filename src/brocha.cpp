@@ -71,6 +71,7 @@ void Brocha::dibuja_ini(float TamCuadrado,int numCasillas, const std::vector<Pie
     float BOARD_OFFSET = -((numCasillas * TamCuadrado) / 2.0f);
 
     for (auto i : equipo) {
+
         // Coordenadas del centro de la casilla deseada
         float posX = BOARD_OFFSET + (i->get_posicion_ini().Columna + 0.5f) * TamCuadrado;
         float posY = BOARD_OFFSET + (i->get_posicion_ini().Fila + 0.5f) * TamCuadrado;

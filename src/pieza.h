@@ -6,7 +6,7 @@ using std::vector;
 
 enum class Tipo { PEON=1, CABALLO, TORRE, ALFIL, REY, REINA };
 
-//enum culum { A = 1, B, C, D, E };
+
 
 class Pieza {
 protected://Para que las clases derivadas puedan acceder a los atributos
@@ -35,7 +35,7 @@ public:
 
 	virtual void set_cantidad() {}//tendremos una cantidad distinta de cada pieza
 
-	virtual void set_posicion_ini() {};//Para definir la posición inicial de cada pieza
+	virtual void set_posicion_ini(const int f, int c) {};//Para definir la posición inicial de cada pieza
 
 	virtual void set_fotopiezaB() {};//funciones para que piezas tengan su propio sprite blanco y negro
 	virtual void set_fotopiezaN() {};

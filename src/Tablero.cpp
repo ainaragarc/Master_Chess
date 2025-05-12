@@ -43,12 +43,15 @@ void Tablero::inicializa_piezas() {
 
 //funcion para limpiar mas el codigo de inicializa pieza
 void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
-    equipo.push_back(pieza);
-    equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
-    equipo.back()->set_tipo();
-    equipo.back()->set_cantidad();//inicializamos la cantidad de cada pieza
-    equipo.back()->set_posicion_ini();
-    equipo.back()->set_fotopiezaB();
+    pieza->set_cantidad();//inicializamos la cantidad de cada pieza
+    for (int i = 0; i < pieza->get_cantidad(); i++) {
+        equipo.push_back(pieza);
+        equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
+        equipo.back()->set_tipo();
+        equipo.back()->set_posicion_ini(0,i);
+        equipo.back()->set_fotopiezaB();
+    }
+   
 }
 
 void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
@@ -59,6 +62,11 @@ void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
     equipo.back()->set_fotopiezaN();
 
 
+}
+void Tablero::Pruebapiezas() {
+    for (auto i : piezas_B) {
+        cout << "Hay una pieza de tipo: " << static_cast<int>(i->get_tipo()) <<" en : ("<<i->get_posicion().Fila<<","<< i->get_posicion().Columna<<")"<< endl;
+    }
 }
 
 bool Tablero::hay_pieza(Posicion& pos) {

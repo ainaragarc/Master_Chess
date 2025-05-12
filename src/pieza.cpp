@@ -21,7 +21,7 @@ bool Pieza::estoy_en_tablero(Posicion& pos, int casillas) {
 	return (pos.Fila >= 0 && pos.Fila < casillas && pos.Columna >= 0 && pos.Columna < casillas);
 }
 
-void Pieza::inicializa() {}
+
 Tipo Pieza::get_tipo() {return tipo;}
 Color Pieza::get_color() {return color;}
 int Pieza::get_cantidad() {return cantidad;}

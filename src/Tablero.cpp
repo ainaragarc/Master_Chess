@@ -24,12 +24,14 @@ void Tablero::inicializa_piezas() {
     añadir_piezas_B(piezas_B, new Rey(BLANCO,{0,4}));
     añadir_piezas_B(piezas_B, new Dama(BLANCO,{0,3}));
 
+    //CASO GARDNER
     añadir_piezas_N(piezas_N, new Peon(NEGRO,{2,}));
     añadir_piezas_N(piezas_N, new Caballo(NEGRO, {4,1}));
     añadir_piezas_N(piezas_N, new Torre(NEGRO, {4,0}));
     añadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2}));
     añadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}));
     añadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}));
+
     //Prueba:
     for (auto i : piezas_B) {
         cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color()) << " Cantidad: " << i->get_cantidad() << endl;
@@ -43,58 +45,36 @@ void Tablero::inicializa_piezas() {
 
 //funcion para limpiar mas el codigo de inicializa pieza
 void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
-    /*pieza->set_cantidad();//inicializamos la cantidad de cada pieza
-    pieza->set_tipo();*/
+    
     Tipo t=pieza->get_tipo();
     if (t == Tipo::PEON) {//comprobamos si es tipo peon
         for (int j = 0; j < 5; j++) {
             Peon* nuevo_peon = new Peon(BLANCO, { 1,j });//si es peon, creamos 5 nuevos peones
             equipo.push_back(nuevo_peon);
-            /*nuevo_peon->set_color(BLANCO);
-            nuevo_peon->set_tipo();
-            nuevo_peon->set_posicion_ini(0, j);
-            nuevo_peon->set_fotopiezaB();
-            equipo.push_back(nuevo_peon);*/
+            
         }
-        //delete pieza;//borramos peon original
+        
     }
-    else {
-        equipo.push_back(pieza);
-        /*equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
-        equipo.back()->set_tipo();
-        equipo.back()->set_posicion_ini(0, 0);
-        equipo.back()->set_fotopiezaB();*/
-    }
+    else { equipo.push_back(pieza); };
        
-   
 }
 
 void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
     Tipo t = pieza->get_tipo();
     if (t == Tipo::PEON) {//comprobamos si es tipo peon
         for (int j = 0; j < 5; j++) {
-            Peon* nuevo_peon = new Peon(NEGRO, { 3,j });//si es peon, creamos 5 nuevos peones
+            Peon* nuevo_peon = new Peon(NEGRO, { 3,j });//si es peon, creamos 5 nuevos peones en la posicion de negro
             equipo.push_back(nuevo_peon);
-            /*nuevo_peon->set_color(NEGRO);//inicializamos color en negro
-            nuevo_peon->set_tipo();
-            nuevo_peon->set_posicion_ini(2, j);
-            nuevo_peon->set_fotopiezaN();
-            equipo.push_back(nuevo_peon);*/
+           
         }
-        //delete pieza;//borramos peon original
+        
     }
-    //MODELO PARA MODO DE JUEGO GARDNER
-    else {
-        equipo.push_back(pieza);
-        /*equipo.back()->set_color(NEGRO);//inicializamos el color de la pieza como blanco
-        equipo.back()->set_tipo();
-        equipo.back()->set_posicion_ini(4, 0);
-        equipo.back()->set_fotopiezaN();*/
-    }
+    else { equipo.push_back(pieza); }
 
 
 
 }
+//comprobacion de posicion inicial en el tablero
 void Tablero::Pruebapiezas() {
     for (auto i : piezas_B) {
         cout << "Hay una pieza de tipo: " << static_cast<int>(i->get_tipo()) <<" en : ("<<i->get_posicion().Fila<<","<< i->get_posicion().Columna<<")"<< endl;

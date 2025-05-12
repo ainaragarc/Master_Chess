@@ -11,6 +11,6 @@ public:
 	void inicializa();
 
 	Tablero TABLERO;
-	//Pieza PIEZA;
+	
 	Brocha BROCHA;
 };

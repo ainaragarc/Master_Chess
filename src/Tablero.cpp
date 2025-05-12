@@ -48,6 +48,7 @@ void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
     equipo.back()->set_tipo();
     equipo.back()->set_cantidad();//inicializamos la cantidad de cada pieza
     equipo.back()->set_posicion_ini();
+    equipo.back()->set_fotopiezaB();
 }
 
 void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
@@ -55,6 +56,8 @@ void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
     equipo.back()->set_color(NEGRO);//inicializamos el color de la pieza como negro
     equipo.back()->set_tipo();
     equipo.back()->set_cantidad();
+    equipo.back()->set_fotopiezaN();
+
 
 }
 
@@ -81,7 +84,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
 }
 
 
-void Tablero::PRUEBADEMOVIMINETO() {
+void Tablero::PRUEBADEMOVIMIENTO() {
     
     Alfil* mipieza = new Alfil({ 1, 1 });
     Alfil* mipieza2 = new Alfil({ 3, 3 });

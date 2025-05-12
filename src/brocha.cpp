@@ -82,26 +82,27 @@ void Brocha::dibuja_ini(float TamCuadrado,int numCasillas, const std::vector<Pie
         // Escalar al tamaño de la casilla
         glScalef(TamCuadrado, TamCuadrado, 1.0f);
 
-        //for (auto i : equipo) {
-            //Foto de pieza
-            glEnable(GL_TEXTURE_2D);
-            glEnable(GL_BLEND); //Habilita blending
-            glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Configura cómo se mezcla
-            glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/w_queen_1x_ns.png").id);
-            glDisable(GL_LIGHTING);
-            glBegin(GL_POLYGON);
-            glColor3f(1, 1, 1);
-            double xcoord1{ -0.5 }, xcoord2{ 0.5 };
-            double ycoord1{ -0.5 }, ycoord2{ 0.5 };
-            glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
-            glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
-            glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
-            glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
-            glEnd();
-            glEnable(GL_LIGHTING);
-            glDisable(GL_TEXTURE_2D);
+        //for anterior sobraba y provocaba error en el dibujo de las piezas
+        
+        //Foto de pieza
+        glEnable(GL_TEXTURE_2D);
+        glEnable(GL_BLEND); //Habilita blending
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Configura cómo se mezcla
+        glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(i->foto_pieza).id);//cada pieza se pinta a si misma
+        glDisable(GL_LIGHTING);
+        glBegin(GL_POLYGON);
+        glColor3f(1, 1, 1);
+        double xcoord1{ -0.5 }, xcoord2{ 0.5 };
+        double ycoord1{ -0.5 }, ycoord2{ 0.5 };
+        glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
+        glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
+        glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
+        glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
+        glEnd();
+        glEnable(GL_LIGHTING);
+        glDisable(GL_TEXTURE_2D);
 
-            glPopMatrix(); // Restaurar matriz de transformación
-       // }
+        glPopMatrix(); // Restaurar matriz de transformación
+        
     }
 }

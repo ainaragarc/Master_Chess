@@ -4,6 +4,13 @@
 struct Posicion
 {
 	int Fila, Columna;
+
+	Posicion& operator+=(const Posicion& p2) {
+		this->Fila += p2.Fila;
+		this->Columna += p2.Columna;
+		return *this;
+	}
+
 };
 typedef unsigned char uchar;
 

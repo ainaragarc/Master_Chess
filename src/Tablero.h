@@ -21,7 +21,10 @@ public:
 	float get_TamCuad() { return TamCuadrado; }
 	int& get_fila() { return posicion.Fila; }
 	int& get_columna() { return posicion.Columna; }
+
 	static bool hay_pieza(Posicion& pos);
+	static bool hay_pieza_BLANCA(Posicion& pos);
+	static bool hay_pieza_NEGRA(Posicion& pos);
 
 	const std::vector<Pieza*>& get_piezas_B() const { return piezas_B; }
 
@@ -32,5 +35,5 @@ public:
 	
 	friend class Brocha;
 
-	void PRUEBADEMOVIMINETO();
+	void PRUEBADEMOVIMIENTO();
 };

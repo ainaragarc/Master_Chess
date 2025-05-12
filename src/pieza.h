@@ -37,9 +37,13 @@ public:
 
 	virtual void set_posicion_ini() {};//Para definir la posición inicial de cada pieza
 
-	virtual void set_fotopieza() {};
+	virtual void set_fotopiezaB() {};//funciones para que piezas tengan su propio sprite blanco y negro
+	virtual void set_fotopiezaN() {};
+
 	//asigna el color de blanco o negro a las piezas
 	void set_color(Color asignación_color) { color = asignación_color; };
+
+	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
 
 	//posicion inicial de las piezas
 	void set_posicion(Posicion posicion);

@@ -17,19 +17,19 @@ vector<Pieza*> Tablero::piezas_N;
 
 void Tablero::inicializa_piezas() {
 
-    añadir_piezas_B(piezas_B, new Peon(BLANCO,{1,0}));
-    añadir_piezas_B(piezas_B, new Caballo());
-    añadir_piezas_B(piezas_B, new Torre());
-    añadir_piezas_B(piezas_B, new Alfil());
-    añadir_piezas_B(piezas_B, new Rey());
-    añadir_piezas_B(piezas_B, new Dama());
+    añadir_piezas_B(piezas_B, new Peon(BLANCO,{1,}));
+    añadir_piezas_B(piezas_B, new Caballo(BLANCO,{0,1}));
+    añadir_piezas_B(piezas_B, new Torre(BLANCO,{0,0}));
+    añadir_piezas_B(piezas_B, new Alfil(BLANCO,{0,2}));
+    añadir_piezas_B(piezas_B, new Rey(BLANCO,{0,4}));
+    añadir_piezas_B(piezas_B, new Dama(BLANCO,{0,3}));
 
     añadir_piezas_N(piezas_N, new Peon(NEGRO,{2,}));
-    añadir_piezas_N(piezas_N, new Caballo());
-    añadir_piezas_N(piezas_N, new Torre());
-    añadir_piezas_N(piezas_N, new Alfil());
-    añadir_piezas_N(piezas_N, new Rey());
-    añadir_piezas_N(piezas_N, new Dama());
+    añadir_piezas_N(piezas_N, new Caballo(NEGRO, {4,1}));
+    añadir_piezas_N(piezas_N, new Torre(NEGRO, {4,0}));
+    añadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2}));
+    añadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}));
+    añadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}));
     //Prueba:
     for (auto i : piezas_B) {
         cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color()) << " Cantidad: " << i->get_cantidad() << endl;
@@ -60,10 +60,10 @@ void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
     }
     else {
         equipo.push_back(pieza);
-        equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
+        /*equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
         equipo.back()->set_tipo();
         equipo.back()->set_posicion_ini(0, 0);
-        equipo.back()->set_fotopiezaB();
+        equipo.back()->set_fotopiezaB();*/
     }
        
    
@@ -86,10 +86,10 @@ void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
     //MODELO PARA MODO DE JUEGO GARDNER
     else {
         equipo.push_back(pieza);
-        equipo.back()->set_color(NEGRO);//inicializamos el color de la pieza como blanco
+        /*equipo.back()->set_color(NEGRO);//inicializamos el color de la pieza como blanco
         equipo.back()->set_tipo();
         equipo.back()->set_posicion_ini(4, 0);
-        equipo.back()->set_fotopiezaN();
+        equipo.back()->set_fotopiezaN();*/
     }
 
 

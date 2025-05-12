@@ -28,6 +28,6 @@ public:
 		
 	}
 
-	Peon(Posicion pos) { posicion = pos; }
+	
 	
 };

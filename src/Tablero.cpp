@@ -44,28 +44,62 @@ void Tablero::inicializa_piezas() {
 //funcion para limpiar mas el codigo de inicializa pieza
 void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
     pieza->set_cantidad();//inicializamos la cantidad de cada pieza
-    for (int i = 0; i < pieza->get_cantidad(); i++) {
+    pieza->set_tipo();
+    int t = static_cast<int>(pieza->get_tipo());
+    if (t == 1) {
+        for (int j = 0; j < pieza->get_cantidad(); j++) {
+            Peon* nuevo_peon = new Peon();//si es peon, creamos 5 nuevos peones
+            nuevo_peon->set_color(BLANCO);
+            nuevo_peon->set_tipo();
+            nuevo_peon->set_posicion_ini(0, j);
+            nuevo_peon->set_fotopiezaB();
+            equipo.push_back(nuevo_peon);
+        }
+        //delete pieza;//borramos peon original
+    }
+    else {
         equipo.push_back(pieza);
         equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
         equipo.back()->set_tipo();
-        equipo.back()->set_posicion_ini(0,i);
+        equipo.back()->set_posicion_ini(0, 0);
         equipo.back()->set_fotopiezaB();
     }
+       
    
 }
 
 void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
-    equipo.push_back(pieza);
-    equipo.back()->set_color(NEGRO);//inicializamos el color de la pieza como negro
-    equipo.back()->set_tipo();
-    equipo.back()->set_cantidad();
-    equipo.back()->set_fotopiezaN();
+    pieza->set_cantidad();//inicializamos la cantidad de cada pieza
+    pieza->set_tipo();
+    int t = static_cast<int>(pieza->get_tipo());
+    if (t == 1) {
+        for (int j = 0; j < pieza->get_cantidad(); j++) {
+            Peon* nuevo_peon = new Peon();//si es peon, creamos 5 nuevos peones
+            nuevo_peon->set_color(NEGRO);//inicializamos color en negro
+            nuevo_peon->set_tipo();
+            nuevo_peon->set_posicion_ini(2, j);
+            nuevo_peon->set_fotopiezaN();
+            equipo.push_back(nuevo_peon);
+        }
+        //delete pieza;//borramos peon original
+    }
+    else {
+        equipo.push_back(pieza);
+        equipo.back()->set_color(NEGRO);//inicializamos el color de la pieza como blanco
+        equipo.back()->set_tipo();
+        equipo.back()->set_posicion_ini(4, 0);
+        equipo.back()->set_fotopiezaN();
+    }
+
 
 
 }
 void Tablero::Pruebapiezas() {
     for (auto i : piezas_B) {
         cout << "Hay una pieza de tipo: " << static_cast<int>(i->get_tipo()) <<" en : ("<<i->get_posicion().Fila<<","<< i->get_posicion().Columna<<")"<< endl;
+    }
+    for (auto i : piezas_B) {
+        cout << "Hay una pieza de tipo: " << static_cast<int>(i->get_tipo()) << " en : (" << i->get_posicion().Fila << "," << i->get_posicion().Columna << ")" << endl;
     }
 }
 
@@ -92,7 +126,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
 }
 
 
-void Tablero::PRUEBADEMOVIMIENTO() {
+/*void Tablero::PRUEBADEMOVIMIENTO() {
     
     Alfil* mipieza = new Alfil({ 1, 1 });
     Alfil* mipieza2 = new Alfil({ 3, 3 });
@@ -145,5 +179,5 @@ void Tablero::PRUEBADEMOVIMIENTO() {
 
     Posicion posfinal{ 1,2 };
 
-    */
-}
+    *//*
+}*/

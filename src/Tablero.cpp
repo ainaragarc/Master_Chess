@@ -109,7 +109,8 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
 /*void Tablero::PRUEBADEMOVIMIENTO() {
     
-    Alfil* mipieza = new Alfil({ 1, 1 });
+
+ Alfil* mipieza = new Alfil({ 1, 1 });
     Alfil* mipieza2 = new Alfil({ 3, 3 });
 
     piezas_N.push_back(mipieza);
@@ -118,11 +119,19 @@ bool Tablero::hay_pieza(Posicion& pos) {
     Posicion pos3{ 2,2 };
     if (hay_pieza(pos3)) { std::cout << "hola"; }
 
+
+    std::cout << "mi alfiil esta en " << mipieza->get_posicion().Columna<<":" << mipieza->get_posicion().Fila << std::endl;
+    Posicion posfinal{ 1,2 };
+    mipieza->mueve(posfinal);
+    std::cout << "el alfil sigue porque posicion incorrecta " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
+    posfinal={ 2,2 };
+
     std::cout << "mi alfiil esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
     Posicion posfinal{ 1,2 };
     mipieza->mueve(posfinal);
     std::cout << "el alfil sigue porque posicion incorrecta " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
     posfinal = { 2,2 };
+
     mipieza->mueve(posfinal);
     std::cout << "ahora mi pieza esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
     posfinal = { 4,4 };
@@ -131,6 +140,9 @@ bool Tablero::hay_pieza(Posicion& pos) {
     posfinal = { 3,3 };
     mipieza->mueve(posfinal);
     std::cout << "ahora mi pieza esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
+
+    
+
    
     /*
     Peon* mipiezaB = new Peon({ 1, 1 });
@@ -160,5 +172,4 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
     Posicion posfinal{ 1,2 };
 
-    *//*
-}*/
+    */

@@ -3,7 +3,6 @@
 #include <vector>
 #include "tablero.h"
 
-
 vector<Posicion> Rey::posiciones_posibles() {
 	vector<Posicion> posibles;
 	Posicion direccion[8] = { {1,0},{-1,0},{0,-1},{0,1},{1,1},{1,-1},{-1,-1},{-1,1} };
@@ -12,8 +11,6 @@ vector<Posicion> Rey::posiciones_posibles() {
 		Posicion pos = posicion;
 		pos += a;
 		if (estoy_en_tablero(pos, Tablero::get_numCas()) && Tablero::tipo_pieza(pos) != Tipo::REY) { posibles.push_back(pos); }
-		//COMO SE PUEDE COMER A TODAS LAS PIEZAS PODRA IR A TODAS LAS POSCIONES, SALVO SI ES UN REY!!!
-		//IMPLEMENTAR EL REY
 
 	}
 		return posibles;

@@ -122,9 +122,9 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
  void Tablero::PRUEBADEMOVIMIENTO() {
 
-     Peon* mipieza3 = new Peon(BLANCO, { 1,2 });
+     Alfil* mipieza3 = new Alfil(BLANCO, { 1,2 });
      Alfil* mipieza2 = new Alfil(BLANCO, { 2,1 });
-     Peon* mipieza = new Peon(NEGRO, { 3,1 });
+     Rey* mipieza = new Rey(NEGRO, { 3,1 });
 
      Rey* R = new Rey(BLANCO, { 2,2 });
 
@@ -134,19 +134,10 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
 	 anadir_piezas_B(piezas_B, R);
 
-     Posicion pos3{ 3,3 };
-     if (hay_pieza(pos3)) { std::cout << "hay pieza"; }
-     if (tipo_pieza(pos3)==Tipo::REY) { std::cout << "hay rey"; }
-
      std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
-     Posicion posfinal{ 2,2 };
+     Posicion posfinal{ 2,1 };
      mipieza->mueve(posfinal);
-     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
-     posfinal = { 3,2 };
+     std::cout << " \nesta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
      mipieza->mueve(posfinal);
-     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
-     posfinal={ 2,3 };
-     mipieza->mueve(posfinal);
-     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
-
+     
  }

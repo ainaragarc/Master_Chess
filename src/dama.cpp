@@ -13,9 +13,7 @@ vector<Posicion> Dama::posiciones_posibles() {
 			pos += a;
 			if (!estoy_en_tablero(pos, Tablero::get_numCas()) || Tablero::tipo_pieza(pos) == Tipo::REY) { break; }
 			posibles.push_back(pos);
-			if (Tablero::hay_pieza(pos)) { break; }// Salir si hay una pieza en esa posicion PERO DESPUES DE GUARDADRLA
-			//COMO SE PUEDE COMER A TODAS LAS PIEZAS PODRA IR A TODAS LAS POSCIONES, SALVO SI ES UN REY!!!
-			//IMPLEMENTAR EL REY
+			if (Tablero::hay_pieza(pos)) { break; }
 		}
 	}
 	return posibles;

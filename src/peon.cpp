@@ -3,8 +3,6 @@
 #include <vector>
 #include "tablero.h"
 
-#include <iostream>
-
 vector<Posicion> Peon::posiciones_posibles() {
     vector<Posicion> posibles;
 
@@ -41,12 +39,7 @@ vector<Posicion> Peon::posiciones_posibles() {
 
         if (estoy_en_tablero(diag, Tablero::get_numCas()) &&Tablero::hay_pieza(diag) &&Tablero::tipo_pieza(diag) != Tipo::REY ) {
             posibles.push_back(diag);
-			cout << "holamigalletitalotus";
         }
-    }
-
-    for (auto& i : posibles) {
-        std::cout << "posible: " << i.Fila << ":" << i.Columna << std::endl;
     }
 
     return posibles;

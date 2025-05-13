@@ -20,7 +20,7 @@ vector<Posicion> Alfil::posiciones_posibles() {
 		}
 	}
 	for (auto& i : posibles) {
-		std::cout << "posible: " << i.Columna << ":" << i.Fila << std::endl;
+		std::cout << "posible: " << i.Fila << ":" << i.Columna << std::endl;
 	}
 	return posibles;
 }

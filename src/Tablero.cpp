@@ -17,20 +17,20 @@ vector<Pieza*> Tablero::piezas_N;
 
 void Tablero::inicializa_piezas() {
 
-    añadir_piezas_B(piezas_B, new Peon(BLANCO,{1,}));
-    añadir_piezas_B(piezas_B, new Caballo(BLANCO,{0,1}));
-    añadir_piezas_B(piezas_B, new Torre(BLANCO,{0,0}));
-    añadir_piezas_B(piezas_B, new Alfil(BLANCO,{0,2}));
-    añadir_piezas_B(piezas_B, new Rey(BLANCO,{0,4}));
-    añadir_piezas_B(piezas_B, new Dama(BLANCO,{0,3}));
+    anadir_piezas_B(piezas_B, new Peon(BLANCO,{1,}));
+    anadir_piezas_B(piezas_B, new Caballo(BLANCO,{0,1}));
+    anadir_piezas_B(piezas_B, new Torre(BLANCO,{0,0}));
+    anadir_piezas_B(piezas_B, new Alfil(BLANCO,{0,2}));
+    anadir_piezas_B(piezas_B, new Rey(BLANCO,{0,4}));
+    anadir_piezas_B(piezas_B, new Dama(BLANCO,{0,3}));
 
     //CASO GARDNER
-    añadir_piezas_N(piezas_N, new Peon(NEGRO,{2,}));
-    añadir_piezas_N(piezas_N, new Caballo(NEGRO, {4,1}));
-    añadir_piezas_N(piezas_N, new Torre(NEGRO, {4,0}));
-    añadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2}));
-    añadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}));
-    añadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}));
+    anadir_piezas_N(piezas_N, new Peon(NEGRO,{2,}));
+    anadir_piezas_N(piezas_N, new Caballo(NEGRO, {4,1}));
+    anadir_piezas_N(piezas_N, new Torre(NEGRO, {4,0}));
+    anadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2}));
+    anadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}));
+    anadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}));
 
     //Prueba:
     for (auto i : piezas_B) {
@@ -44,7 +44,7 @@ void Tablero::inicializa_piezas() {
 }
 
 //funcion para limpiar mas el codigo de inicializa pieza
-void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
+void Tablero::anadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
     
     Tipo t=pieza->get_tipo();
     if (t == Tipo::PEON) {//comprobamos si es tipo peon
@@ -59,7 +59,7 @@ void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
        
 }
 
-void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
+void Tablero::anadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
     Tipo t = pieza->get_tipo();
     if (t == Tipo::PEON) {//comprobamos si es tipo peon
         for (int j = 0; j < 5; j++) {
@@ -122,31 +122,31 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
  void Tablero::PRUEBADEMOVIMIENTO() {
 
-     Alfil* mipieza = new Alfil(BLANCO, { 2,2 });
-     Alfil* mipieza2 = new Alfil(BLANCO, { 1,1 });
-     Rey* R = new Rey(BLANCO, { 3,3 });
+     Peon* mipieza3 = new Peon(BLANCO, { 1,2 });
+     Alfil* mipieza2 = new Alfil(BLANCO, { 2,1 });
+     Peon* mipieza = new Peon(NEGRO, { 3,1 });
 
-     añadir_piezas_B(piezas_B, mipieza);
-	 añadir_piezas_B(piezas_B, mipieza2);
-	 añadir_piezas_N(piezas_N, R);
+     Rey* R = new Rey(BLANCO, { 2,2 });
+
+     anadir_piezas_B(piezas_B, mipieza3);
+	 anadir_piezas_B(piezas_B, mipieza2);
+     anadir_piezas_N(piezas_N, mipieza);
+
+	 anadir_piezas_B(piezas_B, R);
 
      Posicion pos3{ 3,3 };
      if (hay_pieza(pos3)) { std::cout << "hay pieza"; }
      if (tipo_pieza(pos3)==Tipo::REY) { std::cout << "hay rey"; }
 
-     std::cout << " esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
-     Posicion posfinal{ 1,2 };
+     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
+     Posicion posfinal{ 2,2 };
      mipieza->mueve(posfinal);
-     std::cout << "esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
-     posfinal = { 0,0 };
+     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
+     posfinal = { 3,2 };
      mipieza->mueve(posfinal);
-     std::cout << "esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
-     posfinal={ 1,1 };
+     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
+     posfinal={ 2,3 };
      mipieza->mueve(posfinal);
-     std::cout << "esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
-     posfinal = { 3,3 };
-
-     mipieza->mueve(posfinal);
-     std::cout << "esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
+     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
 
  }

@@ -4,7 +4,7 @@
 #include <cmath>
 
 
-bool Pieza::mueve(Posicion& posicion_final) {
+bool Pieza::mueve(Posicion posicion_final) {
 	//for de rango para comprobara que este entre las posiciones posibles
 	auto posibles=posiciones_posibles();
 	for (auto& pos : posibles) {

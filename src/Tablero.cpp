@@ -16,19 +16,22 @@ vector<Pieza*> Tablero::piezas_N;
 
 
 void Tablero::inicializa_piezas() {
-    añadir_piezas_B(piezas_B, new Peon());
-    añadir_piezas_B(piezas_B, new Caballo());
-    añadir_piezas_B(piezas_B, new Torre());
-    añadir_piezas_B(piezas_B, new Alfil());
-    añadir_piezas_B(piezas_B, new Rey());
-    añadir_piezas_B(piezas_B, new Dama());
 
-    añadir_piezas_N(piezas_N, new Peon());
-    añadir_piezas_N(piezas_N, new Caballo());
-    añadir_piezas_N(piezas_N, new Torre());
-    añadir_piezas_N(piezas_N, new Alfil());
-    añadir_piezas_N(piezas_N, new Rey());
-    añadir_piezas_N(piezas_N, new Dama());
+    añadir_piezas_B(piezas_B, new Peon(BLANCO,{1,}));
+    añadir_piezas_B(piezas_B, new Caballo(BLANCO,{0,1}));
+    añadir_piezas_B(piezas_B, new Torre(BLANCO,{0,0}));
+    añadir_piezas_B(piezas_B, new Alfil(BLANCO,{0,2}));
+    añadir_piezas_B(piezas_B, new Rey(BLANCO,{0,4}));
+    añadir_piezas_B(piezas_B, new Dama(BLANCO,{0,3}));
+
+    //CASO GARDNER
+    añadir_piezas_N(piezas_N, new Peon(NEGRO,{2,}));
+    añadir_piezas_N(piezas_N, new Caballo(NEGRO, {4,1}));
+    añadir_piezas_N(piezas_N, new Torre(NEGRO, {4,0}));
+    añadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2}));
+    añadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}));
+    añadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}));
+
     //Prueba:
     for (auto i : piezas_B) {
         cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color()) << " Cantidad: " << i->get_cantidad() << endl;
@@ -42,22 +45,43 @@ void Tablero::inicializa_piezas() {
 
 //funcion para limpiar mas el codigo de inicializa pieza
 void Tablero::añadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza) {
-    equipo.push_back(pieza);
-    equipo.back()->set_color(BLANCO);//inicializamos el color de la pieza como blanco
-    equipo.back()->set_tipo();
-    equipo.back()->set_cantidad();//inicializamos la cantidad de cada pieza
-    equipo.back()->set_posicion_ini();
-    equipo.back()->set_fotopiezaB();
+    
+    Tipo t=pieza->get_tipo();
+    if (t == Tipo::PEON) {//comprobamos si es tipo peon
+        for (int j = 0; j < 5; j++) {
+            Peon* nuevo_peon = new Peon(BLANCO, { 1,j });//si es peon, creamos 5 nuevos peones
+            equipo.push_back(nuevo_peon);
+            
+        }
+        
+    }
+    else { equipo.push_back(pieza); };
+       
 }
 
 void Tablero::añadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza) {
-    equipo.push_back(pieza);
-    equipo.back()->set_color(NEGRO);//inicializamos el color de la pieza como negro
-    equipo.back()->set_tipo();
-    equipo.back()->set_cantidad();
-    equipo.back()->set_fotopiezaN();
+    Tipo t = pieza->get_tipo();
+    if (t == Tipo::PEON) {//comprobamos si es tipo peon
+        for (int j = 0; j < 5; j++) {
+            Peon* nuevo_peon = new Peon(NEGRO, { 3,j });//si es peon, creamos 5 nuevos peones en la posicion de negro
+            equipo.push_back(nuevo_peon);
+           
+        }
+        
+    }
+    else { equipo.push_back(pieza); }
 
 
+
+}
+//comprobacion de posicion inicial en el tablero
+void Tablero::Pruebapiezas() {
+    for (auto i : piezas_B) {
+        cout << "Hay una pieza de tipo: " << static_cast<int>(i->get_tipo()) <<" en : ("<<i->get_posicion().Fila<<","<< i->get_posicion().Columna<<")"<< endl;
+    }
+    for (auto i : piezas_B) {
+        cout << "Hay una pieza de tipo: " << static_cast<int>(i->get_tipo()) << " en : (" << i->get_posicion().Fila << "," << i->get_posicion().Columna << ")" << endl;
+    }
 }
 
 bool Tablero::hay_pieza(Posicion& pos) {
@@ -83,13 +107,9 @@ bool Tablero::hay_pieza(Posicion& pos) {
 }
 
 
-
-
-
-void Tablero::PRUEBADEMOVIMIENTO() {
+/*void Tablero::PRUEBADEMOVIMIENTO() {
     
-
- Alfil* mipieza = new Alfil({ 1, 1 });
+    Alfil* mipieza = new Alfil({ 1, 1 });
     Alfil* mipieza2 = new Alfil({ 3, 3 });
 
     piezas_N.push_back(mipieza);
@@ -98,19 +118,11 @@ void Tablero::PRUEBADEMOVIMIENTO() {
     Posicion pos3{ 2,2 };
     if (hay_pieza(pos3)) { std::cout << "hola"; }
 
-
-    std::cout << "mi alfiil esta en " << mipieza->get_posicion().Columna<<":" << mipieza->get_posicion().Fila << std::endl;
-    Posicion posfinal{ 1,2 };
-    mipieza->mueve(posfinal);
-    std::cout << "el alfil sigue porque posicion incorrecta " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
-    posfinal={ 2,2 };
-
     std::cout << "mi alfiil esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
     Posicion posfinal{ 1,2 };
     mipieza->mueve(posfinal);
     std::cout << "el alfil sigue porque posicion incorrecta " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
     posfinal = { 2,2 };
-
     mipieza->mueve(posfinal);
     std::cout << "ahora mi pieza esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
     posfinal = { 4,4 };
@@ -119,9 +131,6 @@ void Tablero::PRUEBADEMOVIMIENTO() {
     posfinal = { 3,3 };
     mipieza->mueve(posfinal);
     std::cout << "ahora mi pieza esta en " << mipieza->get_posicion().Columna << ":" << mipieza->get_posicion().Fila << std::endl;
-
-    
-
    
     /*
     Peon* mipiezaB = new Peon({ 1, 1 });
@@ -151,5 +160,5 @@ void Tablero::PRUEBADEMOVIMIENTO() {
 
     Posicion posfinal{ 1,2 };
 
-    */
-}
+    *//*
+}*/

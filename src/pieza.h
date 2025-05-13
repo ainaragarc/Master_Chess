@@ -6,7 +6,7 @@ using std::vector;
 
 enum class Tipo { PEON=1, CABALLO, TORRE, ALFIL, REY, REINA };
 
-//enum culum { A = 1, B, C, D, E };
+
 
 class Pieza {
 protected://Para que las clases derivadas puedan acceder a los atributos
@@ -31,22 +31,13 @@ public:
 	//mueve comprueba que se puede mover (devolvienod false si no se puede), y realiza el movimiento
 	//Hay que mioodificar la memoria
 
-	virtual void set_tipo(){}//POR DEFECTO NO HACE  NADA Y PERMITE QUE LAS DEMAS SUBCLASES LA SOBREESCRIBAN
+	
 
-	virtual void set_cantidad() {}//tendremos una cantidad distinta de cada pieza
-
-	virtual void set_posicion_ini() {};//Para definir la posición inicial de cada pieza
-
-	virtual void set_fotopiezaB() {};//funciones para que piezas tengan su propio sprite blanco y negro
-	virtual void set_fotopiezaN() {};
-
-	//asigna el color de blanco o negro a las piezas
-	void set_color(Color asignación_color) { color = asignación_color; };
+	
 
 	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
 
-	//posicion inicial de las piezas
-	void set_posicion(Posicion posicion);
+	
 
 	Posicion get_posicion() { return posicion; }
 
@@ -61,7 +52,7 @@ public:
 
 	Posicion get_posicion_ini();
 
-	void inicializa();
+	
 	
 	friend class Brocha;
 	

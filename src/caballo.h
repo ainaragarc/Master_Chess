@@ -2,16 +2,24 @@
 #include "pieza.h"
 
 class Caballo : public Pieza {
-	void set_tipo() { tipo = Tipo::CABALLO; }
-	void set_cantidad() { cantidad = 1; }
+	
 
 public:
 	vector<Posicion> posiciones_posibles() override;
-	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 1; };
-	void set_fotopiezaB() { foto_pieza = "imagenes/w_knight_1x_ns.png"; };
-	void set_fotopiezaN() { foto_pieza = "imagenes/b_knight_1x_ns.png"; };
 
+	Caballo(Color equipo, Posicion pos) {//constructor parametrizado
+		cantidad = 1;
+		color = equipo;
+		posicion = pos;
+		tipo = Tipo::CABALLO;
+		if (color == BLANCO) {
+			foto_pieza = "imagenes/w_knight_1x_ns.png";
+		}
+		else {
+			foto_pieza = "imagenes/b_knight_1x_ns.png";
+		}
 
-	Caballo(Posicion pos) { posicion = pos; }
-	Caballo() = default;
+	}
+
+	
 };

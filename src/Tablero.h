@@ -27,6 +27,7 @@ public:
 	static bool hay_pieza_NEGRA(Posicion& pos);
 
 	const std::vector<Pieza*>& get_piezas_B() const { return piezas_B; }
+	const std::vector<Pieza*>& get_piezas_N() const { return piezas_N; }
 
 	void inicializa_piezas();
 	//funciones para limpiar mas el codigo de inicializa pieza
@@ -36,4 +37,5 @@ public:
 	friend class Brocha;
 
 	void PRUEBADEMOVIMIENTO();
+	void Pruebapiezas();
 };

@@ -4,9 +4,7 @@
 
 using std::vector;
 
-enum class Tipo { PEON=1, CABALLO, TORRE, ALFIL, REY, REINA };
-
-
+enum class Tipo {VACIO=0,  PEON=1, CABALLO, TORRE, ALFIL, REY, REINA };
 
 class Pieza {
 protected://Para que las clases derivadas puedan acceder a los atributos
@@ -22,37 +20,22 @@ protected://Para que las clases derivadas puedan acceder a los atributos
 	//Tipo tipo;
 	
 public:
-	//void dibuja(float radio, int segmentos);
-	virtual vector<Posicion> posiciones_posibles()=0; //funcion virtual pura
-	//propuesta de devolver una posición al mover una ficha, esta hará una cosa u otra dependiendo de qué tipo es.l
-	//saca las posiciones posibles para la pieza seleccionada, devuelve el vector de posiciones posibles
-
+	virtual vector<Posicion> posiciones_posibles()=0; 
 	virtual bool mueve( Posicion& posicion_final);
-	//mueve comprueba que se puede mover (devolvienod false si no se puede), y realiza el movimiento
-	//Hay que mioodificar la memoria
-
 	
-
-	
-
 	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
-
-	
 
 	Posicion get_posicion() { return posicion; }
 
 	//obtener el tipo de las piezas
 	Tipo get_tipo();
-
 	//obtener el color de las piezas
 	Color get_color();
-
 	//obtener numero de piezas restantes en juego
 	int get_cantidad();
 
 	Posicion get_posicion_ini();
 
-	
 	
 	friend class Brocha;
 	

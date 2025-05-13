@@ -4,7 +4,9 @@
 #include <vector>
 #include "pieza.h"
 
-using namespace std;
+using std::vector;
+using std::cout;
+using std::endl;
 
 class Tablero {
 	static const int numCasillas = 5;
@@ -25,9 +27,10 @@ public:
 	static bool hay_pieza(Posicion& pos);
 	static bool hay_pieza_BLANCA(Posicion& pos);
 	static bool hay_pieza_NEGRA(Posicion& pos);
+	static Tipo tipo_pieza(Posicion& pos);
 
-	const std::vector<Pieza*>& get_piezas_B() const { return piezas_B; }
-	const std::vector<Pieza*>& get_piezas_N() const { return piezas_N; }
+	const vector<Pieza*>& get_piezas_B() const { return piezas_B; }
+	const vector<Pieza*>& get_piezas_N() const { return piezas_N; }
 
 	void inicializa_piezas();
 	//funciones para limpiar mas el codigo de inicializa pieza
@@ -36,6 +39,8 @@ public:
 	
 	friend class Brocha;
 
+
+	//funciones de prueba
 	void PRUEBADEMOVIMIENTO();
 	void Pruebapiezas();
 };

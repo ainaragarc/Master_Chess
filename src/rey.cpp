@@ -9,21 +9,9 @@ vector<Posicion> Rey::posiciones_posibles() {
 	Posicion direccion[8] = { {1,0},{-1,0},{0,-1},{0,1},{1,1},{1,-1},{-1,-1},{-1,1} };
 
 	for (auto a : direccion) {
-		Posicion pos = get_posicion();
-
-		pos.Fila += a.Fila;
-		pos.Columna += a.Columna;
-		if (pos.Fila >= 0 && pos.Fila < Tablero::get_numCas() && pos.Columna >= 0 && pos.Columna < Tablero::get_numCas()) {
-			posibles.push_back(pos);
-		}
-			
-			//COMO SE PUEDE COMER A TODAS LAS PIEZAS PODRA IR A TODAS LAS POSCIONES, SALVO SI ES UN REY!!!
-			//IMPLEMENTAR EL REY
-
+		Posicion pos = posicion;
 		pos += a;
-		if (estoy_en_tablero(pos, Tablero::get_numCas())) {
-			posibles.push_back(pos);
-		}
+		if (estoy_en_tablero(pos, Tablero::get_numCas()) && Tablero::tipo_pieza(pos) != Tipo::REY) { posibles.push_back(pos); }
 		//COMO SE PUEDE COMER A TODAS LAS PIEZAS PODRA IR A TODAS LAS POSCIONES, SALVO SI ES UN REY!!!
 		//IMPLEMENTAR EL REY
 

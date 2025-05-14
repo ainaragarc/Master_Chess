@@ -23,6 +23,7 @@
     <ClCompile Include="src\brocha.cpp" />
     <ClCompile Include="src\caballo.cpp" />
     <ClCompile Include="src\dama.cpp" />
+    <ClCompile Include="src\GestorEstados.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\peon.cpp" />
     <ClCompile Include="src\pieza.cpp" />
@@ -36,6 +37,7 @@
     <ClInclude Include="src\brocha.h" />
     <ClInclude Include="src\caballo.h" />
     <ClInclude Include="src\dama.h" />
+    <ClInclude Include="src\GestorEstados.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\peon.h" />
     <ClInclude Include="src\pieza.h" />

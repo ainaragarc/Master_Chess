@@ -21,4 +21,5 @@ public:
 	void mouse(int button, int state, int x, int y, float longitudVentana, float TamCuadrado, int numCasillas, int& fila, int& columna);
 	
 	void dibuja_ini(float TamCuadrado, int numCasillas, const std::vector<Pieza*>& equipo);
+	Posicion click_a_posicion(int button, int state, int x, int y, float longitudVentana, float TamCuadrado, int numCasillas);
 };

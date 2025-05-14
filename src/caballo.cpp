@@ -17,4 +17,5 @@ vector<Posicion> Caballo::posiciones_posibles() {
 
 	return posibles;
 }
+
 	

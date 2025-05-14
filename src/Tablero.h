@@ -29,7 +29,7 @@ public:
 	static bool hay_pieza_NEGRA(Posicion& pos);
 	static Tipo tipo_pieza(Posicion& pos);
 
-	const vector<Pieza*>& get_piezas_B() const { return piezas_B; }
+	 vector<Pieza*>& get_piezas_B()  { return piezas_B; }
 	const vector<Pieza*>& get_piezas_N() const { return piezas_N; }
 
 	void inicializa_piezas();
@@ -38,7 +38,7 @@ public:
 	void anadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza);
 	
 	friend class Brocha;
-
+	friend void keyboard(unsigned char key, int x, int y);
 
 	//funciones de prueba
 	void PRUEBADEMOVIMIENTO();

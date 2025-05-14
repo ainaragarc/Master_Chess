@@ -5,7 +5,7 @@
 
 
 bool Pieza::mueve(Posicion posicion_final) {
-	//for de rango para comprobara que este entre las posiciones posibles
+	//for de rango para comprobar que este entre las posiciones posibles
 	auto posibles=posiciones_posibles();
 	for (auto& pos : posibles) {
 		if (pos.Columna == posicion_final.Columna && pos.Fila == posicion_final.Fila) {

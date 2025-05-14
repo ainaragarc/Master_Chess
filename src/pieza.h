@@ -25,7 +25,7 @@ public:
 	
 	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
 
-	Posicion get_posicion() { return posicion; }
+	Posicion& get_posicion() { return posicion; }
 
 	//obtener el tipo de las piezas
 	Tipo get_tipo();

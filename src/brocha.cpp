@@ -107,3 +107,4 @@ void Brocha::dibuja_ini(float TamCuadrado,int numCasillas, const std::vector<Pie
         
     }
 }
+

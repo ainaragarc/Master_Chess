@@ -1,7 +1,7 @@
 #include "freeglut.h"
 #include "Mundo.h"
 #include <iostream>
-
+void keyboard(unsigned char key, int x, int y);
 Mundo mundo;
 
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
@@ -21,6 +21,7 @@ int main(int argc, char* argv[])
 	//Registrar los callbacks
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
+	glutKeyboardFunc(keyboard);
 	glutMouseFunc(onMouseClick);
 
 	mundo.inicializa();
@@ -60,5 +61,16 @@ void OnTimer(int value)
 
 	//no borrar estas lineas
 	glutTimerFunc(25, OnTimer, 0);
+	glutPostRedisplay();
+}
+
+
+void keyboard(unsigned char key, int x, int y) {
+	switch (key) {
+	case 'w': // Mover peón blanco hacia adelante
+		//peon->mover(2);
+		mundo.TABLERO.get_piezas_B()[2]->get_posicion().Fila+=1;
+		break;
+	}
 	glutPostRedisplay();
 }

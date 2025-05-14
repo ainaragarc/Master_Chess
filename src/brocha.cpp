@@ -38,7 +38,8 @@ void Brocha::init_t(float longitudVentana)
     glMatrixMode(GL_MODELVIEW);
 }
 
-void Brocha::mouse(int button, int state, int x, int y, float longitudVentana, float TamCuadrado, int numCasillas,int& fila,int& columna) {
+void Brocha::mouse(int button, int state, int x, int y, float longitudVentana, float TamCuadrado, int numCasillas,int& fila,int& columna,
+    const std::vector<Pieza*>& blancas, const std::vector<Pieza*>& negras) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
 
         get_Pos(x, y,longitudVentana,TamCuadrado,numCasillas,fila,columna);
@@ -46,9 +47,36 @@ void Brocha::mouse(int button, int state, int x, int y, float longitudVentana, f
         if (fila >= 0 && fila < numCasillas && columna >= 0 && columna < numCasillas) {
             char letraColumna = 'A' + columna;
             std::cout << "Has hecho clic en la casilla (" << letraColumna << ", " << fila << ")\n";
+            // Si NO hay pieza seleccionada, buscar una
+            if (pieza_seleccionada == nullptr) {
+                //Busca en blancas
+                for (auto pieza : blancas) {
+                    if (pieza->get_posicion().Columna == columna && pieza->get_posicion().Fila == fila) {
+                        pieza_seleccionada = pieza;
+                        es_blanca_seleccionada = true;
+                        std::cout << "Pieza blanca seleccionada\n";
+                        break;//Para hacerlo más rápido (que no tenga que pasar por todas las piezas)
+                    }
+                }
+                //Busca en negras
+                for (auto pieza : negras) {
+                    if (pieza->get_posicion().Columna == columna && pieza->get_posicion().Fila == fila) {
+                        pieza_seleccionada = pieza;
+                        es_blanca_seleccionada = false;
+                        std::cout << "Pieza negra seleccionada\n";
+                        break;//Para hacerlo más rápido (que no tenga que pasar por todas las piezas)
+                    }
+                }
+            }
+            // Si YA hay pieza seleccionada, intentar moverla
+            else {
+                pieza_seleccionada->get_posicion().Columna = columna;
+                pieza_seleccionada->get_posicion().Fila = fila;
+                std::cout << "Pieza movida\n";
+                pieza_seleccionada = nullptr; // limpiar selección
+            }
         }
     }
-
 }
 
 Posicion Brocha::get_Pos(int x, int y,float longitudVentana,float TamCuadrado,int numCasillas,int& fila,int& columna) {

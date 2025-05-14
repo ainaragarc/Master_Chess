@@ -16,12 +16,12 @@ int main(int argc, char* argv[])
 	glutInit(&argc, argv);
 	glutInitWindowSize(600, 600);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
-	glutCreateWindow("MiJuego");
+	glutCreateWindow("Master Chess");
 
 	//Registrar los callbacks
 	glutDisplayFunc(OnDraw);
 	glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
-	glutKeyboardFunc(keyboard);
+	//glutKeyboardFunc(keyboard);//Función para controlar con el teclado
 	glutMouseFunc(onMouseClick);
 
 	mundo.inicializa();
@@ -50,7 +50,8 @@ void OnDraw(void)
 
 void onMouseClick(int button, int state, int x, int y)
 {
-	mundo.BROCHA.mouse(button, state, x, y,mundo.BROCHA.get_longVent(), mundo.TABLERO.get_TamCuad(), mundo.TABLERO.get_numCas(),mundo.TABLERO.get_fila(), mundo.TABLERO.get_columna());
+	mundo.BROCHA.mouse(button, state, x, y,mundo.BROCHA.get_longVent(), mundo.TABLERO.get_TamCuad(), mundo.TABLERO.get_numCas(),mundo.TABLERO.get_fila(),
+		mundo.TABLERO.get_columna(), mundo.TABLERO.get_piezas_B(), mundo.TABLERO.get_piezas_N());
 }
 
 
@@ -65,12 +66,21 @@ void OnTimer(int value)
 }
 
 
-void keyboard(unsigned char key, int x, int y) {
-	switch (key) {
-	case 'w': // Mover peón blanco hacia adelante
-		//peon->mover(2);
-		mundo.TABLERO.get_piezas_B()[2]->get_posicion().Fila+=1;
-		break;
-	}
-	glutPostRedisplay();
-}
+//void keyboard(unsigned char key, int x, int y) {
+//	switch (key) {
+//	case 'w': // Mover peón blanco hacia adelante
+//		mundo.TABLERO.get_piezas_B()[2]->get_posicion().Fila+=1;
+//		break;
+//	case 'a': // Mover peón blanco hacia adelante
+//		mundo.TABLERO.get_piezas_B()[2]->get_posicion().Columna -= 1;
+//		break;
+//	case 's': // Mover peón blanco hacia adelante
+//		mundo.TABLERO.get_piezas_B()[2]->get_posicion().Fila -= 1;
+//		break;
+//	case 'd': // Mover peón blanco hacia adelante
+//		mundo.TABLERO.get_piezas_B()[2]->get_posicion().Columna += 1;
+//		break;
+//	}
+//
+//	glutPostRedisplay();
+//}

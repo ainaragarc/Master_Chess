@@ -16,8 +16,6 @@ protected://Para que las clases derivadas puedan acceder a los atributos
 	Color color;
 	Posicion posicion;
 	const char* foto_pieza;
-
-	//Tipo tipo;
 	
 public:
 	virtual vector<Posicion> posiciones_posibles()=0; 

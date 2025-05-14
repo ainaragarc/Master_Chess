@@ -8,6 +8,8 @@
 
 class Brocha {
 	float longitudVentana = 4;
+	Pieza* pieza_seleccionada = nullptr;
+	bool es_blanca_seleccionada = false;//Puede servirnos a la hora de comer piezas
 public:
 	//Metodo para acceder a la variable longitudVentana por medio del objeto BROCHA
 	float get_longVent() { return longitudVentana; }
@@ -22,7 +24,8 @@ public:
 	Posicion get_Pos(int x, int y, float longitudVentana, float TamCuadrado, int numCasillas,int& fila, int& columna);
 
 	//Funcion de control del ratón
-	void mouse(int button, int state, int x, int y, float longitudVentana, float TamCuadrado, int numCasillas, int& fila, int& columna);
+	void mouse(int button, int state, int x, int y, float longitudVentana, float TamCuadrado, int numCasillas, int& fila, int& columna,
+		 const std::vector<Pieza*>& blancas,const std::vector<Pieza*>& negras);
 
 	//Funcion que dibuja el tablero de inicio
 	void dibuja_ini(float TamCuadrado, int numCasillas, const std::vector<Pieza*>& equipo);

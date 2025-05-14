@@ -2,7 +2,25 @@
 #include "pieza.h"
 
 class Alfil : public Pieza{
-	void set_tipo() { tipo = Tipo::ALFIL; }
-	void set_cantidad() { cantidad = 1; }
-	void set_posicion_ini() { posicion.Fila = 0; posicion.Columna = 0; };
+	
+
+public:
+	vector<Posicion> posiciones_posibles() override;
+	
+	Alfil(Color equipo, Posicion pos) {//constructor parametrizado
+		cantidad = 1;
+		color = equipo;
+		posicion = pos;
+		tipo = Tipo::ALFIL;
+		if (color == BLANCO) {
+			foto_pieza = "imagenes/w_bishop_1x_ns.png";
+		}
+		else {
+			foto_pieza = "imagenes/b_bishop_1x_ns.png";
+		}
+
+	}
+
+
+	
 };

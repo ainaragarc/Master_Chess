@@ -3,23 +3,11 @@
 #include "pieza.h"
 #include <cmath>
 
-/*
-Posicion  Pieza::mueve(Pieza& ficha)
-{
-	//funcion de movimiento
-	
-	//devuelve la posicion de la ficha que la llama tras moverse
-	return ficha.posicion;
-}*/
 
-vector<Posicion> Pieza::posiciones_posibles(Pieza& pieza_inical) {
-	vector <Posicion> Posiciones_Posibles;
-	return Posiciones_Posibles;
-}
-
-bool Pieza::mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_final) {
+bool Pieza::mueve(Posicion posicion_final) {
 	//for de rango para comprobara que este entre las posiciones posibles
-	for (auto& pos : posibles_posiciones) {
+	auto posibles=posiciones_posibles();
+	for (auto& pos : posibles) {
 		if (pos.Columna == posicion_final.Columna && pos.Fila == posicion_final.Fila) {
 			posicion = posicion_final;
 			return true;
@@ -29,7 +17,11 @@ bool Pieza::mueve(vector<Posicion>& posibles_posiciones, Posicion& posicion_fina
 	return false;
 }
 
-void Pieza::inicializa() {}
+bool Pieza::estoy_en_tablero(Posicion& pos, int casillas) {
+	return (pos.Fila >= 0 && pos.Fila < casillas && pos.Columna >= 0 && pos.Columna < casillas);
+}
+
+
 Tipo Pieza::get_tipo() {return tipo;}
 Color Pieza::get_color() {return color;}
 int Pieza::get_cantidad() {return cantidad;}

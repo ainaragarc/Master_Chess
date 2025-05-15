@@ -64,6 +64,10 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
         for (const auto& pos : casillas_posibles) { //compara el clic con las posiciones validas
             if (pos.Fila == destino.Fila && pos.Columna == destino.Columna) {
                 std::cout << "Movimiento válido\n";
+                //eliminamos pieza(comer) si existe en la casilla destino
+                if (TABLERO.hay_pieza(destino)) {
+                    TABLERO.comer_pieza(destino);
+                }
                 pieza_seleccionada->mueve(destino);
                 //realizamos el cambio de turno si el movimiento es valido
                 turno_actual = cambiar_turno(turno_actual);

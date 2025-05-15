@@ -141,3 +141,25 @@ bool Tablero::hay_pieza(Posicion& pos) {
      mipieza->mueve(posfinal);
      
  }
+
+ void Tablero::comer_pieza(Posicion pos) {
+     // buscar en piezas blancas
+     for (auto it = piezas_B.begin(); it != piezas_B.end(); ++it) {
+         if ((*it)->get_posicion().Fila == pos.Fila && (*it)->get_posicion().Columna == pos.Columna) {
+             delete* it;
+             piezas_B.erase(it);
+             std::cout << "Pieza blanca eliminada en (" << pos.Fila << ", " << pos.Columna << ")\n";
+             return;
+         }
+     }
+
+     // buscar en piezas negras
+     for (auto it = piezas_N.begin(); it != piezas_N.end(); ++it) {
+         if ((*it)->get_posicion().Fila == pos.Fila && (*it)->get_posicion().Columna == pos.Columna) {
+             delete* it;
+             piezas_N.erase(it);
+             std::cout << "Pieza negra eliminada en (" << pos.Fila << ", " << pos.Columna << ")\n";
+             return;
+         }
+     }
+ }

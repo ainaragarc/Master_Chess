@@ -43,4 +43,7 @@ public:
 	//funciones de prueba
 	void PRUEBADEMOVIMIENTO();
 	void Pruebapiezas();
+
+	//prueba comer piezas
+	void comer_pieza(Posicion pos);
 };

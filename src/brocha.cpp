@@ -136,3 +136,26 @@ void Brocha::dibuja_ini(float TamCuadrado,int numCasillas, const std::vector<Pie
     }
 }
 
+void Brocha::resalta_casillas(const std::vector<Posicion>& posiciones, float TamCuadrado, int numCasillas) {
+    float BOARD_OFFSET = -((numCasillas * TamCuadrado) / 2.0f);
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //mezclado de colores para la transparencia
+    glDisable(GL_LIGHTING);
+    glColor4f(0.0f, 1.0f, 0.0f, 0.4f); // verde con 40% de opacidad
+
+    for (const auto& pos : posiciones) { //recorremos las casillas a resaltar
+        float x = pos.Columna * TamCuadrado + BOARD_OFFSET;
+        float y = pos.Fila * TamCuadrado + BOARD_OFFSET;
+
+        glBegin(GL_QUADS); //dibujamos la casilla a rsaltar
+        glVertex2f(x, y);
+        glVertex2f(x + TamCuadrado, y);
+        glVertex2f(x + TamCuadrado, y + TamCuadrado);
+        glVertex2f(x, y + TamCuadrado);
+        glEnd();
+    }
+    glDisable(GL_BLEND); // restablecer estado
+    glEnable(GL_LIGHTING);
+}
+

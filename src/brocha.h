@@ -31,7 +31,9 @@ public:
 	void dibuja_ini(float TamCuadrado, int numCasillas, const std::vector<Pieza*>& equipo);
 
 	
-
+	//primero prototipo de movimiento(en deshuso)
 	Posicion click_a_posicion(int button, int state, int x, int y, float longitudVentana, float TamCuadrado, int numCasillas);
 
+	//funcion que resalta las posibles casillas de movimiento de las piezas
+	void resalta_casillas(const std::vector<Posicion>& posiciones, float TamCuadrado, int numCasillas);
 };

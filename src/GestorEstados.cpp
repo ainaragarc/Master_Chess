@@ -1,8 +1,8 @@
 #include "GestorEstados.h"
 
 void GestorEstados::inicializa() { //podemos usarla para inicializar, aunque se puede inicializar en otro sitio
-   // if (estado_actual == JUGANDO)
-        //mundo.inicializa();
+   if (estado_actual == JUGANDO)
+        mundo.inicializa();
 }
 
 void GestorEstados::dibuja() {
@@ -11,7 +11,7 @@ void GestorEstados::dibuja() {
         // dibujar menú
         break;
     case JUGANDO:
-        //mundo.dibuja();
+        mundo.dibuja();
         break;
     case PAUSA:
         // dibujar pausa
@@ -22,8 +22,8 @@ void GestorEstados::dibuja() {
 }
 
 void GestorEstados::mueve() {
-   // if (estado_actual == JUGANDO)
-        //mundo.mueve();
+   if (estado_actual == JUGANDO)
+        mundo.mueve();
 }
 
 void GestorEstados::tecla(unsigned char key) {
@@ -31,6 +31,6 @@ void GestorEstados::tecla(unsigned char key) {
 }
 
 void GestorEstados::raton(int button, int state, int x, int y) {
-    //if (estado_actual == JUGANDO)
-        //mundo.gestionar_click(button, state, x, y);
+    if (estado_actual == JUGANDO)
+        mundo.gestionar_click(button, state, x, y);
 }

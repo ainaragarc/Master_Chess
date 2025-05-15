@@ -4,8 +4,8 @@
 class GestorEstados {
 
 private:
-    enum Estado { MENU, JUGANDO, PAUSA, FIN }estado_actual{};
-    //Mundo mundo; descomentar cuando este terminada la implementación
+    enum Estado { MENU, JUGANDO, PAUSA, FIN }estado_actual{JUGANDO};
+    Mundo mundo; 
 
 public:
     

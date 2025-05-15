@@ -1,9 +1,11 @@
 #include "freeglut.h"
 #include "Mundo.h"
+#include "GestorEstados.h"
 #include <iostream>
-void keyboard(unsigned char key, int x, int y);
-Mundo mundo;
 
+//void keyboard(unsigned char key, int x, int y);
+//Mundo mundo;
+GestorEstados juego;
 //NO HACE FALTA LLAMARLAS EXPLICITAMENTE
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
@@ -24,7 +26,7 @@ int main(int argc, char* argv[])
 	//glutKeyboardFunc(keyboard);//Función para controlar con el teclado
 	glutMouseFunc(onMouseClick);
 
-	mundo.inicializa();
+	juego.inicializa();
 
 	//pasarle el control a GLUT,que llamara a los callbacks
 	glutMainLoop();
@@ -41,7 +43,7 @@ void OnDraw(void)
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
 
-	mundo.dibuja();
+	juego.dibuja();
 
 	//no borrar esta linea ni poner nada despues
 	glutSwapBuffers();
@@ -51,7 +53,7 @@ void OnDraw(void)
 void onMouseClick(int button, int state, int x, int y)
 {
 	//mundo.BROCHA.mouse(button, state, x, y,mundo.BROCHA.get_longVent(), mundo.TABLERO.get_TamCuad(), mundo.TABLERO.get_numCas(),mundo.TABLERO.get_fila(), mundo.TABLERO.get_columna());
-	mundo.gestionar_click(button, state, x, y);
+	juego.raton(button, state, x, y);
 
 }
 
@@ -59,7 +61,7 @@ void onMouseClick(int button, int state, int x, int y)
 void OnTimer(int value)
 {
 	//poner aqui el código de animacion
-	mundo.mueve();
+	juego.mueve();
 
 	//no borrar estas lineas
 	glutTimerFunc(25, OnTimer, 0);

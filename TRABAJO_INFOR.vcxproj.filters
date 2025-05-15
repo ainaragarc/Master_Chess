@@ -57,6 +57,9 @@
     <ClCompile Include="src\GestorEstados.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\Turno.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Mundo.h">
@@ -93,6 +96,9 @@
       <Filter>Archivos de encabezado\Piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\GestorEstados.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Turno.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

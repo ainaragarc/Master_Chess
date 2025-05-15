@@ -2,12 +2,16 @@
 #include "Tablero.h"
 #include "pieza.h"
 #include "brocha.h"
+#include "Turno.h"
 
 class Mundo {
 private:
 	Pieza* pieza_seleccionada = nullptr;
 	std::vector<Posicion> casillas_posibles;
 	bool esperando_segundo_click = false;
+	
+	//establecemos el turno inicial para las blancas
+	Turno turno_actual = Turno::BLANCO;
 
 public:
 	void dibuja();

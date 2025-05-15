@@ -31,6 +31,7 @@
     <ClCompile Include="src\rey.cpp" />
     <ClCompile Include="src\Tablero.cpp" />
     <ClCompile Include="src\torre.cpp" />
+    <ClCompile Include="src\Turno.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\alfil.h" />
@@ -45,6 +46,7 @@
     <ClInclude Include="src\rey.h" />
     <ClInclude Include="src\Tablero.h" />
     <ClInclude Include="src\torre.h" />
+    <ClInclude Include="src\Turno.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

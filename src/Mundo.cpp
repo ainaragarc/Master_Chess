@@ -65,6 +65,9 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
             if (pos.Fila == destino.Fila && pos.Columna == destino.Columna) {
                 std::cout << "Movimiento válido\n";
                 pieza_seleccionada->mueve(destino);
+                //realizamos el cambio de turno si el movimiento es valido
+                turno_actual = cambiar_turno(turno_actual);
+                std::cout << "Turno actual: " << a_string(turno_actual) << "\n";
                 pieza_seleccionada = nullptr;
                 casillas_posibles.clear();
                 esperando_segundo_click = false;
@@ -78,8 +81,10 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
         return;
     }
 
-    // PRIMER CLIC: seleccionar pieza propia (blancas por ahora) - Implementar turnos!!!!!
-    std::vector<Pieza*> piezas = TABLERO.get_piezas_B();
+    // PRIMER CLIC: seleccionar pieza propia 
+    std::vector<Pieza*> piezas = es_blanco(turno_actual) //evaluamos el turno actual
+        ? TABLERO.get_piezas_B()
+        : TABLERO.get_piezas_N();
 
     for (auto& p : piezas) {
         if (p->get_posicion().Fila == fila && p->get_posicion().Columna == columna) {

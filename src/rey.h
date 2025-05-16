@@ -2,7 +2,7 @@
 #include "pieza.h"
 
 class Rey : public Pieza {
-	
+	bool en_jaque = false;
 
 public:
 	vector<Posicion> posiciones_posibles() override;
@@ -21,5 +21,6 @@ public:
 
 	}
 
-	
+	bool esta_en_jaque() const { return en_jaque; }
+	void set_jaque(bool valor) { en_jaque = valor; }
 };

@@ -29,3 +29,8 @@ Tipo Pieza::get_tipo() {return tipo;}
 Color Pieza::get_color() {return color;}
 int Pieza::get_cantidad() {return cantidad;}
 Posicion Pieza::get_posicion_ini() { return posicion;}
+
+//programar funcion
+bool Pieza::hay_jaque(const Posicion pos_jaque)const {
+	return false;
+}

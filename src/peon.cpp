@@ -24,13 +24,15 @@ vector<Posicion> Peon::posiciones_posibles() {
 
         posibles.push_back(pos);
 
-        // avance doble
+        // avance doble : no permitido por reglamento de tipo de juego, lo dejamos por si acaso
+        /*
 		if ((posicion.Fila == fila_inicial)){
 			pos += direccion;
             if ((!Tablero::hay_pieza(pos))) {
 				posibles.push_back(pos);
             }
         }
+        */
     }
 
     for (auto& d : diagonales) {

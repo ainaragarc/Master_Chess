@@ -35,6 +35,9 @@ public:
 
 	Posicion get_posicion_ini();
 
+	//prototipo para la gestion del jaque
+	virtual bool hay_jaque(const Posicion pos_jaque)const;
+
 	
 	friend class Brocha;
 	

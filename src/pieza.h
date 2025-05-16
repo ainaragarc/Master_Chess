@@ -18,8 +18,9 @@ protected://Para que las clases derivadas puedan acceder a los atributos
 	const char* foto_pieza;
 	
 public:
-	virtual vector<Posicion> posiciones_posibles()=0; 
-	virtual bool mueve( Posicion posicion_final);
+	virtual vector<Posicion> posiciones_posibles()=0;
+	virtual bool movimiento_posible(Posicion posicion_final) ;
+	virtual void mueve( Posicion posicion_final);
 	
 	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
 

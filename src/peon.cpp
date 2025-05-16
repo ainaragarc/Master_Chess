@@ -20,14 +20,14 @@ vector<Posicion> Peon::posiciones_posibles() {
     Posicion pos = posicion;
 	pos += direccion;
 
-    if (estoy_en_tablero(pos, Tablero::get_numCas()) && Tablero::tipo_pieza(pos) != Tipo::REY) {
+    if (estoy_en_tablero(pos, Tablero::get_numCas()) && (!Tablero::hay_pieza(pos))) {
 
         posibles.push_back(pos);
 
         // avance doble
-		if ((!Tablero::hay_pieza(pos)) && (posicion.Fila == fila_inicial)){
+		if ((posicion.Fila == fila_inicial)){
 			pos += direccion;
-            if (Tablero::tipo_pieza(pos) != Tipo::REY) {
+            if ((!Tablero::hay_pieza(pos))) {
 				posibles.push_back(pos);
             }
         }

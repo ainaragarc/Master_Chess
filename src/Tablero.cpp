@@ -89,7 +89,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
 }
 
  bool Tablero::hay_pieza_BLANCA(Posicion& pos) {
-     for (auto& i : piezas_N) {
+     for (auto& i : piezas_B) {
          if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
              return true;
          }
@@ -98,7 +98,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
 }
 
  bool Tablero::hay_pieza_NEGRA(Posicion& pos) {
-     for (auto& i : piezas_B) {
+     for (auto& i : piezas_N) {
          if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
              return true;
          }
@@ -120,27 +120,6 @@ bool Tablero::hay_pieza(Posicion& pos) {
 	 return Tipo::VACIO;
  }
 
- void Tablero::PRUEBADEMOVIMIENTO() {
-
-     Alfil* mipieza3 = new Alfil(BLANCO, { 1,2 });
-     Alfil* mipieza2 = new Alfil(BLANCO, { 2,1 });
-     Rey* mipieza = new Rey(NEGRO, { 3,1 });
-
-     Rey* R = new Rey(BLANCO, { 2,2 });
-
-     anadir_piezas_B(piezas_B, mipieza3);
-	 anadir_piezas_B(piezas_B, mipieza2);
-     anadir_piezas_N(piezas_N, mipieza);
-
-	 anadir_piezas_B(piezas_B, R);
-
-     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
-     Posicion posfinal{ 2,1 };
-     mipieza->mueve(posfinal);
-     std::cout << " \nesta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
-     mipieza->mueve(posfinal);
-     
- }
 
  void Tablero::comer_pieza(Posicion pos) {
      // buscar en piezas blancas

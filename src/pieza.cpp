@@ -4,12 +4,15 @@
 #include <cmath>
 
 
-bool Pieza::mueve(Posicion posicion_final) {
+void Pieza::mueve(Posicion posicion_final) {
+	posicion = posicion_final;
+}
+
+bool Pieza::movimiento_posible(Posicion posicion_final) {
 	//for de rango para comprobar que este entre las posiciones posibles
-	auto posibles=posiciones_posibles();
+	auto posibles = posiciones_posibles();
 	for (auto& pos : posibles) {
 		if (pos.Columna == posicion_final.Columna && pos.Fila == posicion_final.Fila) {
-			posicion = posicion_final;
 			return true;
 			//si cumple la condicion, se mueve la pieza, y bool=1
 		}

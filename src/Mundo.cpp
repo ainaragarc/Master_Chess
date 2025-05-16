@@ -29,10 +29,8 @@ void Mundo::mueve()
 void Mundo::inicializa()
 {
 	BROCHA.init_t(BROCHA.get_longVent());
-	TABLERO.inicializa_piezas();
-	//TABLERO.PRUEBADEMOVIMIENTO();
-	
-	TABLERO.Pruebapiezas();
+	TABLERO.inicializa_piezas();	
+	//TABLERO.Pruebapiezas();
 }
 
 void Mundo::gestionar_click(int button, int state, int x, int y) {
@@ -61,30 +59,27 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
 
     // SEGUNDO CLIC: intento de movimiento
     if (esperando_segundo_click && pieza_seleccionada) {
-        for (const auto& pos : casillas_posibles) { //compara el clic con las posiciones validas
-            if (pos.Fila == destino.Fila && pos.Columna == destino.Columna) {
-                std::cout << "Movimiento válido\n";
-                //eliminamos pieza(comer) si existe en la casilla destino
-                if (TABLERO.hay_pieza(destino)) {
-                    TABLERO.comer_pieza(destino);
-                }
-                pieza_seleccionada->mueve(destino);
-                //realizamos el cambio de turno si el movimiento es valido
-                turno_actual = cambiar_turno(turno_actual);
-                std::cout << "Turno actual: " << a_string(turno_actual) << "\n";
-                pieza_seleccionada = nullptr;
-                casillas_posibles.clear();
-                esperando_segundo_click = false;
-                return;
+
+        if (pieza_seleccionada->movimiento_posible(destino)) {
+            // Si hay pieza en destino, eliminarla (incluso si es propia)
+            if (TABLERO.hay_pieza(destino)) {
+                TABLERO.comer_pieza(destino);
             }
+            pieza_seleccionada->mueve(destino);
+            // Movimiento confirmado
+            turno_actual = cambiar_turno(turno_actual);
+            std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";
         }
-        std::cout << "Movimiento inválido\n";
+        else {
+            std::cout << "Movimiento inválido\n";
+        }
+
+        // Siempre reiniciar estado de selección
         pieza_seleccionada = nullptr;
         casillas_posibles.clear();
         esperando_segundo_click = false;
-        return;
     }
-
+        
     // PRIMER CLIC: seleccionar pieza propia 
     std::vector<Pieza*> piezas = es_blanco(turno_actual) //evaluamos el turno actual
         ? TABLERO.get_piezas_B()
@@ -104,4 +99,6 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
     }
 
     std::cout << "No hay pieza seleccionada\n"; 
+
 }
+

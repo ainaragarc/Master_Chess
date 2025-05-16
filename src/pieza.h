@@ -37,7 +37,6 @@ public:
 
 	//DEVUELVE LAS POSICIONES QUE DAN JAQUE AL REY, DESDE DONDE ESTE LA PIEZA
 	vector<Posicion> posiciones_posibles_jaque();
-	bool hay_jaque(Color col);
 
 	friend class Brocha;
 	

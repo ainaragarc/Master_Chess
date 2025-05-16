@@ -39,7 +39,7 @@ vector<Posicion> Peon::posiciones_posibles() {
         Posicion diag = posicion;
         diag += d;
 
-        if (estoy_en_tablero(diag, Tablero::get_numCas()) &&Tablero::hay_pieza(diag) &&Tablero::tipo_pieza(diag) != Tipo::REY ) {
+        if (estoy_en_tablero(diag, Tablero::get_numCas()) &&Tablero::hay_pieza(diag) ) {
             posibles.push_back(diag);
         }
     }

@@ -11,7 +11,7 @@ bool Pieza::movimiento_posible(Posicion posicion_final) {
 	//for de rango para comprobar que este entre las posiciones posibles
 	auto posibles = posiciones_posibles();
 	for (auto& pos : posibles) {
-		if (pos == posicion_final) {
+		if (pos == posicion_final && Tablero::tipo_pieza(pos) != Tipo::REY) {
 			return true;
 			//si cumple la condicion, se mueve la pieza, y bool=1
 		}

@@ -23,4 +23,6 @@ public:
 
 	bool esta_en_jaque() const { return en_jaque; }
 	void set_jaque(bool valor) { en_jaque = valor; }
+	vector<Posicion> casillas_jaque();
+
 };

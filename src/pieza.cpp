@@ -1,6 +1,7 @@
 #pragma once
 #include "freeglut.h"
 #include "pieza.h"
+#include "tablero.h"
 #include <cmath>
 
 
@@ -31,6 +32,20 @@ int Pieza::get_cantidad() {return cantidad;}
 Posicion Pieza::get_posicion_ini() { return posicion;}
 
 //programar funcion
-bool Pieza::hay_jaque(const Posicion pos_jaque)const {
+bool Pieza::hay_jaque(Posicion& pos)const {
+	//asumo que la pieza que me llega NO es el rey, se reescribira la funcion para si soy el rey, saber si alguien me da jaque
+	//paso 1, busco al rey del color contrario
+
+	const vector<Pieza*>& piezas_contrarias = (color == Color::BLANCO) ? Tablero::get_piezas_N() : Tablero::get_piezas_B();
+	
+	
+	for (Pieza* p : piezas_contrarias) {
+		if (p->get_tipo() == Tipo::REY) { 
+			auto pos_rey_contrario=p->get_posicion();
+			break;
+			//si la pieza que me llega es la misma que la del rey contrario, no puede serbr
+		}
+	}
+	//compruebo para la posicion si doy jaque al rey con el rey
 	return false;
 }

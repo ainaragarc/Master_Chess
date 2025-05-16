@@ -15,3 +15,18 @@ vector<Posicion> Rey::posiciones_posibles() {
 	}
 		return posibles;
 }
+
+vector<Posicion> Rey::casillas_jaque() {
+	vector<Posicion> amenazas;
+	Posicion pos = posicion;
+
+	/*
+	for (Pieza* p : ) {
+		if (p->movimiento_posible(pos)) {
+			amenazas.push_back(p->get_posicion());
+		}
+	}
+	*/
+
+	return amenazas;
+}

@@ -11,7 +11,7 @@
 		Posicion pos = posicion;
 		pos += a;
 
-		if (estoy_en_tablero(pos, Tablero::get_numCas())) {
+		if (estoy_en_tablero(pos, Tablero::get_numCas())&&!casilla_me_da_jaque(pos)) {
 			posibles.push_back(pos); 
 		}
 
@@ -22,15 +22,17 @@
 bool Rey::casilla_me_da_jaque(Posicion& pos) {
 	vector<Pieza*> piezas_enemigas =(color == BLANCO) ? Tablero::get_piezas_N() : Tablero::get_piezas_B();
 
-	//DA ERROR POR RECURSIVIDAD, tengo que mirar si se solucionarlo
-
 	for (auto& a : piezas_enemigas) {
+		//
+		if (a->get_tipo() == Tipo::REY) continue;
+
 		for (auto& b : a->posiciones_posibles()) {
 			if (b == pos) {
 				return true;
 			}
 		}
 	}
+
 	return false;
 
 }

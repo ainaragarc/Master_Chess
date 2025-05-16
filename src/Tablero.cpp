@@ -90,7 +90,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
  bool Tablero::hay_pieza_BLANCA(Posicion& pos) {
      for (auto& i : piezas_B) {
-         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+         if (i->get_posicion() == pos ) {
              return true;
          }
      }
@@ -99,7 +99,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
  bool Tablero::hay_pieza_NEGRA(Posicion& pos) {
      for (auto& i : piezas_N) {
-         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+         if (i->get_posicion() == pos) {
              return true;
          }
      }
@@ -108,12 +108,12 @@ bool Tablero::hay_pieza(Posicion& pos) {
  
  Tipo Tablero::tipo_pieza(Posicion& pos) {
      for (auto& i : piezas_N) {
-         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+         if (i->get_posicion()== pos) {
              return i->get_tipo();
          }
      }
      for (auto& i : piezas_B) {
-         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+         if (i->get_posicion()== pos) {
              return i->get_tipo();
          }
      }
@@ -128,6 +128,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
 		 }
 	 }
  }
+
 
  bool Tablero::Jaque(Color col) {
 	 auto enemigos = (col == BLANCO) ? piezas_N : piezas_B;
@@ -145,7 +146,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
  void Tablero::comer_pieza(Posicion pos) {
      // buscar en piezas blancas
      for (auto it = piezas_B.begin(); it != piezas_B.end(); ++it) {
-         if ((*it)->get_posicion().Fila == pos.Fila && (*it)->get_posicion().Columna == pos.Columna) {
+         if ((*it)->get_posicion() == pos) {
              delete* it;
              piezas_B.erase(it);
              std::cout << "Pieza blanca eliminada en (" << pos.Fila << ", " << pos.Columna << ")\n";
@@ -155,7 +156,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
      // buscar en piezas negras
      for (auto it = piezas_N.begin(); it != piezas_N.end(); ++it) {
-         if ((*it)->get_posicion().Fila == pos.Fila && (*it)->get_posicion().Columna == pos.Columna) {
+         if ((*it)->get_posicion() == pos) {
              delete* it;
              piezas_N.erase(it);
              std::cout << "Pieza negra eliminada en (" << pos.Fila << ", " << pos.Columna << ")\n";

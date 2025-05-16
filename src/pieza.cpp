@@ -28,18 +28,3 @@ Tipo Pieza::get_tipo() {return tipo;}
 Color Pieza::get_color() {return color;}
 int Pieza::get_cantidad() {return cantidad;}
 Posicion Pieza::get_posicion_ini() { return posicion;}
-
-vector<Posicion> Pieza::posiciones_posibles_jaque(){
-	vector<Posicion> pos_jaque;
-	/*
-	Posicion pos_rey_contrario= (color == Color::BLANCO) ? Tablero::pos_Rey(NEGRO) : Tablero::pos_Rey(BLANCO);
-
-	//paso 2, busco las posiciones posibles que dan jaque al rey contrario
-	for (auto a : posiciones_posibles()) {
-		for (auto& b : a.posiciones_posibles()) {
-			if (b == pos_rey_contrario) { pos_jaque.push_back(a); }
-		}
-	}
-	*/
-	return pos_jaque;
-}

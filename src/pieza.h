@@ -35,8 +35,9 @@ public:
 
 	Posicion get_posicion_ini();
 
-	//DEVUELVE LAS POSICIONES QUE DAN JAQUE AL REY, DESDE DONDE ESTE LA PIEZA
-	vector<Posicion> posiciones_posibles_jaque();
+	//funcion a implementar: DEVUELVE LAS POSICIONES QUE DAN JAQUE AL REY OPUESTO, DESDE DONDE ESTE LA PIEZA
+	// puede servir para generar ayudas y otros
+	//vector<Posicion> posiciones_posibles_jaque();
 
 	friend class Brocha;
 	

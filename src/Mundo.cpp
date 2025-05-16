@@ -86,7 +86,7 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
         : TABLERO.get_piezas_N();
 
     for (auto& p : piezas) {
-        if (p->get_posicion().Fila == fila && p->get_posicion().Columna == columna) {
+        if (p->get_posicion()== destino) {
             pieza_seleccionada = p; //guardamos la pieza encontrada
             casillas_posibles = p->posiciones_posibles();
             esperando_segundo_click = true;

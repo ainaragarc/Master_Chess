@@ -5,7 +5,9 @@ struct Posicion
 {
 	int Fila, Columna;
 
-	Posicion& operator+=(const Posicion& p2) {
+	inline bool operator==(const Posicion& p2) const{ return (p2.Fila==this->Fila&& p2.Columna == this->Columna); }
+
+	inline Posicion& operator+=(const Posicion& p2) {
 		this->Fila += p2.Fila;
 		this->Columna += p2.Columna;
 		return *this;

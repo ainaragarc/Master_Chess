@@ -120,6 +120,27 @@ bool Tablero::hay_pieza(Posicion& pos) {
 	 return Tipo::VACIO;
  }
 
+ Posicion Tablero::pos_Rey(Color col) {
+	 auto piezas = (col == BLANCO) ? piezas_B : piezas_N;
+	 for (auto& i : piezas) {
+		 if (i->get_tipo() == Tipo::REY) {
+			 return i->get_posicion();
+		 }
+	 }
+ }
+
+ bool Tablero::Jaque(Color col) {
+	 auto enemigos = (col == BLANCO) ? piezas_N : piezas_B;
+	 Posicion pos_rey = pos_Rey(col);
+
+     for (auto& a : enemigos) {
+         for (auto& b : a->posiciones_posibles()) {
+             if (b == pos_rey) {  return true;  }
+         }
+     }
+
+	 return false; // El rey no está en jaque
+ }
 
  void Tablero::comer_pieza(Posicion pos) {
      // buscar en piezas blancas

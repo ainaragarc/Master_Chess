@@ -28,9 +28,13 @@ public:
 	static bool hay_pieza_BLANCA(Posicion& pos);
 	static bool hay_pieza_NEGRA(Posicion& pos);
 	static Tipo tipo_pieza(Posicion& pos);
+	static Posicion pos_Rey(Color col);
 
-	const vector<Pieza*>& get_piezas_B() const { return piezas_B; }
-	const vector<Pieza*>& get_piezas_N() const { return piezas_N; }
+	static bool Jaque(Color col);
+	void comer_pieza(Posicion pos);
+
+	static const vector<Pieza*>& get_piezas_B() { return piezas_B; }
+	static const vector<Pieza*>& get_piezas_N() { return piezas_N; }
 
 	void inicializa_piezas();
 	//funciones para limpiar mas el codigo de inicializa pieza
@@ -43,6 +47,4 @@ public:
 	//funciones de prueba
 	void Pruebapiezas();
 
-	//prueba comer piezas
-	void comer_pieza(Posicion pos);
 };

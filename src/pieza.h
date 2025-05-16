@@ -18,9 +18,9 @@ protected://Para que las clases derivadas puedan acceder a los atributos
 	const char* foto_pieza;
 	
 public:
-	virtual vector<Posicion> posiciones_posibles()=0;
-	virtual bool movimiento_posible(Posicion posicion_final) ;
-	virtual void mueve( Posicion posicion_final);
+	virtual  vector<Posicion> posiciones_posibles()=0;
+	 bool movimiento_posible(Posicion posicion_final) ;
+	 void mueve( Posicion posicion_final);
 	
 	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
 
@@ -35,9 +35,10 @@ public:
 
 	Posicion get_posicion_ini();
 
-	//prototipo para la gestion del jaque
-	virtual bool hay_jaque(Posicion &pos)const;
-	
+	//DEVUELVE LAS POSICIONES QUE DAN JAQUE AL REY, DESDE DONDE ESTE LA PIEZA
+	vector<Posicion> posiciones_posibles_jaque();
+	bool hay_jaque(Color col);
+
 	friend class Brocha;
 	
 };

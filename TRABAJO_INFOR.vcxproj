@@ -25,6 +25,7 @@
     <ClCompile Include="src\dama.cpp" />
     <ClCompile Include="src\GestorEstados.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
+    <ClCompile Include="src\Pantalla.cpp" />
     <ClCompile Include="src\peon.cpp" />
     <ClCompile Include="src\pieza.cpp" />
     <ClCompile Include="src\Principal.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="src\dama.h" />
     <ClInclude Include="src\GestorEstados.h" />
     <ClInclude Include="src\Mundo.h" />
+    <ClInclude Include="src\Pantalla.h" />
     <ClInclude Include="src\peon.h" />
     <ClInclude Include="src\pieza.h" />
     <ClInclude Include="src\propiedades.h" />

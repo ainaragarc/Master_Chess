@@ -24,6 +24,7 @@
     <ClCompile Include="src\caballo.cpp" />
     <ClCompile Include="src\dama.cpp" />
     <ClCompile Include="src\GestorEstados.cpp" />
+    <ClCompile Include="src\GestorPantallas.cpp" />
     <ClCompile Include="src\Mundo.cpp" />
     <ClCompile Include="src\Pantalla.cpp" />
     <ClCompile Include="src\peon.cpp" />
@@ -40,6 +41,7 @@
     <ClInclude Include="src\caballo.h" />
     <ClInclude Include="src\dama.h" />
     <ClInclude Include="src\GestorEstados.h" />
+    <ClInclude Include="src\GestorPantallas.h" />
     <ClInclude Include="src\Mundo.h" />
     <ClInclude Include="src\Pantalla.h" />
     <ClInclude Include="src\peon.h" />

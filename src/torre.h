@@ -8,7 +8,7 @@ public:
 	vector<Posicion> posiciones_posibles() override;
 
 	Torre(Color equipo, Posicion pos) {//constructor parametrizado
-		cantidad = 5;
+		cantidad = 1;
 		color = equipo;
 		posicion = pos;
 		tipo = Tipo::TORRE;

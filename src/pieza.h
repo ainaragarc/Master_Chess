@@ -16,16 +16,15 @@ protected://Para que las clases derivadas puedan acceder a los atributos
 	Color color;
 	Posicion posicion;
 	const char* foto_pieza;
-
-	//Tipo tipo;
 	
 public:
-	virtual vector<Posicion> posiciones_posibles()=0; 
-	virtual bool mueve( Posicion posicion_final);
+	virtual  vector<Posicion> posiciones_posibles()=0;
+	 bool movimiento_posible(Posicion posicion_final) ;
+	 void mueve( Posicion posicion_final);
 	
 	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
 
-	Posicion get_posicion() { return posicion; }
+	Posicion& get_posicion() { return posicion; }
 
 	//obtener el tipo de las piezas
 	Tipo get_tipo();
@@ -36,7 +35,10 @@ public:
 
 	Posicion get_posicion_ini();
 
-	
+	//funcion a implementar: DEVUELVE LAS POSICIONES QUE DAN JAQUE AL REY OPUESTO, DESDE DONDE ESTE LA PIEZA
+	// puede servir para generar ayudas y otros
+	//vector<Posicion> posiciones_posibles_jaque();
+
 	friend class Brocha;
 	
 };

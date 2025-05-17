@@ -12,9 +12,10 @@ vector<Posicion> Caballo::posiciones_posibles() {
 		Posicion pos = posicion;
 		pos += a;
 		
-		if (estoy_en_tablero(pos, Tablero::get_numCas())&& Tablero::tipo_pieza(pos) != Tipo::REY) { posibles.push_back(pos);}
+		if (estoy_en_tablero(pos, Tablero::get_numCas())) { posibles.push_back(pos);}
 	}
 
 	return posibles;
 }
+
 	

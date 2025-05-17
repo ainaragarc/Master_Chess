@@ -89,8 +89,8 @@ bool Tablero::hay_pieza(Posicion& pos) {
 }
 
  bool Tablero::hay_pieza_BLANCA(Posicion& pos) {
-     for (auto& i : piezas_N) {
-         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+     for (auto& i : piezas_B) {
+         if (i->get_posicion() == pos ) {
              return true;
          }
      }
@@ -98,8 +98,8 @@ bool Tablero::hay_pieza(Posicion& pos) {
 }
 
  bool Tablero::hay_pieza_NEGRA(Posicion& pos) {
-     for (auto& i : piezas_B) {
-         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+     for (auto& i : piezas_N) {
+         if (i->get_posicion() == pos) {
              return true;
          }
      }
@@ -108,36 +108,59 @@ bool Tablero::hay_pieza(Posicion& pos) {
  
  Tipo Tablero::tipo_pieza(Posicion& pos) {
      for (auto& i : piezas_N) {
-         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+         if (i->get_posicion()== pos) {
              return i->get_tipo();
          }
      }
      for (auto& i : piezas_B) {
-         if (i->get_posicion().Fila == pos.Fila && i->get_posicion().Columna == pos.Columna) {
+         if (i->get_posicion()== pos) {
              return i->get_tipo();
          }
      }
 	 return Tipo::VACIO;
  }
 
- void Tablero::PRUEBADEMOVIMIENTO() {
+ Posicion Tablero::pos_Rey(Color col) {
+	 auto piezas = (col == BLANCO) ? piezas_B : piezas_N;
+	 for (auto& i : piezas) {
+		 if (i->get_tipo() == Tipo::REY) {
+			 return i->get_posicion();
+		 }
+	 }
+ }
 
-     Alfil* mipieza3 = new Alfil(BLANCO, { 1,2 });
-     Alfil* mipieza2 = new Alfil(BLANCO, { 2,1 });
-     Rey* mipieza = new Rey(NEGRO, { 3,1 });
 
-     Rey* R = new Rey(BLANCO, { 2,2 });
+ bool Tablero::Jaque(Color col) {
+	 auto enemigos = (col == BLANCO) ? piezas_N : piezas_B;
+	 Posicion pos_rey = pos_Rey(col);
 
-     anadir_piezas_B(piezas_B, mipieza3);
-	 anadir_piezas_B(piezas_B, mipieza2);
-     anadir_piezas_N(piezas_N, mipieza);
+     for (auto& a : enemigos) {
+         for (auto& b : a->posiciones_posibles()) {
+             if (b == pos_rey) {  return true;  }
+         }
+     }
 
-	 anadir_piezas_B(piezas_B, R);
+	 return false; // El rey no está en jaque
+ }
 
-     std::cout << " esta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
-     Posicion posfinal{ 2,1 };
-     mipieza->mueve(posfinal);
-     std::cout << " \nesta en " << mipieza->get_posicion().Fila << ":" << mipieza->get_posicion().Columna << std::endl;
-     mipieza->mueve(posfinal);
-     
+ void Tablero::comer_pieza(Posicion pos) {
+     // buscar en piezas blancas
+     for (auto it = piezas_B.begin(); it != piezas_B.end(); ++it) {
+         if ((*it)->get_posicion() == pos) {
+             delete* it;
+             piezas_B.erase(it);
+             std::cout << "Pieza blanca eliminada en (" << pos.Fila << ", " << pos.Columna << ")\n";
+             return;
+         }
+     }
+
+     // buscar en piezas negras
+     for (auto it = piezas_N.begin(); it != piezas_N.end(); ++it) {
+         if ((*it)->get_posicion() == pos) {
+             delete* it;
+             piezas_N.erase(it);
+             std::cout << "Pieza negra eliminada en (" << pos.Fila << ", " << pos.Columna << ")\n";
+             return;
+         }
+     }
  }

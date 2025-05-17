@@ -8,7 +8,7 @@ void GestorEstados::inicializa() { //podemos usarla para inicializar, aunque se 
 void GestorEstados::dibuja() {
     switch (estado_actual) {
     case MENU:
-        // dibujar menú
+        gestor_pantallas.dibuja();
         break;
     case JUGANDO:
         mundo.dibuja();
@@ -22,15 +22,21 @@ void GestorEstados::dibuja() {
 }
 
 void GestorEstados::mueve() {
+   if (estado_actual == MENU) {
+        gestor_pantallas.actualiza();
+   }
    if (estado_actual == JUGANDO)
         mundo.mueve();
 }
 
 void GestorEstados::tecla(unsigned char key) {
-   //usar para cambiar estados
+    if (estado_actual == MENU)
+        gestor_pantallas.tecla(key);
 }
 
 void GestorEstados::raton(int button, int state, int x, int y) {
+    if (estado_actual == MENU)
+        gestor_pantallas.raton(button, state, x, y);
     if (estado_actual == JUGANDO)
         mundo.gestionar_click(button, state, x, y);
 }

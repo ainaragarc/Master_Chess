@@ -1,11 +1,13 @@
 #pragma once
 #include "Mundo.h"
+#include "GestorPantallas.h"
 
 class GestorEstados {
 
 private:
     enum Estado { MENU, JUGANDO, PAUSA, FIN }estado_actual{JUGANDO};
     Mundo mundo; 
+    GestorPantallas gestor_pantallas;
 
 public:
     
@@ -17,4 +19,7 @@ public:
     void mueve();
     void tecla(unsigned char key);
     void raton(int button, int state, int x, int y);
+
+    //funcion para poder acceder al gestor desde fuera
+    GestorPantallas& get_gestor_pantallas() { return gestor_pantallas; }
 };

@@ -5,7 +5,7 @@
 class GestorEstados {
 
 private:
-    enum Estado { MENU, JUGANDO, PAUSA, FIN }estado_actual{JUGANDO};
+    enum Estado { MENU, JUGANDO, PAUSA, FIN }estado_actual{MENU};
     Mundo mundo; 
     GestorPantallas gestor_pantallas;
 

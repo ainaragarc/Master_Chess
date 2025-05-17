@@ -9,8 +9,9 @@ private:
     GestorPantallas* gestor = nullptr; //referencia al gestor para cambiar de pantalla
 
 public:
-    PantallaInicio(GestorPantallas* gestor);//constructor que recibe un puntero
-
+    
     void dibuja() override;
     void actualiza() override;
+
+    PantallaInicio(GestorPantallas* gestor): gestor(gestor) {}//constructor que recibe un puntero
 };

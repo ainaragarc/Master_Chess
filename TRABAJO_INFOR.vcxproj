@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClCompile Include="src\alfil.cpp" />
     <ClCompile Include="src\brocha.cpp" />
+    <ClCompile Include="src\BrochaPantallas.cpp" />
     <ClCompile Include="src\caballo.cpp" />
     <ClCompile Include="src\dama.cpp" />
     <ClCompile Include="src\GestorEstados.cpp" />
@@ -39,6 +40,7 @@
   <ItemGroup>
     <ClInclude Include="src\alfil.h" />
     <ClInclude Include="src\brocha.h" />
+    <ClInclude Include="src\BrochaPantallas.h" />
     <ClInclude Include="src\caballo.h" />
     <ClInclude Include="src\dama.h" />
     <ClInclude Include="src\GestorEstados.h" />

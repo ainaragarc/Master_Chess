@@ -1,7 +1,11 @@
 #include "GestorEstados.h"
+#include "PantallaInicio.h"
 
-void GestorEstados::inicializa() { //podemos usarla para inicializar, aunque se puede inicializar en otro sitio
-   if (estado_actual == JUGANDO)
+void GestorEstados::inicializa() {//podemos usarla para inicializar, aunque se puede inicializar en otro sitio
+    if (estado_actual == MENU) {
+        gestor_pantallas.set_pantalla(new PantallaInicio(&gestor_pantallas));
+    }
+    if (estado_actual == JUGANDO)
         mundo.inicializa();
 }
 

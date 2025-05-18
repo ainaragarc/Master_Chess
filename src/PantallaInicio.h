@@ -6,6 +6,8 @@
 
 class PantallaInicio : public Pantalla {
 private:
+    float tiempo_carga = 0.0f;         //tiempo instantáneo en segundos
+    const float tiempo_total = 6.0f;   //duración total de la carga en segundos
     GestorPantallas* gestor = nullptr; //referencia al gestor para cambiar de pantalla
 
 public:

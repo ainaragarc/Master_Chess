@@ -1,10 +1,12 @@
 #pragma once
 #include "Pantalla.h"
 #include "GestorPantallas.h"
+#include <vector>
 
 class MenuPrincipal : public Pantalla {
 private:
     GestorPantallas* gestor;
+    std::vector<Boton> botones;
 
 public:
     MenuPrincipal(GestorPantallas* gestor);

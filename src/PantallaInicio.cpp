@@ -1,5 +1,6 @@
 #include "PantallaInicio.h"
 #include "BrochaPantallas.h"
+#include "MenuPrincipal.h"
 
 void PantallaInicio::dibuja() {
 	BrochaPantallas::limpiar_pantalla(0.1f, 0.1f, 0.2f);
@@ -10,6 +11,6 @@ void PantallaInicio::dibuja() {
 void PantallaInicio::actualiza() {
 	tiempo_carga += 0.05f;
 	if (tiempo_carga >= tiempo_total) {
-		tiempo_carga = tiempo_total;
+		gestor->set_pantalla(new MenuPrincipal(gestor));
 	}
 }

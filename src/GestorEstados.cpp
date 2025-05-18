@@ -1,6 +1,7 @@
 #include "GestorEstados.h"
 #include "PantallaInicio.h"
 #include "MenuPrincipal.h"
+#include "PantallaSeleccionTablero.h"
 
 void GestorEstados::inicializa() {//podemos usarla para inicializar, aunque se puede inicializar en otro sitio
     if (estado_actual == MENU) {
@@ -27,35 +28,53 @@ void GestorEstados::dibuja() {
 }
 
 void GestorEstados::mueve() {
-   if (estado_actual == MENU) {
+    if (estado_actual == MENU) {
         gestor_pantallas.actualiza();
 
-        //comprobamos si la pantalla actual es menuprincipal
         Pantalla* pantalla = gestor_pantallas.get_pantalla();
-        auto* menu = dynamic_cast<MenuPrincipal*>(pantalla);
-        
+        MenuPrincipal* menu = dynamic_cast<MenuPrincipal*>(pantalla);
+
         if (menu) {
             switch (menu->get_accion()) {
-            case AccionMenu::NUEVA_PARTIDA: //al seleccionar el boton de nueva partida iniciamos mundo
+            case AccionMenu::NUEVA_PARTIDA:
                 menu->reset_accion();
-                estado_actual = JUGANDO;
-                inicializa();
-                break;
-
+                // Aquí cambiamos la pantalla al selector de tablero
+                gestor_pantallas.set_pantalla(new PantallaSeleccionTablero(&gestor_pantallas));
+                return; // cortamos aquí para esperar la siguiente iteración
             case AccionMenu::SALIR:
                 menu->reset_accion();
-                exit(0); //salir directamente del juego
-                break;
-
+                exit(0);
             default:
                 break;
             }
         }
 
-   }
-   if (estado_actual == JUGANDO)
+        // Este bloque nuevo lo añades justo debajo del anterior
+        PantallaSeleccionTablero* selector = dynamic_cast<PantallaSeleccionTablero*>(pantalla);
+        if (selector) {
+            switch (selector->get_accion()) {
+            case AccionTablero::TABLERO_BABY:
+                selector->reset_accion();
+                //tipo_tablero = TABLERO_BABY; // si queremos guardar el tipo para usar luego
+                estado_actual = JUGANDO;
+                inicializa();
+                break;
+            case AccionTablero::TABLERO_GARDNER:
+                selector->reset_accion();
+                //tipo_tablero = TABLERO_GARDNER;
+                estado_actual = JUGANDO;
+                inicializa();
+                break;
+            default:
+                break;
+            }
+        }
+    }
+
+    if (estado_actual == JUGANDO)
         mundo.mueve();
 }
+
 
 void GestorEstados::tecla(unsigned char key) {
     if (estado_actual == MENU)

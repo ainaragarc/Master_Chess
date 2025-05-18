@@ -24,6 +24,7 @@
     <ClCompile Include="src\BrochaPantallas.cpp" />
     <ClCompile Include="src\caballo.cpp" />
     <ClCompile Include="src\dama.cpp" />
+    <ClCompile Include="src\PantallaSeleccionTablero.cpp" />
     <ClCompile Include="src\GestorEstados.cpp" />
     <ClCompile Include="src\GestorPantallas.cpp" />
     <ClCompile Include="src\MenuPrincipal.cpp" />
@@ -44,6 +45,7 @@
     <ClInclude Include="src\BrochaPantallas.h" />
     <ClInclude Include="src\caballo.h" />
     <ClInclude Include="src\dama.h" />
+    <ClInclude Include="src\PantallaSeleccionTablero.h" />
     <ClInclude Include="src\GestorEstados.h" />
     <ClInclude Include="src\GestorPantallas.h" />
     <ClInclude Include="src\MenuPrincipal.h" />

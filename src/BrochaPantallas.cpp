@@ -25,3 +25,17 @@ void BrochaPantallas::dibujar_barra_carga(float progreso, float x1, float y1, fl
     glVertex2f(x1, y2);
     glEnd();
 }
+
+Coordenada BrochaPantallas::convertir_click_a_opengl(int x, int y) {
+    int w = glutGet(GLUT_WINDOW_WIDTH);
+    int h = glutGet(GLUT_WINDOW_HEIGHT);
+
+    float glX = static_cast<float>(x) / w * 2.0f - 1.0f;
+    float glY = static_cast<float>(h - y) / h * 2.0f - 1.0f;
+
+    return { glX, glY };
+}
+
+bool BrochaPantallas::es_clic_izquierdo(int button, int state) {
+    return button == GLUT_LEFT_BUTTON && state == GLUT_DOWN;
+}

@@ -23,6 +23,13 @@ public:
     }
 
     void dibujar() const; //funcion para dibujar que llama a BrochaPantallas
+    bool clic_en(float x, float y) const;   //funcion que comprueba si el clic está dentro del boton
 
     const std::string& get_texto() const { return texto; }
+};
+
+//struct utilizada por funciones en brochapantallas
+struct Coordenada {
+    float x;
+    float y;
 };

@@ -23,3 +23,8 @@ void Boton::dibujar() const {
     float alto = y2 - y1;
     BrochaPantallas::dibujar_texto(texto, x1 + ancho * 0.25f, y1 + alto * 0.25f);
 }
+
+//funcion que devuelve true si se hace click dentro del boton
+bool Boton::clic_en(float x, float y) const {
+    return x >= x1 && x <= x2 && y >= y1 && y <= y2;
+}

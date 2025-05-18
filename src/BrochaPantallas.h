@@ -12,4 +12,10 @@ public:
 
     //dibuja una barra de carga horizontal
     static void dibujar_barra_carga(float progreso, float x1, float y1, float x2, float y2, float r, float g, float b);
+
+    //funcion para convertir coordenadas
+    static Coordenada convertir_click_a_opengl(int x, int y);
+
+    //compruba si se ha hecho cllick
+    static bool es_clic_izquierdo(int button, int state);
 };

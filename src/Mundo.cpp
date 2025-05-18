@@ -26,11 +26,15 @@ void Mundo::mueve()
 	//Todo lo que se mueva en el mundo o interactue entre sí
 
 }
-void Mundo::inicializa()
+void Mundo::inicializa_tablero_gardner()
 {
 	BROCHA.init_t(BROCHA.get_longVent());
-	TABLERO.inicializa_piezas();	
-	//TABLERO.Pruebapiezas();
+	TABLERO.inicializa_piezas_GARDNER();	
+}
+
+void Mundo::inicializa_tablero_baby() {
+    BROCHA.init_t(BROCHA.get_longVent());
+    TABLERO.inicializa_piezas_BABY();
 }
 
 void Mundo::gestionar_click(int button, int state, int x, int y) {

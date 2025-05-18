@@ -15,7 +15,7 @@ vector<Pieza*> Tablero::piezas_B;
 vector<Pieza*> Tablero::piezas_N;
 
 
-void Tablero::inicializa_piezas() {
+void Tablero::inicializa_piezas_GARDNER() {
 
     anadir_piezas_B(piezas_B, new Peon(BLANCO,{1,}));
     anadir_piezas_B(piezas_B, new Caballo(BLANCO,{0,1}));
@@ -31,6 +31,34 @@ void Tablero::inicializa_piezas() {
     anadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2}));
     anadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}));
     anadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}));
+
+    //Prueba:
+    for (auto i : piezas_B) {
+        cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color()) << " Cantidad: " << i->get_cantidad() << endl;
+    }
+    cout << "\n";
+    for (auto i : piezas_N) {
+        cout << "Pieza: " << static_cast<int>(i->get_tipo()) << " Color: " << static_cast<int>(i->get_color()) << " Cantidad: " << i->get_cantidad() << endl;
+    }
+
+}
+
+void Tablero::inicializa_piezas_BABY() {
+
+    anadir_piezas_B(piezas_B, new Peon(BLANCO, { 1, }));
+    anadir_piezas_B(piezas_B, new Caballo(BLANCO, { 0,1 }));
+    anadir_piezas_B(piezas_B, new Torre(BLANCO, { 0,0 }));
+    anadir_piezas_B(piezas_B, new Alfil(BLANCO, { 0,2 }));
+    anadir_piezas_B(piezas_B, new Rey(BLANCO, { 0,4 }));
+    anadir_piezas_B(piezas_B, new Dama(BLANCO, { 0,3 }));
+
+    //CASO BABY
+    anadir_piezas_N(piezas_N, new Peon(NEGRO, { 2,}));
+    anadir_piezas_N(piezas_N, new Caballo(NEGRO, { 4,3 }));
+    anadir_piezas_N(piezas_N, new Torre(NEGRO, { 4,4 }));
+    anadir_piezas_N(piezas_N, new Alfil(NEGRO, { 4,2 }));
+    anadir_piezas_N(piezas_N, new Rey(NEGRO, { 4,0 }));
+    anadir_piezas_N(piezas_N, new Dama(NEGRO, { 4,1 }));
 
     //Prueba:
     for (auto i : piezas_B) {

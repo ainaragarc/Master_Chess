@@ -16,7 +16,8 @@ private:
 public:
 	void dibuja();
 	void mueve();
-	void inicializa();
+	void inicializa_tablero_gardner();
+	void inicializa_tablero_baby();
 
 	void gestionar_click(int button, int state, int x, int y);
 

@@ -3,13 +3,24 @@
 #include "MenuPrincipal.h"
 #include "PantallaSeleccionTablero.h"
 
-void GestorEstados::inicializa() {//podemos usarla para inicializar, aunque se puede inicializar en otro sitio
+void GestorEstados::inicializa() {
     if (estado_actual == MENU) {
         gestor_pantallas.set_pantalla(new PantallaInicio(&gestor_pantallas));
     }
-    if (estado_actual == JUGANDO)
-        mundo.inicializa();
+    else if (estado_actual == JUGANDO) {
+        switch (tipo_tablero_seleccionado) {
+        case TipoTablero::BABY:
+            mundo.inicializa_tablero_baby();
+            break;
+        case TipoTablero::GARDNER:
+            mundo.inicializa_tablero_gardner();
+            break;
+        default:
+            break;
+        }
+    }
 }
+
 
 void GestorEstados::dibuja() {
     switch (estado_actual) {
@@ -49,19 +60,19 @@ void GestorEstados::mueve() {
             }
         }
 
-        // Este bloque nuevo lo añades justo debajo del anterior
+       
         PantallaSeleccionTablero* selector = dynamic_cast<PantallaSeleccionTablero*>(pantalla);
         if (selector) {
             switch (selector->get_accion()) {
             case AccionTablero::TABLERO_BABY:
                 selector->reset_accion();
-                //tipo_tablero = TABLERO_BABY; // si queremos guardar el tipo para usar luego
+                tipo_tablero_seleccionado = TipoTablero::BABY;
                 estado_actual = JUGANDO;
                 inicializa();
                 break;
             case AccionTablero::TABLERO_GARDNER:
                 selector->reset_accion();
-                //tipo_tablero = TABLERO_GARDNER;
+                tipo_tablero_seleccionado = TipoTablero::GARDNER;
                 estado_actual = JUGANDO;
                 inicializa();
                 break;

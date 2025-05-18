@@ -19,6 +19,12 @@
     <Filter Include="Archivos de origen\Piezas">
       <UniqueIdentifier>{d4793cc0-7308-473d-835b-082eb8edf376}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\Pantallas">
+      <UniqueIdentifier>{127b8af0-4b8e-4876-9dec-acc42760f1b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\Pantallas">
+      <UniqueIdentifier>{7f915a7d-a2c2-49d0-9d54-fcad2e9bf507}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Principal.cpp">
@@ -54,29 +60,29 @@
     <ClCompile Include="src\torre.cpp">
       <Filter>Archivos de origen\Piezas</Filter>
     </ClCompile>
-    <ClCompile Include="src\GestorEstados.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="src\Turno.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="src\BrochaPantallas.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\GestorPantallas.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="src\MenuPrincipal.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\PantallaInicio.cpp">
+      <Filter>Archivos de origen\Pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\Pantalla.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Pantallas</Filter>
     </ClCompile>
-    <ClCompile Include="src\PantallaInicio.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="src\MenuPrincipal.cpp">
+      <Filter>Archivos de origen\Pantallas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GestorPantallas.cpp">
+      <Filter>Archivos de origen\Pantallas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\GestorEstados.cpp">
+      <Filter>Archivos de origen\Pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaSeleccionTablero.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Pantallas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BrochaPantallas.cpp">
+      <Filter>Archivos de origen\Pantallas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,29 +119,29 @@
     <ClInclude Include="src\torre.h">
       <Filter>Archivos de encabezado\Piezas</Filter>
     </ClInclude>
-    <ClInclude Include="src\GestorEstados.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\Turno.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
-    <ClInclude Include="src\BrochaPantallas.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="src\GestorPantallas.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Pantallas</Filter>
     </ClInclude>
-    <ClInclude Include="src\MenuPrincipal.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\Pantalla.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="src\PantallaInicio.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="src\GestorEstados.h">
+      <Filter>Archivos de encabezado\Pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaSeleccionTablero.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Pantallas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BrochaPantallas.h">
+      <Filter>Archivos de encabezado\Pantallas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Pantalla.h">
+      <Filter>Archivos de encabezado\Pantallas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PantallaInicio.h">
+      <Filter>Archivos de encabezado\Pantallas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MenuPrincipal.h">
+      <Filter>Archivos de encabezado\Pantallas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

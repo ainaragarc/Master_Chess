@@ -5,7 +5,8 @@
 class GestorEstados {
 
 private:
-    enum Estado { MENU, JUGANDO, PAUSA, FIN }estado_actual{MENU};
+    enum Estado { MENU, JUGANDO, PAUSA, FIN }estado_actual{MENU};//Define el estado del juego en el momento
+    enum class TipoTablero { NINGUNO, BABY, GARDNER }tipo_tablero_seleccionado{ TipoTablero::NINGUNO };//Define el Tipo de Tablero en el momento
     Mundo mundo; 
     GestorPantallas gestor_pantallas;
 

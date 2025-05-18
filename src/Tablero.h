@@ -36,7 +36,8 @@ public:
 	static const vector<Pieza*>& get_piezas_B() { return piezas_B; }
 	static const vector<Pieza*>& get_piezas_N() { return piezas_N; }
 
-	void inicializa_piezas();
+	void inicializa_piezas_GARDNER();
+	void inicializa_piezas_BABY();
 	//funciones para limpiar mas el codigo de inicializa pieza
 	void anadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza);
 	void anadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza);

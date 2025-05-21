@@ -82,8 +82,13 @@ void GestorEstados::mueve() {
         }
     }
 
-    if (estado_actual == JUGANDO)
+    if (estado_actual == JUGANDO) {
         mundo.mueve();
+        // Turno del bot (negras)
+        if (mundo.get_turno() == Turno::NEGRO) {
+            bot.juega(mundo);
+        }
+    }
 }
 
 

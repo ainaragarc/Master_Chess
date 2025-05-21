@@ -1,7 +1,6 @@
 #pragma once
 #include "Mundo.h"
 #include "GestorPantallas.h"
-
 class GestorEstados {
 
 private:
@@ -23,4 +22,7 @@ public:
 
     //funcion para poder acceder al gestor desde fuera
     GestorPantallas& get_gestor_pantallas() { return gestor_pantallas; }
+
+
+    Bot bot;
 };

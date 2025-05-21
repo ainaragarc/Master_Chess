@@ -85,9 +85,8 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
     }
         
     // PRIMER CLIC: seleccionar pieza propia 
-    std::vector<Pieza*> piezas = es_blanco(turno_actual) //evaluamos el turno actual
-        ? TABLERO.get_piezas_B()
-        : TABLERO.get_piezas_N();
+    //evaluamos el turno actual
+    std::vector<Pieza*> piezas = es_blanco(turno_actual) ? TABLERO.get_piezas_B() : TABLERO.get_piezas_N();
 
     for (auto& p : piezas) {
         if (p->get_posicion()== destino) {

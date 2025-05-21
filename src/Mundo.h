@@ -3,6 +3,7 @@
 #include "pieza.h"
 #include "brocha.h"
 #include "Turno.h"
+#include "Bot.h"
 
 class Mundo {
 private:
@@ -21,7 +22,12 @@ public:
 
 	void gestionar_click(int button, int state, int x, int y);
 
+	Turno get_turno() const{ return turno_actual; }
+	void cambiar_turno_bot() { turno_actual = cambiar_turno(turno_actual); }
+	void cambiar_turno_prueba() {
+		turno_actual = (turno_actual == Turno::BLANCO) ? Turno::NEGRO : Turno::BLANCO;
+	}
+
 	Tablero TABLERO;
-	
 	Brocha BROCHA;
 };

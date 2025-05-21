@@ -33,5 +33,8 @@ void Bot::juega(Mundo& mundo) {
 
     std::cout << "Bot movió una pieza a (" << destino.Fila << ", " << destino.Columna << ")\n";
 
+    if (mundo.TABLERO.hay_pieza(destino)) {
+        mundo.TABLERO.comer_pieza(destino);
+    }
     mundo.cambiar_turno_bot();
 }

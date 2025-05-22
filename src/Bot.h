@@ -7,7 +7,7 @@ class Mundo;//El compilador necesita saber que existe para poder recibirlo en la
 
 class Bot
 {
-	bool juega_negras;//variable para controlar con qué piezas juega (futuro)
+	bool juega_negras = 1;//variable para controlar con qué piezas juega (futuro)
 public:
 	void juega(Mundo& mundo); // Método con el que el bot juega
 };

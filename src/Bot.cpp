@@ -1,40 +1,63 @@
 #include "Bot.h"
 
 void Bot::juega(Mundo& mundo) {
-    //inicializamos variable para trabajar más cómodo con las piezas negras
-    const std::vector<Pieza*>& negras = mundo.TABLERO.get_piezas_N();
+    
+    // En función de las piezas que juegue el bot se asigna un equipo y se asigna unos enemigos u otros
+    const std::vector<Pieza*>& equipo_bot = juega_negras ? mundo.TABLERO.get_piezas_N() : mundo.TABLERO.get_piezas_B();
+
     //En el futuro las piezas del bot podemos hacerlas aleatorias
+    std::vector<std::pair<Pieza*, Posicion>> movimientos_captura;
+    std::vector<std::pair<Pieza*, Posicion>> movimientos_validos;
 
-    std::vector<Pieza*> piezas_validas;
-    std::vector<Posicion> destinos_validos;
+    // Buscar todos los movimientos válidos (2º bucle for) de todas las piezas del bot (1º bucle for) 
+    for (Pieza* pieza : equipo_bot) {
+        for (Posicion& destino : pieza->posiciones_posibles()) {
+            bool es_captura = false;
 
-    // Buscar todos los movimientos válidos (2º bucle for) de todas las piezas negras (1º bucle for)
-    for (Pieza* pieza : negras) {
-        for (const Posicion& destino : pieza->posiciones_posibles()) {
-            piezas_validas.push_back(pieza);//guardo las piezas del bot en otro vector
-            destinos_validos.push_back(destino);//guardo posiciones posibles en otro vector
+            if (pieza->get_posicion() == destino) {
+                continue; // Evitar que se coma a sí misma al moverse a su propia posición xd
+            }
+
+            // Busca las posiciones en las que es posible capturar
+            if (juega_negras && mundo.TABLERO.hay_pieza_BLANCA(destino)) {
+                es_captura = true;
+            }
+            else if (!juega_negras && mundo.TABLERO.hay_pieza_NEGRA(destino)) {
+                es_captura = true;
+            }
+
+            if (es_captura) {
+                movimientos_captura.push_back({ pieza, destino });
+            }
+            else {
+                movimientos_validos.push_back({ pieza, destino });
+            }
+
         }
     }
-
-    if (piezas_validas.empty()) {
+    
+    if (movimientos_captura.empty() && movimientos_validos.empty()) {
         std::cout << "El bot no tiene movimientos disponibles\n";
         mundo.cambiar_turno_bot();// Si no puede mover, cambia el turno igualmente
         return;//Para salir de la función si no hay movimientos posibles (y cambiar de turno)
     }
 
-    // Elegir uno aleatorio
+    // Elegir entre capturas o movimientos normales, dando preferencia a los movimientos de captura
+    std::vector<std::pair<Pieza*, Posicion>>& movimientos =
+        !movimientos_captura.empty() ? movimientos_captura : movimientos_validos;
+
     std::srand(static_cast<unsigned>(std::time(nullptr)));//Para meterle aleatoriedad basándose en el tiempo
-    int indice = std::rand() % piezas_validas.size();//Para que esté dentro de nuestro rango usamos %
+    int indice = std::rand() % movimientos.size();//Para que esté dentro de nuestro rango usamos %
 
-    Pieza* pieza_elegida = piezas_validas[indice];//Se elige la pieza a mover
-    Posicion destino = destinos_validos[indice];//Se define su destino dentro de los válidos
-
-    pieza_elegida->mueve(destino);//Ejecutamos el movimiento
-
-    std::cout << "Bot movió una pieza a (" << destino.Fila << ", " << destino.Columna << ")\n";
-
+    Pieza* pieza_elegida = movimientos[indice].first;
+    Posicion destino = movimientos[indice].second;
+    
     if (mundo.TABLERO.hay_pieza(destino)) {
         mundo.TABLERO.comer_pieza(destino);
     }
+
+    pieza_elegida->mueve(destino);
+    std::cout << "Bot movió una pieza a (" << destino.Fila << ", " << destino.Columna << ")\n";
+
     mundo.cambiar_turno_bot();
 }

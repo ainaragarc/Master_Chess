@@ -5,7 +5,8 @@ class Peon : public Pieza {
 	
 public:
 	vector<Posicion> posiciones_posibles() override;
-	
+	void coronacion(unsigned char key);
+
 	Peon(Color equipo, Posicion pos) {//constructor parametrizado
 		cantidad = 5;
 		color = equipo;
@@ -19,7 +20,5 @@ public:
 		}
 		
 	}
-
-	
 	
 };

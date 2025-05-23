@@ -28,6 +28,7 @@ public:
 
 	//obtener el tipo de las piezas
 	Tipo get_tipo();
+	void set_tipo(Tipo tipo);
 	//obtener el color de las piezas
 	Color get_color();
 	//obtener numero de piezas restantes en juego
@@ -35,6 +36,7 @@ public:
 
 	Posicion get_posicion_ini();
 
+	void coronacion(unsigned char key) {};
 	//funcion a implementar: DEVUELVE LAS POSICIONES QUE DAN JAQUE AL REY OPUESTO, DESDE DONDE ESTE LA PIEZA
 	// puede servir para generar ayudas y otros
 	//vector<Posicion> posiciones_posibles_jaque();

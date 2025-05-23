@@ -46,3 +46,26 @@ vector<Posicion> Peon::posiciones_posibles() {
 
     return posibles;
 }
+
+void Peon::coronacion(unsigned char key) {
+    std::cout << "En qué quieres convertir a tu peon? ('r' = REINA, 'c' = CABALLO, 't' = TORRE, 'a' = ALFIL): ";
+
+    if (color == NEGRO && posicion.Fila == 0) {
+        switch (key)
+        {
+        case 'r': set_tipo(Tipo::REINA); break;
+        case 'c': set_tipo(Tipo::CABALLO); break;
+        case 't': set_tipo(Tipo::TORRE); break;
+        case 'a': set_tipo(Tipo::ALFIL); break;
+        }
+    }
+    else if (color == BLANCO && posicion.Fila == 5) {
+        switch (key)
+        {
+        case 'r': set_tipo(Tipo::REINA); break;
+        case 'c': set_tipo(Tipo::CABALLO); break;
+        case 't': set_tipo(Tipo::TORRE); break;
+        case 'a': set_tipo(Tipo::ALFIL); break;
+        }
+    }
+}

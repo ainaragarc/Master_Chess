@@ -25,6 +25,9 @@ bool Pieza::estoy_en_tablero(Posicion& pos, int casillas) {
 
 
 Tipo Pieza::get_tipo() {return tipo;}
+void Pieza::set_tipo(Tipo tipo) {
+	this->tipo = tipo;
+}
 Color Pieza::get_color() {return color;}
 int Pieza::get_cantidad() {return cantidad;}
 Posicion Pieza::get_posicion_ini() { return posicion;}

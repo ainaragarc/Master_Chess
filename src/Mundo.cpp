@@ -70,6 +70,7 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
                 TABLERO.comer_pieza(destino);
             }
             pieza_seleccionada->mueve(destino);
+            
             // Movimiento confirmado
             turno_actual = cambiar_turno(turno_actual);
             std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";

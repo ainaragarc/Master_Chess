@@ -71,6 +71,13 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
             }
             pieza_seleccionada->mueve(destino);
             // Movimiento confirmado
+            //Comprobacion jaque
+            Color color_enemigo = (pieza_seleccionada->get_color() == BLANCO) ? NEGRO : BLANCO;//si la pieza seleccionada es blanca, el enemigo es negro y viceversa
+
+            if (Tablero::Jaque(color_enemigo)) {//comprobamos si el rey de ese color esta amenazado
+                std::cout << "JAQUE A REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
+            }
+
             turno_actual = cambiar_turno(turno_actual);
             std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";
         }

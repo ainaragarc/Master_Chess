@@ -163,8 +163,8 @@ bool Tablero::hay_pieza(Posicion& pos) {
 	 Posicion pos_rey = pos_Rey(col);
 
      for (auto& a : enemigos) {
-         for (auto& b : a->posiciones_posibles()) {
-             if (b == pos_rey) {  return true;  }
+         for (auto& b : a->posiciones_posibles_conrey()) {
+             if (b == pos_rey) {return true;}
          }
      }
 

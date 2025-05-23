@@ -3,6 +3,8 @@
 #include "MenuPrincipal.h"
 #include "PantallaSeleccionTablero.h"
 
+#include <iostream>
+
 void GestorEstados::inicializa() {
     if (estado_actual == MENU) {
         gestor_pantallas.set_pantalla(new PantallaInicio(&gestor_pantallas));

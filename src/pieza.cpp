@@ -19,6 +19,21 @@ bool Pieza::movimiento_posible(Posicion posicion_final) {
 	return false;
 }
 
+vector<Posicion> Pieza::posiciones_posibles() {
+	auto REY = posiciones_posibles_conrey();
+	vector<Posicion> retorno;
+
+	for (const auto& pos : REY) {
+		Posicion p = pos;
+		if (Tablero::tipo_pieza(p) != Tipo::REY) {
+			retorno.push_back(pos);
+		}
+	}
+
+	return retorno;
+}
+
+
 bool Pieza::estoy_en_tablero(Posicion& pos, int casillas) {
 	return (pos.Fila >= 0 && pos.Fila < casillas && pos.Columna >= 0 && pos.Columna < casillas);
 }

@@ -4,7 +4,7 @@
 #include "tablero.h"
 
 
-vector<Posicion> Caballo::posiciones_posibles() {
+vector<Posicion> Caballo::posiciones_posibles_conrey() {
 	vector<Posicion> posibles;
 	Posicion direccion[8] = { {2,1},{2,-1},{1,2},{-1,2},{-2,1},{-2,-1},{1,-2},{-1,-2} };
 

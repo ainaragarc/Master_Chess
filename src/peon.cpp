@@ -3,7 +3,7 @@
 #include <vector>
 #include "tablero.h"
 
-vector<Posicion> Peon::posiciones_posibles() {
+vector<Posicion> Peon::posiciones_posibles_conrey() {
     vector<Posicion> posibles;
 
     Posicion direccion = { 1, 0 };  // Dirección hacia abajo (blanco)

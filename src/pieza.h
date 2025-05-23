@@ -22,6 +22,8 @@ public:
 	virtual vector<Posicion> posiciones_posibles();
 	 bool movimiento_posible(Posicion posicion_final) ;
 	 void mueve( Posicion posicion_final);
+
+	 virtual void promover(unsigned char& tipo);
 	
 	virtual bool estoy_en_tablero( Posicion& pos, int casillas);
 

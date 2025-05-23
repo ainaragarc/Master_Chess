@@ -5,7 +5,13 @@
 #include <cmath>
 
 
-void Pieza::mueve(Posicion posicion_final) {	posicion = posicion_final;	}
+void Pieza::mueve(Posicion posicion_final) {	
+	posicion = posicion_final;
+}
+
+ void Pieza::promover(unsigned char& tipo) {
+	//para que el peon pueda ejecutar la promocion desde un vector de piezas
+}
 
 bool Pieza::movimiento_posible(Posicion posicion_final) {
 	//for de rango para comprobar que este entre las posiciones posibles

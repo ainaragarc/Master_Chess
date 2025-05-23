@@ -33,8 +33,8 @@ public:
 	static bool Jaque(Color col);
 	void comer_pieza(Posicion pos);
 
-	static const vector<Pieza*>& get_piezas_B() { return piezas_B; }
-	static const vector<Pieza*>& get_piezas_N() { return piezas_N; }
+	static  vector<Pieza*>& get_piezas_B() { return piezas_B; }
+	static  vector<Pieza*>& get_piezas_N() { return piezas_N; }
 
 	void inicializa_piezas_GARDNER();
 	void inicializa_piezas_BABY();

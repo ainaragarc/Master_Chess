@@ -170,25 +170,76 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
 	 return false; // El rey no está en jaque
  }
+ Pieza* Tablero::get_pieza_en_pos(const Posicion& pos) {
+     for (Pieza* p : piezas_B) if (p->get_posicion() == pos) return p;
+     for (Pieza* p : piezas_N) if (p->get_posicion() == pos) return p;
+     return nullptr;
+ }
 
- void Tablero::comer_pieza(Posicion pos) {
-     // buscar en piezas blancas
-     for (auto it = piezas_B.begin(); it != piezas_B.end(); ++it) {
-         if ((*it)->get_posicion() == pos) {
-             delete* it;
-             piezas_B.erase(it);
-             std::cout << "Pieza blanca eliminada en (" << pos.Fila << ", " << pos.Columna << ")\n";
-             return;
+ bool Tablero::es_jaque_mate(Color color) {
+     if (!Jaque(color)) return false;//Se descarta jaque mate si no hay jaque
+     //Definimos las piezas propias y enemigas con la comprobación del color actual
+     auto& piezas_propias = (color == BLANCO) ? piezas_B : piezas_N;
+     auto& piezas_enemigas = (color == BLANCO) ? piezas_N : piezas_B;
+
+     //Probamos todos los movimientos posibles
+     for (Pieza* pieza : piezas_propias) {
+         Posicion origen = pieza->get_posicion();
+         std::vector<Posicion> movimientos = pieza->posiciones_posibles_conrey();
+
+         for (const Posicion& destino : movimientos) {
+             // Guardamos la pieza que habia en el destino
+             Pieza* capturada = get_pieza_en_pos(destino);
+             bool fue_capturada = false;
+
+             // Simulamos capturar la pieza enemiga
+             if (capturada != nullptr) {
+                 //Hacemos uso de iteradores y de la función find de <vector> para buscar el puntero "capturada"
+                 auto it = std::find(piezas_enemigas.begin(), piezas_enemigas.end(), capturada);
+                 if (it != piezas_enemigas.end()) {
+                     piezas_enemigas.erase(it);//Eliminamos la pieza como si hubiese sido capturada
+                     fue_capturada = true;
+                 }
+             }
+
+             pieza->mueve(destino); // simulamos el movimiento
+             bool sigue_en_jaque = Jaque(color); // comprobamos si sigue en jaque
+             pieza->mueve(origen); // revertimos movimiento
+
+             if (fue_capturada) {
+                 piezas_enemigas.push_back(capturada); // restauramos la pieza capturada
+             }
+
+             if (!sigue_en_jaque) return false; // hay al menos un movimiento legal y no es jaque mate
          }
      }
 
-     // buscar en piezas negras
-     for (auto it = piezas_N.begin(); it != piezas_N.end(); ++it) {
+     return true; // Si no hay forma de salir del jaque es jaque mate
+ }
+
+
+ Pieza* Tablero::comer_pieza(Posicion pos) {
+     //Referencia a piezas blancas (para editarlas directamente)
+     auto& piezas_blancas = get_piezas_B();
+     //Comprobamos si hay una pieza en la posición de destino
+     //Lo hacemos con iteradores para poder hacer uso de la función erase que recibe un iterador
+     for (auto it = piezas_blancas.begin(); it != piezas_blancas.end(); ++it) {
          if ((*it)->get_posicion() == pos) {
-             delete* it;
-             piezas_N.erase(it);
-             std::cout << "Pieza negra eliminada en (" << pos.Fila << ", " << pos.Columna << ")\n";
-             return;
+             Pieza* capturada = *it;
+             piezas_blancas.erase(it);
+             return capturada;
          }
      }
+
+     //Hacemos lo mismo con las piezas negras
+     auto& piezas_negras = get_piezas_N();
+     for (auto it = piezas_negras.begin(); it != piezas_negras.end(); ++it) {
+         if ((*it)->get_posicion() == pos) {
+             Pieza* capturada = *it;
+             piezas_negras.erase(it);
+             return capturada;
+         }
+     }
+
+     return nullptr; // No se encontró ninguna pieza
  }

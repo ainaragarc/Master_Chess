@@ -42,15 +42,13 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
     if (button != GLUT_LEFT_BUTTON || state != GLUT_DOWN)
         return;
 
-    //convertimos clic en pantalla a casilla del tablero
-    int fila, columna;  
+    int fila, columna;
     Posicion clic = BROCHA.get_Pos(x, y,
         BROCHA.get_longVent(),
         TABLERO.get_TamCuad(),
         TABLERO.get_numCas(),
         fila, columna);
 
-    //comprobamos que el clic está dentro del tablero
     if (fila < 0 || fila >= TABLERO.get_numCas() ||
         columna < 0 || columna >= TABLERO.get_numCas()) {
         std::cout << "Ninguna casilla seleccionada\n";
@@ -62,52 +60,67 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
 
     Posicion destino{ fila, columna };
 
-    // SEGUNDO CLIC: intento de movimiento
+    // SEGUNDO CLIC
     if (esperando_segundo_click && pieza_seleccionada) {
-
         if (pieza_seleccionada->movimiento_posible(destino)) {
-            // Si hay pieza en destino, eliminarla (incluso si es propia)
+            Posicion origen = pieza_seleccionada->get_posicion();
+
+            // Simular el movimiento
+            Pieza* capturada = nullptr;
             if (TABLERO.hay_pieza(destino)) {
-                TABLERO.comer_pieza(destino);
+                capturada = TABLERO.comer_pieza(destino); // <-- asegúrate de que esta función devuelve la pieza capturada
             }
+
             pieza_seleccionada->mueve(destino);
-            // Movimiento confirmado
-            //Comprobacion jaque
-            Color color_enemigo = (pieza_seleccionada->get_color() == BLANCO) ? NEGRO : BLANCO;//si la pieza seleccionada es blanca, el enemigo es negro y viceversa
 
-            if (Tablero::Jaque(color_enemigo)) {//comprobamos si el rey de ese color esta amenazado
-                std::cout << "JAQUE A REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
-               
-                if (estado) {//nos aseguramos de que estado no este en nullptr
-                    estado->cambiar_estado(color_enemigo == BLANCO ? VICTORIA_NEGRO : VICTORIA_BLANCO);//da la victoria dependiendo de quien sufra el jaque
-
-                    return;//si hay jaque termina la partida
+            // Comprobar si el rey propio sigue en jaque
+            if (TABLERO.Jaque(pieza_seleccionada->get_color())) {
+                // Revertir el movimiento
+                pieza_seleccionada->mueve(origen);
+                if (capturada) {
+                    if (capturada->get_color() == BLANCO)
+                        TABLERO.get_piezas_B().push_back(capturada);
+                    else
+                        TABLERO.get_piezas_N().push_back(capturada);
                 }
 
-
-                
+                std::cout << "Movimiento ilegal: estás en jaque\n";
             }
+            else {
+                // Movimiento válido
+                Color color_enemigo = (pieza_seleccionada->get_color() == BLANCO) ? NEGRO : BLANCO;
 
-            turno_actual = cambiar_turno(turno_actual);
-            std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";
+                if (TABLERO.Jaque(color_enemigo)) {
+                    std::cout << "JAQUE AL REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
+                    if (TABLERO.es_jaque_mate(color_enemigo)) {
+                        std::cout << "¡JAQUE MATE!\n";
+                        if (estado) {
+                            estado->cambiar_estado(color_enemigo == BLANCO ? VICTORIA_NEGRO : VICTORIA_BLANCO);
+                        }
+                        return;
+                    }
+                }
+
+                turno_actual = cambiar_turno(turno_actual);
+                std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";
+            }
         }
         else {
             std::cout << "Movimiento inválido\n";
         }
 
-        // Siempre reiniciar estado de selección
         pieza_seleccionada = nullptr;
+        //Limpiamos el vector casillas_posibles
         casillas_posibles.clear();
         esperando_segundo_click = false;
     }
-        
-    // PRIMER CLIC: seleccionar pieza propia 
-    //evaluamos el turno actual
+
+    // PRIMER CLIC
     std::vector<Pieza*> piezas = es_blanco(turno_actual) ? TABLERO.get_piezas_B() : TABLERO.get_piezas_N();
 
     for (auto& p : piezas) {
-        if (p->get_posicion()== destino) {
-            pieza_seleccionada = p; //guardamos la pieza encontrada
+        if (p->get_posicion() == destino) {
+            pieza_seleccionada = p;
             casillas_posibles = p->posiciones_posibles();
             esperando_segundo_click = true;
 
@@ -118,7 +131,6 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
         }
     }
 
-    std::cout << "No hay pieza seleccionada\n"; 
-
+    std::cout << "No hay pieza seleccionada\n";
 }
 

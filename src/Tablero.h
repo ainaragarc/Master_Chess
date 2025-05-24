@@ -31,7 +31,9 @@ public:
 	static Posicion pos_Rey(Color col);
 
 	static bool Jaque(Color col);
-	void comer_pieza(Posicion pos);
+	bool es_jaque_mate(Color color);
+	Pieza* comer_pieza(Posicion pos);
+	Pieza* get_pieza_en_pos(const Posicion& pos);
 
 	static  vector<Pieza*>& get_piezas_B() { return piezas_B; }
 	static  vector<Pieza*>& get_piezas_N() { return piezas_N; }

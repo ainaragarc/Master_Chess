@@ -3,6 +3,8 @@
 #include "MenuPrincipal.h"
 #include "PantallaSeleccionTablero.h"
 
+
+
 void GestorEstados::inicializa() {
     if (estado_actual == MENU) {
         gestor_pantallas.set_pantalla(new PantallaInicio(&gestor_pantallas));
@@ -19,6 +21,8 @@ void GestorEstados::inicializa() {
             break;
         }
     }
+    mundo.set_estado(this);//pasamos informacion del estado actual a mundo
+
 }
 
 

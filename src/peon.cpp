@@ -2,8 +2,13 @@
 #include "pieza.h"
 #include <vector>
 #include "tablero.h"
+#include "alfil.h"
+#include "torre.h"
+#include "caballo.h"
+#include "dama.h"
 
-vector<Posicion> Peon::posiciones_posibles() {
+
+vector<Posicion> Peon::posiciones_posibles_conrey() {
     vector<Posicion> posibles;
 
     Posicion direccion = { 1, 0 };  // Dirección hacia abajo (blanco)
@@ -45,4 +50,34 @@ vector<Posicion> Peon::posiciones_posibles() {
     }
 
     return posibles;
+}
+
+void Peon::promover(unsigned char &tipo)  {
+    Pieza* pieza = nullptr;
+    switch (tipo) {
+    case 'c':
+              pieza = new Caballo(color, posicion);
+             break;
+    case 't':
+             pieza = new Torre(color, posicion);
+            break;
+    case 'a':
+             pieza = new Alfil(color, posicion);
+            break;
+    case 'd':
+             pieza = new Dama(color, posicion);
+            break;
+        default:
+            return;
+    }
+
+    auto& v = (color == BLANCO) ? Tablero::get_piezas_B() : Tablero::get_piezas_N();
+    for (auto a = v.begin(); a != v.end(); ++a) {
+        if (*a == this) {
+            delete *a;
+            *a = pieza;
+            break;
+        }
+    }
+
 }

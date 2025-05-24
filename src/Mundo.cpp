@@ -1,4 +1,5 @@
 #include "Mundo.h"
+#include "GestorEstados.h"
 #include "freeglut.h"
 #include <cmath>
 
@@ -26,11 +27,15 @@ void Mundo::mueve()
 	//Todo lo que se mueva en el mundo o interactue entre sí
 
 }
-void Mundo::inicializa()
+void Mundo::inicializa_tablero_gardner()
 {
 	BROCHA.init_t(BROCHA.get_longVent());
-	TABLERO.inicializa_piezas();	
-	//TABLERO.Pruebapiezas();
+	TABLERO.inicializa_piezas_GARDNER();	
+}
+
+void Mundo::inicializa_tablero_baby() {
+    BROCHA.init_t(BROCHA.get_longVent());
+    TABLERO.inicializa_piezas_BABY();
 }
 
 void Mundo::gestionar_click(int button, int state, int x, int y) {
@@ -67,6 +72,22 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
             }
             pieza_seleccionada->mueve(destino);
             // Movimiento confirmado
+            //Comprobacion jaque
+            Color color_enemigo = (pieza_seleccionada->get_color() == BLANCO) ? NEGRO : BLANCO;//si la pieza seleccionada es blanca, el enemigo es negro y viceversa
+
+            if (Tablero::Jaque(color_enemigo)) {//comprobamos si el rey de ese color esta amenazado
+                std::cout << "JAQUE A REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
+               
+                if (estado) {//nos aseguramos de que estado no este en nullptr
+                    estado->cambiar_estado(color_enemigo == BLANCO ? VICTORIA_NEGRO : VICTORIA_BLANCO);//da la victoria dependiendo de quien sufra el jaque
+
+                    return;//si hay jaque termina la partida
+                }
+
+
+                
+            }
+
             turno_actual = cambiar_turno(turno_actual);
             std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";
         }
@@ -81,9 +102,8 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
     }
         
     // PRIMER CLIC: seleccionar pieza propia 
-    std::vector<Pieza*> piezas = es_blanco(turno_actual) //evaluamos el turno actual
-        ? TABLERO.get_piezas_B()
-        : TABLERO.get_piezas_N();
+    //evaluamos el turno actual
+    std::vector<Pieza*> piezas = es_blanco(turno_actual) ? TABLERO.get_piezas_B() : TABLERO.get_piezas_N();
 
     for (auto& p : piezas) {
         if (p->get_posicion()== destino) {

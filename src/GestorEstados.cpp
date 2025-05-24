@@ -1,61 +1,125 @@
 #include "GestorEstados.h"
 #include "PantallaInicio.h"
 #include "MenuPrincipal.h"
+#include "PantallaSeleccionTablero.h"
+#include "PantallaGameOver.h"
 
-void GestorEstados::inicializa() {//podemos usarla para inicializar, aunque se puede inicializar en otro sitio
+
+
+#include <iostream>
+
+void GestorEstados::inicializa() {
     if (estado_actual == MENU) {
         gestor_pantallas.set_pantalla(new PantallaInicio(&gestor_pantallas));
     }
-    if (estado_actual == JUGANDO)
-        mundo.inicializa();
+    else if (estado_actual == JUGANDO) {
+        switch (tipo_tablero_seleccionado) {
+        case TipoTablero::BABY:
+            mundo.inicializa_tablero_baby();
+            break;
+        case TipoTablero::GARDNER:
+            mundo.inicializa_tablero_gardner();
+            break;
+        default:
+            break;
+        }
+    }
+    else if (estado_actual == VICTORIA_BLANCO) {
+        gestor_pantallas.set_pantalla(new PantallaGameOver("BLANCAS"));
+     
+
+    }
+    else if (estado_actual == VICTORIA_NEGRO) {
+        gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));
+        
+    }
+    mundo.set_estado(this);//pasamos informacion del estado actual a mundo
+
 }
+
 
 void GestorEstados::dibuja() {
     switch (estado_actual) {
     case MENU:
         gestor_pantallas.dibuja();
         break;
+
     case JUGANDO:
         mundo.dibuja();
         break;
+
     case PAUSA:
         // dibujar pausa
         break;
+
+    case VICTORIA_BLANCO:
+        gestor_pantallas.dibuja();
+        break;
+        
+    case VICTORIA_NEGRO:
+        gestor_pantallas.dibuja();
+        break;
+
     default:
         break;
+
+
     }
 }
 
 void GestorEstados::mueve() {
-   if (estado_actual == MENU) {
+    if (estado_actual == MENU) {
         gestor_pantallas.actualiza();
 
-        //comprobamos si la pantalla actual es menuprincipal
         Pantalla* pantalla = gestor_pantallas.get_pantalla();
-        auto* menu = dynamic_cast<MenuPrincipal*>(pantalla);
-        
+        MenuPrincipal* menu = dynamic_cast<MenuPrincipal*>(pantalla);
+
         if (menu) {
             switch (menu->get_accion()) {
-            case AccionMenu::NUEVA_PARTIDA: //al seleccionar el boton de nueva partida iniciamos mundo
+            case AccionMenu::NUEVA_PARTIDA:
                 menu->reset_accion();
-                estado_actual = JUGANDO;
-                inicializa();
-                break;
-
+                // Aquí cambiamos la pantalla al selector de tablero
+                gestor_pantallas.set_pantalla(new PantallaSeleccionTablero(&gestor_pantallas));
+                return; // cortamos aquí para esperar la siguiente iteración
             case AccionMenu::SALIR:
                 menu->reset_accion();
-                exit(0); //salir directamente del juego
-                break;
-
+                exit(0);
             default:
                 break;
             }
         }
 
-   }
-   if (estado_actual == JUGANDO)
+       
+        PantallaSeleccionTablero* selector = dynamic_cast<PantallaSeleccionTablero*>(pantalla);
+        if (selector) {
+            switch (selector->get_accion()) {
+            case AccionTablero::TABLERO_BABY:
+                selector->reset_accion();
+                tipo_tablero_seleccionado = TipoTablero::BABY;
+                estado_actual = JUGANDO;
+                inicializa();
+                break;
+            case AccionTablero::TABLERO_GARDNER:
+                selector->reset_accion();
+                tipo_tablero_seleccionado = TipoTablero::GARDNER;
+                estado_actual = JUGANDO;
+                inicializa();
+                break;
+            default:
+                break;
+            }
+        }
+    }
+
+    if (estado_actual == JUGANDO) {
         mundo.mueve();
+        // Turno del bot (negras)
+        if (mundo.get_turno() == Turno::NEGRO) {
+            //bot.juega(mundo);
+        }
+    }
 }
+
 
 void GestorEstados::tecla(unsigned char key) {
     if (estado_actual == MENU)

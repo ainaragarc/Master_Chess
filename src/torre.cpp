@@ -3,7 +3,7 @@
 #include <vector>
 #include "tablero.h"
 
-vector<Posicion> Torre::posiciones_posibles() {
+vector<Posicion> Torre::posiciones_posibles_conrey() {
 	vector<Posicion> posibles;
 	Posicion direccion[4] = { {1,0},{-1,0},{0,-1},{0,1} };
 

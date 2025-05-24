@@ -1,6 +1,7 @@
 #include "PantallaInicio.h"
 #include "BrochaPantallas.h"
 #include "MenuPrincipal.h"
+#include "PantallaSeleccionTablero.h"
 
 void PantallaInicio::dibuja() {
 	BrochaPantallas::limpiar_pantalla(Color(0.1f, 0.1f, 0.2f));
@@ -14,4 +15,8 @@ void PantallaInicio::actualiza() {
 	if (tiempo_carga >= tiempo_total) {
 		gestor->set_pantalla(new MenuPrincipal(gestor));
 	}
+}
+
+void PantallaInicio::set_pantallaselect_tablero() {
+		gestor->set_pantalla(new PantallaSeleccionTablero(gestor));
 }

@@ -3,7 +3,7 @@
 #include <vector>
 #include "tablero.h"
 
- vector<Posicion> Rey::posiciones_posibles() {
+ vector<Posicion> Rey::posiciones_posibles_conrey() {
 	vector<Posicion> posibles;
 	Posicion direccion[8] = { {1,0},{-1,0},{0,-1},{0,1},{1,1},{1,-1},{-1,-1},{-1,1} };
 

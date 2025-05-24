@@ -4,7 +4,7 @@
 #include <vector>
 #include "tablero.h"
 
-vector<Posicion> Alfil::posiciones_posibles() {
+vector<Posicion> Alfil::posiciones_posibles_conrey() {
 	vector<Posicion> posibles;	
 	Posicion direccion[4] = { {1,1},{1,-1},{-1,-1},{-1,1} };
 	

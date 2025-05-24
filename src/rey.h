@@ -5,7 +5,7 @@ class Rey : public Pieza {
 	bool en_jaque = false;
 
 public:
-	vector<Posicion> posiciones_posibles() override;
+	vector<Posicion> posiciones_posibles_conrey() override;
 
 	Rey(Color equipo, Posicion pos) {//constructor parametrizado
 		cantidad = 1;

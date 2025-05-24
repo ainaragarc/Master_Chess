@@ -5,13 +5,13 @@
 class BrochaPantallas {
 public:
     //limpia pantalla y pone fondo
-    static void limpiar_pantalla(float r, float g, float b);
+    static void limpiar_pantalla(Color color);
 
     //bibuja texto en la posicion que quieras
-    static void dibujar_texto(const std::string& texto, float x, float y, float r = 1, float g = 1, float b = 1);
+    static void dibujar_texto(const std::string& texto, Coordenada pos, Color color);
 
     //dibuja una barra de carga horizontal
-    static void dibujar_barra_carga(float progreso, float x1, float y1, float x2, float y2, float r, float g, float b);
+    static void dibujar_barra_carga(float progreso, Coordenada desde, Coordenada hasta, Color color);
 
     //funcion para convertir coordenadas
     static Coordenada convertir_click_a_opengl(int x, int y);

@@ -14,16 +14,16 @@ public:
 class Boton {
 private:
     std::string texto;
-    float x1, y1, x2, y2; //coordenadas de las esquinas del botón
+    Coordenada desde, hasta; //coordenadas de las esquinas del botón
 
 public:
     //constructor de botones
-    Boton(const std::string& texto, float x1, float y1, float x2, float y2)
-        : texto(texto), x1(x1), y1(y1), x2(x2), y2(y2) {
+    Boton(const std::string& texto, Coordenada desde, Coordenada hasta)
+        : texto(texto), desde(desde), hasta(hasta) {
     }
 
     void dibujar() const; //funcion para dibujar que llama a BrochaPantallas
-    bool clic_en(float x, float y) const;   //funcion que comprueba si el clic está dentro del boton
+    bool clic_en(float x, float y) const; //funcion que comprueba si el clic está dentro del boton
 
     const std::string& get_texto() const { return texto; }
 };
@@ -32,4 +32,10 @@ public:
 struct Coordenada {
     float x;
     float y;
+};
+
+struct Color {
+    float r, g, b;
+
+    Color(float r, float g, float b) :r(r), g(g), b(b){} // constructor de color por si acaso
 };

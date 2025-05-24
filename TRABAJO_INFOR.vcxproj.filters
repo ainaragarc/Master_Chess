@@ -88,7 +88,7 @@
       <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaGameOver.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\Pantallas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -153,7 +153,7 @@
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaGameOver.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\Pantallas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

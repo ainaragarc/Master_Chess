@@ -1,17 +1,23 @@
 #pragma once
 #include "Mundo.h"
 #include "GestorPantallas.h"
+
+enum Estado { MENU, JUGANDO, PAUSA, VICTORIA_BLANCO, VICTORIA_NEGRO, FIN };
+
 class GestorEstados {
 
 private:
-    enum Estado { MENU, JUGANDO, PAUSA, FIN }estado_actual{MENU};//Define el estado del juego en el momento
+    Estado estado_actual{MENU};//Define el estado del juego en el momento.
     enum class TipoTablero { NINGUNO, BABY, GARDNER }tipo_tablero_seleccionado{ TipoTablero::NINGUNO };//Define el Tipo de Tablero en el momento
     Mundo mundo; 
     GestorPantallas gestor_pantallas;
 
 public:
     
-    void cambiar_estado(Estado nuevo) { estado_actual = nuevo; }//funcion para cambiar de estado
+    void cambiar_estado(Estado nuevo) { estado_actual = nuevo; //funcion para cambiar de estado dentro de la partida
+    std::cout << estado_actual;//comprobamos que cambia de estado
+    inicializa();//carga las pantallas
+    }
     Estado get_estado() const { return estado_actual; }
 
     void inicializa();

@@ -87,6 +87,9 @@
     <ClCompile Include="src\Bot.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\PantallaGameOver.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Mundo.h">
@@ -147,6 +150,9 @@
       <Filter>Archivos de encabezado\Pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\Bot.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PantallaGameOver.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>

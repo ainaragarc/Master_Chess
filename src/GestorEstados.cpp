@@ -2,6 +2,9 @@
 #include "PantallaInicio.h"
 #include "MenuPrincipal.h"
 #include "PantallaSeleccionTablero.h"
+#include "PantallaGameOver.h"
+
+
 
 #include <iostream>
 
@@ -21,6 +24,17 @@ void GestorEstados::inicializa() {
             break;
         }
     }
+    else if (estado_actual == VICTORIA_BLANCO) {
+        gestor_pantallas.set_pantalla(new PantallaGameOver("BLANCAS"));
+     
+
+    }
+    else if (estado_actual == VICTORIA_NEGRO) {
+        gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));
+        
+    }
+    mundo.set_estado(this);//pasamos informacion del estado actual a mundo
+
 }
 
 
@@ -29,14 +43,27 @@ void GestorEstados::dibuja() {
     case MENU:
         gestor_pantallas.dibuja();
         break;
+
     case JUGANDO:
         mundo.dibuja();
         break;
+
     case PAUSA:
         // dibujar pausa
         break;
+
+    case VICTORIA_BLANCO:
+        gestor_pantallas.dibuja();
+        break;
+        
+    case VICTORIA_NEGRO:
+        gestor_pantallas.dibuja();
+        break;
+
     default:
         break;
+
+
     }
 }
 

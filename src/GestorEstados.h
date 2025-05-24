@@ -16,6 +16,7 @@ public:
     
     void cambiar_estado(Estado nuevo) { estado_actual = nuevo; //funcion para cambiar de estado dentro de la partida
     std::cout << estado_actual;//comprobamos que cambia de estado
+    inicializa();//carga las pantallas
     }
     Estado get_estado() const { return estado_actual; }
 

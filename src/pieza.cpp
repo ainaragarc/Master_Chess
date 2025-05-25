@@ -9,29 +9,8 @@
 
 void Pieza::mueve(Posicion posicion_final) {	
 	posicion = posicion_final;
-
-	if (tipo == Tipo::PEON) { 
-		int p;
-		(color == Color::BLANCO) ?  p= Tablero::get_numCas() - 1 : p = 0;
-		if (posicion.Fila == p) {
-			unsigned char tipo;
-			std::cout << "c: caballo, t: torre, a: alfil, d: dama";
-			do {
-				std::cin >> tipo;
-			} while (tipo != 'c' && tipo != 't' && tipo != 'a' && tipo != 'd');
-			promover(tipo);
-
-			//PROBLEMA, HAY QUE ESTABLECER QUE EL BOT PROMUEVA A ALGO
-			//PROBLEMA 2, IMPLEMENTACION IN GAME, NO POR CONSOLA
-			//PROBLEMA 3, DEBERIA MOSTRARSE ALGO POR PANTALLA, digo yo
-		}
-	}
 }
 
- void Pieza::promover(unsigned char& tipo) {
-	//para que el peon pueda ejecutar la promocion desde un vector de piezas
-	 //No se me ha ocurrido nada mejor
-}
 
 bool Pieza::movimiento_posible(Posicion posicion_final) {
 	//for de rango para comprobar que este entre las posiciones posibles

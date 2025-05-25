@@ -115,7 +115,7 @@ void GestorEstados::mueve() {
         mundo.mueve();
         // Turno del bot (negras)
         if (mundo.get_turno() == Turno::NEGRO) {
-            //bot.juega(mundo);
+            bot.juega(mundo);
         }
     }
 }

@@ -7,7 +7,6 @@
 #include "caballo.h"
 #include "dama.h"
 
-
 vector<Posicion> Peon::posiciones_posibles_conrey() {
     vector<Posicion> posibles;
 
@@ -50,6 +49,36 @@ vector<Posicion> Peon::posiciones_posibles_conrey() {
     }
 
     return posibles;
+}
+
+void Peon::mueve(Posicion posicion_final) {
+    posicion = posicion_final;
+
+        int p;
+        (color == Color::BLANCO) ? p = Tablero::get_numCas() - 1 : p = 0;
+        if (posicion.Fila == p) {
+            
+            if (color == Color::BLANCO) {
+                unsigned char tipo;
+                std::cout << "CORONAR EL PEON" << std::endl;
+                std::cout << "c: caballo, t: torre, a: alfil, d: dama";
+                do {
+                    std::cin >> tipo;
+                } while (tipo != 'c' && tipo != 't' && tipo != 'a' && tipo != 'd');
+                promover(tipo);
+            }
+
+            else { //EL BOT PROMUEVE A LA DAMA, SOLUCION A MEJORAR
+                //SOLO FUNCIONA PORQUE EL BOT SOLO JUEGA CON NEGRAS
+                unsigned char tipo = 'd';
+                promover(tipo);
+
+            }
+           
+            //PROBLEMA, HAY QUE ESTABLECER QUE EL BOT PROMUEVA A ALGO
+            //PROBLEMA 2, IMPLEMENTACION IN GAME, NO POR CONSOLA
+            //PROBLEMA 3, DEBERIA MOSTRARSE ALGO POR PANTALLA, digo yo
+        }
 }
 
 void Peon::promover(unsigned char &tipo)  {

@@ -19,20 +19,23 @@
 		return posibles;
 }
 
-bool Rey::casilla_me_da_jaque(Posicion& pos) {
-	vector<Pieza*> piezas_enemigas =(color == BLANCO) ? Tablero::get_piezas_N() : Tablero::get_piezas_B();
+ bool Rey::casilla_me_da_jaque(Posicion& pos) {
+     //Comprobamos el color con el operador ternario para obtener las piezas blancas o negras
+     const vector<Pieza*>& piezas_enemigas = (color == BLANCO) ? Tablero::get_piezas_N() : Tablero::get_piezas_B();
 
-	for (auto& a : piezas_enemigas) {
-		//
-		if (a->get_tipo() == Tipo::REY) continue;
+     //Recorremos todas las piezas enemigas con un for de rango
+     for (Pieza* a : piezas_enemigas) {
 
-		for (auto& b : a->posiciones_posibles()) {
-			if (b == pos) {
-				return true;
-			}
-		}
-	}
+         //Evitamos al rey enemigo
+         if (a->get_tipo() == Tipo::REY) continue;
 
-	return false;
+         //verifica si alguna de las posiciones posibles de las piezas enemigas coincide con la posicion del rey
+         for (const Posicion& b : a->posiciones_posibles_conrey()) {
+             if (b == pos) {
+                 return true;
+             }
+         }
+     }
 
-}
+     return false;//Valor de retorno si no hay jaque
+ }

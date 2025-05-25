@@ -13,7 +13,7 @@ public:
 		posicion = pos;
 		tipo = Tipo::TORRE;
 		if (color == BLANCO) {
-			foto_pieza = "imagenes/w_rook_1x_ns.png";
+			foto_pieza = "imagenes/Shieldon.png";
 		}
 		else {
 			foto_pieza = "imagenes/b_rook_1x_ns.png";

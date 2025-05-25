@@ -13,7 +13,7 @@ public:
 		posicion = pos;
 		tipo = Tipo::REY;
 		if (color == BLANCO) {
-			foto_pieza = "imagenes/w_king_1x_ns.png";
+			foto_pieza = "imagenes/Ash.png";
 		}
 		else {
 			foto_pieza = "imagenes/b_king_1x.png";

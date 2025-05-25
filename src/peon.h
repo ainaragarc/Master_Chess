@@ -15,7 +15,7 @@ public:
 		posicion = pos;
 		tipo = Tipo::PEON;
 		if (color == BLANCO) {
-			foto_pieza= "imagenes/w_pawn_1x_ns.png";
+			foto_pieza= "imagenes/Diglett_peon_lvl1.png";
 		}
 		else {
 			foto_pieza = "imagenes/b_pawn_1x_ns.png";

@@ -7,8 +7,8 @@ MenuPrincipal::MenuPrincipal(GestorPantallas* gestor) : gestor(gestor) {
 }
 
 void MenuPrincipal::dibuja() {
-    BrochaPantallas::limpiar_pantalla(Color(0.15f, 0.15f, 0.15f));
-    Color colorTexto = Color(1.0f, 1.0f, 1.0f);
+    BrochaPantallas::limpiar_pantalla(ColorTextos(0.15f, 0.15f, 0.15f));
+    ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
     BrochaPantallas::dibujar_texto("MENU PRINCIPAL", Coordenada{ -0.3f, 0.2f }, colorTexto);
     for (auto& b : botones)
         b.dibujar();

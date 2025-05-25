@@ -1,19 +1,19 @@
 #include "BrochaPantallas.h"
 #include "freeglut.h"
 
-void BrochaPantallas::limpiar_pantalla(Color color) {
+void BrochaPantallas::limpiar_pantalla(ColorTextos color) {
     glClearColor(color.r, color.g, color.b, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-void BrochaPantallas::dibujar_texto(const std::string& texto, Coordenada pos, Color color) {
+void BrochaPantallas::dibujar_texto(const std::string& texto, Coordenada pos, ColorTextos color) {
     glColor3f(color.r, color.g, color.b);
     glRasterPos2f(pos.x, pos.y);
     for (char c : texto)
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
 }
 
-void BrochaPantallas::dibujar_barra_carga(float progreso, Coordenada desde, Coordenada hasta, Color color) {
+void BrochaPantallas::dibujar_barra_carga(float progreso, Coordenada desde, Coordenada hasta, ColorTextos color) {
     float ancho = hasta.x - desde.x;
     float progreso_x = desde.x + ancho * progreso;
 

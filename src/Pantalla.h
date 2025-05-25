@@ -1,6 +1,17 @@
 #pragma once
 #include <string>
 
+struct Coordenada {
+    float x;
+    float y;
+};
+
+struct ColorTextos {
+    float r, g, b;
+
+    ColorTextos(float r, float g, float b) :r(r), g(g), b(b) {} // constructor de color por si acaso
+};
+
 class Pantalla {
 public:
     virtual void dibuja();//funcion para dibujar pantallas
@@ -19,8 +30,7 @@ private:
 public:
     //constructor de botones
     Boton(const std::string& texto, Coordenada desde, Coordenada hasta)
-        : texto(texto), desde(desde), hasta(hasta) {
-    }
+        : texto(texto), desde(desde), hasta(hasta) {}
 
     void dibujar() const; //funcion para dibujar que llama a BrochaPantallas
     bool clic_en(float x, float y) const; //funcion que comprueba si el clic está dentro del boton
@@ -29,13 +39,3 @@ public:
 };
 
 //struct utilizada por funciones en brochapantallas
-struct Coordenada {
-    float x;
-    float y;
-};
-
-struct Color {
-    float r, g, b;
-
-    Color(float r, float g, float b) :r(r), g(g), b(b){} // constructor de color por si acaso
-};

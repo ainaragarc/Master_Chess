@@ -18,12 +18,12 @@ void Pantalla::raton(int button, int state, int x, int y) {
 
 //funcion para dibujar
 void Boton::dibujar() const {
-    Color colorRecuadro = Color(0.3f, 0.3f, 0.7f);
+    ColorTextos colorRecuadro = ColorTextos(0.3f, 0.3f, 0.7f);
     BrochaPantallas::dibujar_barra_carga(1.0f, desde, hasta, colorRecuadro);
     float ancho = hasta.x - desde.x;
     float alto = hasta.y - desde.y;
     Coordenada centroTexto = { desde.x + ancho * 0.25f, desde.y + alto * 0.25f };
-    Color colorTexto = Color(1.0f, 1.0f, 1.0f);
+    ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
     BrochaPantallas::dibujar_texto(texto, centroTexto, colorTexto);
 }
 

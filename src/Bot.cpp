@@ -85,19 +85,6 @@ void Bot::juega(Mundo& mundo) {
         std::swap(movimientos_captura[i], movimientos_captura[max]);
 
 		}
-		for (auto a : puntos) {
-			std::cout << a << " ";
-		}
-        std::cout << "Puntuacion: " << puntos[0] << endl;
-        for (auto a : movimientos_captura) {
-            char c;
-			if (a.first->get_tipo() == Tipo::CABALLO)c = 'c';
-			else if (a.first->get_tipo() == Tipo::ALFIL)c = 'a';
-			else if (a.first->get_tipo() == Tipo::TORRE)c = 't';
-			else if (a.first->get_tipo() == Tipo::REINA)c = 'd';
-			else c = 'p'; //peon
-            std::cout <<c << "-";
-        }
 
     }
     //aqui muere puntos

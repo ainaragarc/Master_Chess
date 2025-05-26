@@ -5,7 +5,8 @@
 enum class AccionTablero {
     NINGUNO,
     TABLERO_BABY,
-    TABLERO_GARDNER
+    TABLERO_GARDNER,
+    VOLVER
 };
 class PantallaSeleccionTablero : public Pantalla
 {

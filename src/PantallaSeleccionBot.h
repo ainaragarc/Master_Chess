@@ -3,7 +3,7 @@
 #include "GestorPantallas.h"
 #include <vector>
 
-enum class AccionBot {NINGUNO, VS_BOT, VS_AMIGO};
+enum class AccionBot {NINGUNO, VS_BOT, VS_AMIGO, VOLVER};
 
 class PantallaSeleccionBot : public Pantalla {
     GestorPantallas* gestor;

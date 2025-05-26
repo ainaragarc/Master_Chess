@@ -13,7 +13,7 @@ public:
 		posicion = pos;
 		tipo = Tipo::CABALLO;
 		if (color == BLANCO) {
-			foto_pieza = "imagenes/w_knight_1x_ns.png";
+			foto_pieza = "imagenes/ponyta.png";
 		}
 		else {
 			foto_pieza = "imagenes/b_knight_1x_ns.png";

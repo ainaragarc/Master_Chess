@@ -13,7 +13,7 @@ public:
 		posicion = pos;
 		tipo = Tipo::ALFIL;
 		if (color == BLANCO) {
-			foto_pieza = "imagenes/w_bishop_1x_ns.png";
+			foto_pieza = "imagenes/Gastly.png";
 		}
 		else {
 			foto_pieza = "imagenes/b_bishop_1x_ns.png";

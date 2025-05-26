@@ -47,7 +47,9 @@ public:
 	friend class Brocha;
 	friend void keyboard(unsigned char key, int x, int y);
 
+
 	//funciones de prueba
 	void Pruebapiezas();
+
 
 };

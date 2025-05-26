@@ -2,6 +2,7 @@
 #include "PantallaInicio.h"
 #include "MenuPrincipal.h"
 #include "PantallaSeleccionTablero.h"
+#include "PantallaSeleccionBot.h"
 #include "PantallaGameOver.h"
 
 
@@ -96,12 +97,37 @@ void GestorEstados::mueve() {
             case AccionTablero::TABLERO_BABY:
                 selector->reset_accion();
                 tipo_tablero_seleccionado = TipoTablero::BABY;
-                estado_actual = JUGANDO;
-                inicializa();
+
+                //Mostrar pantalla de selector de modo del bot
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
+                
+                
                 break;
             case AccionTablero::TABLERO_GARDNER:
                 selector->reset_accion();
                 tipo_tablero_seleccionado = TipoTablero::GARDNER;
+
+                //Mostrar pantalla de selector de modo del bot
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
+                
+                break;
+            default:
+                break;
+            }
+        }
+        
+        PantallaSeleccionBot* selectorVS = dynamic_cast<PantallaSeleccionBot*>(pantalla);
+        if (selectorVS) {
+            switch (selectorVS->get_accion()) {
+            case AccionBot::VS_BOT:
+                selectorVS->reset_accion();
+                tipo_VS_seleccionado = TipoVS::BOT;
+                estado_actual = JUGANDO;
+                inicializa();
+                break;
+            case AccionBot::VS_AMIGO:
+                selectorVS->reset_accion();
+                tipo_VS_seleccionado = TipoVS::AMIGO;
                 estado_actual = JUGANDO;
                 inicializa();
                 break;
@@ -114,8 +140,15 @@ void GestorEstados::mueve() {
     if (estado_actual == JUGANDO) {
         mundo.mueve();
         // Turno del bot (negras)
-        if (mundo.get_turno() == Turno::NEGRO) {
-            bot.juega(mundo);
+        switch (tipo_VS_seleccionado)
+        {
+        case GestorEstados::TipoVS::BOT:
+            if (mundo.get_turno() == Turno::NEGRO) { // Solo juega el bot si es su turno
+                bot.juega(mundo);
+            }
+            break;
+        default:
+            break;
         }
     }
 }

@@ -65,13 +65,13 @@ void Peon::mueve(Posicion posicion_final) {
                 do {
                     std::cin >> tipo;
                 } while (tipo != 'c' && tipo != 't' && tipo != 'a' && tipo != 'd');
-                promover(tipo);
+                Tablero::coronar(this, tipo);
             }
 
             else { //EL BOT PROMUEVE A LA DAMA, SOLUCION A MEJORAR
                 //SOLO FUNCIONA PORQUE EL BOT SOLO JUEGA CON NEGRAS
                 unsigned char tipo = 'd';
-                promover(tipo);
+                Tablero::coronar( this, tipo);
 
             }
            
@@ -81,32 +81,4 @@ void Peon::mueve(Posicion posicion_final) {
         }
 }
 
-void Peon::promover(unsigned char &tipo)  {
-    Pieza* pieza = nullptr;
-    switch (tipo) {
-    case 'c':
-              pieza = new Caballo(color, posicion);
-             break;
-    case 't':
-             pieza = new Torre(color, posicion);
-            break;
-    case 'a':
-             pieza = new Alfil(color, posicion);
-            break;
-    case 'd':
-             pieza = new Dama(color, posicion);
-            break;
-        default:
-            return;
-    }
 
-    auto& v = (color == BLANCO) ? Tablero::get_piezas_B() : Tablero::get_piezas_N();
-    for (auto a = v.begin(); a != v.end(); ++a) {
-        if (*a == this) {
-            delete *a;
-            *a = pieza;
-            break;
-        }
-    }
-
-}

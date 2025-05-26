@@ -101,6 +101,13 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
                     }
                 }
 
+                else if(TABLERO.es_ahogado(color_enemigo)) {
+                    std::cout << "ES AHOGADO DEL REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
+                    //estado->cambiar_estado(TABLAS);
+                    return;
+                    }
+                }
+
                 turno_actual = cambiar_turno(turno_actual);
                 std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";
             }

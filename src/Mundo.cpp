@@ -41,6 +41,7 @@ void Mundo::inicializa_tablero_baby() {
 }
 
 void Mundo::gestionar_click(int button, int state, int x, int y) {
+
     if (button != GLUT_LEFT_BUTTON || state != GLUT_DOWN)
         return;
 
@@ -104,15 +105,21 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
                 }
 
                 if (TABLERO.comprobar_coronacion(pieza_seleccionada)) {
-                    unsigned char tipo;
                     std::cout << "CORONAR EL PEON" << std::endl;
-                    std::cout << "c: caballo, t: torre, a: alfil, d: dama";
+
+                    /*
+                    unsigned char tipo;
                     do {
                         std::cin >> tipo;
                     } while (tipo != 'c' && tipo != 't' && tipo != 'a' && tipo != 'd');
                     TABLERO.coronar(pieza_seleccionada, tipo);
-                }
+                    */
+                    estado->cambiar_estado(CORONACION);
+                    turno_actual = cambiar_turno(turno_actual);
 
+                    return;
+                }
+                std::cout << "AQUI LLEGO";
                  if (TABLERO.es_ahogado(color_enemigo)) {
                      std::cout << "ES AHOGADO DEL REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
                      estado->cambiar_estado(TABLAS);
@@ -153,3 +160,13 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
     std::cout << "No hay pieza seleccionada\n";
 }
 
+void Mundo::seleccionar_coronacion(unsigned char tipo) { 
+    //se supone que estamos dentro de la pantalla de coronacion, tipo lo establece la pantalla de coronacion
+    if (pieza_seleccionada !=nullptr) {
+        TABLERO.coronar(pieza_seleccionada, tipo);
+        pieza_seleccionada = nullptr;
+        casillas_posibles.clear();
+        esperando_segundo_click = false;
+    }
+
+}

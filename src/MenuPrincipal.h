@@ -13,7 +13,7 @@ enum class AccionMenu {
 class MenuPrincipal : public Pantalla {
 private:
     GestorPantallas* gestor;
-    std::vector<Boton> botones;
+    //std::vector<Boton> botones;
     AccionMenu accion_pendiente = AccionMenu::NINGUNA;//inicializamos el estado en ninguna accion (espera a que selecciones una opcion)
 
 public:

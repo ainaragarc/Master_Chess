@@ -132,3 +132,8 @@ void GestorEstados::raton(int button, int state, int x, int y) {
     if (estado_actual == JUGANDO)
         mundo.gestionar_click(button, state, x, y);
 }
+
+void GestorEstados::mover_raton(int x, int y) {
+    if (estado_actual == MENU)
+        gestor_pantallas.mover_raton(x, y);
+}

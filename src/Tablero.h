@@ -48,7 +48,9 @@ public:
 	friend class Brocha;
 	friend void keyboard(unsigned char key, int x, int y);
 
-	static void coronar(Pieza* p, unsigned char& tipo);
+	//bool para que sea una comprobacion despues del movimiento :)
+	bool comprobar_coronacion(Pieza* p);
+	void coronar(Pieza* p, unsigned char& tipo);
 	//funciones de prueba
 	void Pruebapiezas();
 

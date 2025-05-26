@@ -255,9 +255,20 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
      return nullptr; // No se encontró ninguna pieza
  }
+ bool Tablero::comprobar_coronacion(Pieza* p) {
+     //COMPROBACIOBN DE PODER CORONAR
+     if (p->get_tipo() != Tipo::PEON) { return false; }
+     int pos;
+     (p->get_color() == Color::BLANCO) ? pos = get_numCas() - 1 : pos = 0;
+     if (p->get_posicion().Fila != pos) { return false; }
+     
+     return true;
 
+ }
+ 
 
  void Tablero::coronar(Pieza* p, unsigned char& tipo) {
+     //cambio por pieza seleccionada
      Pieza* pieza = nullptr;
      switch (tipo) {
      case 'c':
@@ -272,8 +283,6 @@ bool Tablero::hay_pieza(Posicion& pos) {
      case 'd':
          pieza = new Dama(p->get_color(), p->get_posicion());
          break;
-     default:
-         return;
      }
 
      auto& v = (p->get_color() == BLANCO) ? Tablero::get_piezas_B() : Tablero::get_piezas_N();
@@ -284,5 +293,4 @@ bool Tablero::hay_pieza(Posicion& pos) {
              break;
          }
      }
-
  }

@@ -2,7 +2,7 @@
 #include "Mundo.h"
 #include "GestorPantallas.h"
 
-enum Estado { MENU, JUGANDO, PAUSA, VICTORIA_BLANCO, VICTORIA_NEGRO, FIN };
+enum Estado { MENU, JUGANDO, PAUSA, VICTORIA_BLANCO, VICTORIA_NEGRO, TABLAS, FIN };
 
 class GestorEstados {
 

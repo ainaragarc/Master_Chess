@@ -3,6 +3,8 @@
 #include "freeglut.h"
 #include <cmath>
 
+#include <iostream>
+
 void Mundo::dibuja()
 {
 	glMatrixMode(GL_MODELVIEW);
@@ -101,12 +103,22 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
                     }
                 }
 
-                else if(TABLERO.es_ahogado(color_enemigo)) {
-                    std::cout << "ES AHOGADO DEL REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
-                    //estado->cambiar_estado(TABLAS);
-                    return;
-                    }
+                if (TABLERO.comprobar_coronacion(pieza_seleccionada)) {
+                    unsigned char tipo;
+                    std::cout << "CORONAR EL PEON" << std::endl;
+                    std::cout << "c: caballo, t: torre, a: alfil, d: dama";
+                    do {
+                        std::cin >> tipo;
+                    } while (tipo != 'c' && tipo != 't' && tipo != 'a' && tipo != 'd');
+                    TABLERO.coronar(pieza_seleccionada, tipo);
                 }
+
+                 if (TABLERO.es_ahogado(color_enemigo)) {
+                     std::cout << "ES AHOGADO DEL REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
+                     estado->cambiar_estado(TABLAS);
+                     return;
+                 }
+
 
                 turno_actual = cambiar_turno(turno_actual);
                 std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";

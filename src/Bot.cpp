@@ -6,6 +6,7 @@ void Bot::juega(Mundo& mundo) {
     const std::vector<Pieza*>& equipo_bot = juega_negras ? mundo.TABLERO.get_piezas_N() : mundo.TABLERO.get_piezas_B();
     std::vector<Pieza*>& equipo_jugador = juega_negras ? mundo.TABLERO.get_piezas_B() : mundo.TABLERO.get_piezas_N(); // ¡Corregido! Enemigo real
     Color color_bot = juega_negras ? NEGRO : BLANCO;
+    Color color_enemigo = juega_negras ? BLANCO : NEGRO;
 
     // En el futuro las piezas del bot podemos hacerlas aleatorias
     std::vector<std::pair<Pieza*, Posicion>> movimientos_captura;
@@ -62,6 +63,13 @@ void Bot::juega(Mundo& mundo) {
         }
 
         pieza_elegida->mueve(destino);
+
+        //EL BOT SIEMPRE CORONA A DAMA, no creo que nunque corone en esta situacion, pero por si acaso justo se da la situacion
+        if (mundo.TABLERO.comprobar_coronacion(pieza_elegida)) {
+            unsigned char tipo = 'd';
+            std::cout << "CORONAR EL PEON, el bot" << std::endl;
+            mundo.TABLERO.coronar(pieza_elegida, tipo);
+        }
         std::cout << "Bot salió del jaque moviendo a (" << destino.Fila << ", " << destino.Columna << ")\n";
         mundo.cambiar_turno_bot();
         return; // Importante: evitamos que siga ejecutando el turno como si no hubiera habido jaque
@@ -161,6 +169,14 @@ void Bot::juega(Mundo& mundo) {
     }
 
     pieza_elegida->mueve(destino);
+
+    //EL BOT SIEMPRE CORONA A DAMA
+    if (mundo.TABLERO.comprobar_coronacion(pieza_elegida)) {
+        unsigned char tipo = 'd';
+        std::cout << "CORONAR EL PEON, el bot" << std::endl;
+        mundo.TABLERO.coronar(pieza_elegida, tipo);
+    }
+
     std::cout << "Bot movió una pieza a (" << destino.Fila << ", " << destino.Columna << ")\n";
 
     mundo.cambiar_turno_bot();

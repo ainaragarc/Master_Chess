@@ -9,6 +9,8 @@ class Bot
 {
 	bool juega_negras = 1;//variable para controlar con qué piezas juega (futuro)
 public:
-	void juega(Mundo& mundo); // Método con el que el bot juega
+	void juegaNivel1(Mundo& mundo); // Método con el que el bot juega
+	void juegaNivel2(Mundo& mundo); // Método con el que el bot juega
+	void juegaNivel3(Mundo& mundo); // Método con el que el bot juega
 };
 

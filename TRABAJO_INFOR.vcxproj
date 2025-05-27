@@ -28,6 +28,7 @@
     <ClCompile Include="src\PantallaCoronando.cpp" />
     <ClCompile Include="src\PantallaGameOver.cpp" />
     <ClCompile Include="src\PantallaSeleccionBot.cpp" />
+    <ClCompile Include="src\PantallaSeleccionNivel.cpp" />
     <ClCompile Include="src\PantallaSeleccionTablero.cpp" />
     <ClCompile Include="src\GestorEstados.cpp" />
     <ClCompile Include="src\GestorPantallas.cpp" />
@@ -54,6 +55,7 @@
     <ClInclude Include="src\PantallaCoronando.h" />
     <ClInclude Include="src\PantallaGameOver.h" />
     <ClInclude Include="src\PantallaSeleccionBot.h" />
+    <ClInclude Include="src\PantallaSeleccionNivel.h" />
     <ClInclude Include="src\PantallaSeleccionTablero.h" />
     <ClInclude Include="src\GestorEstados.h" />
     <ClInclude Include="src\GestorPantallas.h" />

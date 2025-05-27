@@ -3,6 +3,7 @@
 #include "MenuPrincipal.h"
 #include "PantallaSeleccionTablero.h"
 #include "PantallaSeleccionBot.h"
+#include "PantallaSeleccionNivel.h"
 #include "PantallaGameOver.h"
 
 
@@ -116,21 +117,50 @@ void GestorEstados::mueve() {
             }
         }
         
+        // Aquí la logica para seleccionar el tipo de contringante
         PantallaSeleccionBot* selectorVS = dynamic_cast<PantallaSeleccionBot*>(pantalla);
         if (selectorVS) {
             switch (selectorVS->get_accion()) {
             case AccionBot::VS_BOT:
                 selectorVS->reset_accion();
                 tipo_VS_seleccionado = TipoVS::BOT;
-                estado_actual = JUGANDO;
-                inicializa();
+
+                //Mostrar pantalla de selector de modo del nivel
+                gestor_pantallas.set_pantalla(new PantallaSeleccionNivel(&gestor_pantallas));
+                
                 break;
             case AccionBot::VS_AMIGO:
                 selectorVS->reset_accion();
                 tipo_VS_seleccionado = TipoVS::AMIGO;
                 estado_actual = JUGANDO;
+          
+                break;
+            default:
+                break;
+            }
+        }
+
+        // Aquí la logica para seleccionar el nivel del bot
+        PantallaSeleccionNivel* selectorNivel = dynamic_cast<PantallaSeleccionNivel*>(pantalla);
+        if (selectorNivel) {
+            switch (selectorNivel->get_accion()) {
+            case AccionNivel::Nivel1:
+                selectorNivel->reset_accion();
+                tipo_Nivel_seleccionado = NivelBot::NIVEL1;
+                estado_actual = JUGANDO;
                 inicializa();
                 break;
+            case AccionNivel::Nivel2:
+                selectorNivel->reset_accion();
+                tipo_Nivel_seleccionado = NivelBot::NIVEL2;
+                estado_actual = JUGANDO;
+                inicializa();
+                break;
+            case AccionNivel::Nivel3:
+                selectorNivel->reset_accion();
+                tipo_Nivel_seleccionado = NivelBot::NIVEL3;
+                estado_actual = JUGANDO;
+                inicializa();
             default:
                 break;
             }
@@ -144,7 +174,20 @@ void GestorEstados::mueve() {
         {
         case GestorEstados::TipoVS::BOT:
             if (mundo.get_turno() == Turno::NEGRO) { // Solo juega el bot si es su turno
-                bot.juegaNivel2(mundo);
+                switch (tipo_Nivel_seleccionado)
+                {
+                case GestorEstados::NivelBot::NIVEL1:
+                    bot.juegaNivel1(mundo);
+                    break;
+                case GestorEstados::NivelBot::NIVEL2:
+                    bot.juegaNivel2(mundo);
+                    break;
+                case GestorEstados::NivelBot::NIVEL3:
+                    bot.juegaNivel3(mundo);
+                    break;
+                default:
+                    break;
+                }
             }
             break;
         default:

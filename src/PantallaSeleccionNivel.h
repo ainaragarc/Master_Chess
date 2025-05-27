@@ -8,7 +8,6 @@ enum class AccionNivel { NINGUNO, Nivel1, Nivel2, Nivel3 };
 
 class PantallaSeleccionNivel : public Pantalla {
     GestorPantallas* gestor;
-    std::vector<Boton> botones;
     AccionNivel accion_pendiente = AccionNivel::NINGUNO;    //inicializamos el estado en ninguna accion (espera a que selecciones una opcion)
 
 public:

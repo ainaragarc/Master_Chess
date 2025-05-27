@@ -2,175 +2,175 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="src\alfil.cpp">
-      <Filter>NewFilter2\piezas</Filter>
+      <Filter>Archivos de origen\piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\Bot.cpp">
-      <Filter>NewFilter2</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\brocha.cpp">
-      <Filter>NewFilter2</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\BrochaPantallas.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\dama.cpp">
-      <Filter>NewFilter2\piezas</Filter>
+      <Filter>Archivos de origen\piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\caballo.cpp">
-      <Filter>NewFilter2\piezas</Filter>
+      <Filter>Archivos de origen\piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\GestorEstados.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\GestorPantallas.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\MenuPrincipal.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\Mundo.cpp">
-      <Filter>NewFilter2</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\Pantalla.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaCoronando.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaGameOver.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaInicio.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaSeleccionBot.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaSeleccionNivel.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaSeleccionTablero.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\PantallaTablas.cpp">
-      <Filter>NewFilter2\pantallas</Filter>
+      <Filter>Archivos de origen\pantallas</Filter>
     </ClCompile>
     <ClCompile Include="src\peon.cpp">
-      <Filter>NewFilter2\piezas</Filter>
+      <Filter>Archivos de origen\piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\rey.cpp">
-      <Filter>NewFilter2\piezas</Filter>
+      <Filter>Archivos de origen\piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\torre.cpp">
-      <Filter>NewFilter2\piezas</Filter>
+      <Filter>Archivos de origen\piezas</Filter>
     </ClCompile>
     <ClCompile Include="src\Tablero.cpp">
-      <Filter>NewFilter2</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\Principal.cpp">
-      <Filter>NewFilter2</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\pieza.cpp">
-      <Filter>NewFilter2</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
     <ClCompile Include="src\Turno.cpp">
-      <Filter>NewFilter2</Filter>
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bot.h">
-      <Filter>NewFilter1</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\brocha.h">
-      <Filter>NewFilter1</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\caballo.h">
-      <Filter>NewFilter1\piezas</Filter>
+      <Filter>Archivos de encabezado\piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\BrochaPantallas.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\alfil.h">
-      <Filter>NewFilter1\piezas</Filter>
+      <Filter>Archivos de encabezado\piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\dama.h">
-      <Filter>NewFilter1\piezas</Filter>
+      <Filter>Archivos de encabezado\piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\GestorEstados.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\GestorPantallas.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\MenuPrincipal.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\Mundo.h">
-      <Filter>NewFilter1</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\Pantalla.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaCoronando.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaGameOver.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaInicio.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\rey.h">
-      <Filter>NewFilter1\piezas</Filter>
+      <Filter>Archivos de encabezado\piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\torre.h">
-      <Filter>NewFilter1\piezas</Filter>
+      <Filter>Archivos de encabezado\piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\peon.h">
-      <Filter>NewFilter1\piezas</Filter>
+      <Filter>Archivos de encabezado\piezas</Filter>
     </ClInclude>
     <ClInclude Include="src\Tablero.h">
-      <Filter>NewFilter1</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\Turno.h">
-      <Filter>NewFilter1</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\propiedades.h">
-      <Filter>NewFilter1</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\pieza.h">
-      <Filter>NewFilter1</Filter>
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaSeleccionTablero.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaTablas.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaSeleccionNivel.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaSeleccionBot.h">
-      <Filter>NewFilter1\pantallas</Filter>
+      <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="NewFilter1">
+    <Filter Include="Archivos de encabezado">
       <UniqueIdentifier>{35aea842-3baa-4da2-b74f-e932be0aa2b0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewFilter1\piezas">
+    <Filter Include="Archivos de encabezado\piezas">
       <UniqueIdentifier>{da27da1d-c93b-4eea-b61c-dfb1375635b9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewFilter1\pantallas">
+    <Filter Include="Archivos de encabezado\pantallas">
       <UniqueIdentifier>{0d376ec1-f28f-439a-8642-a29cf39dd02a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewFilter2">
+    <Filter Include="Archivos de origen">
       <UniqueIdentifier>{0dae03d9-2a1e-4500-83d6-17381a00c79a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewFilter2\piezas">
+    <Filter Include="Archivos de origen\piezas">
       <UniqueIdentifier>{d6f43c79-6ed1-4412-93b9-d5a2f1c0c9c8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="NewFilter2\pantallas">
+    <Filter Include="Archivos de origen\pantallas">
       <UniqueIdentifier>{81ab3df5-640c-495b-914f-d7042af1d138}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

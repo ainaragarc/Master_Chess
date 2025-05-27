@@ -5,6 +5,8 @@
 #include "PantallaSeleccionBot.h"
 #include "PantallaSeleccionNivel.h"
 #include "PantallaGameOver.h"
+#include "PantallaPausa.h"
+#include "BrochaPantallas.h"
 
 
 
@@ -15,6 +17,7 @@ void GestorEstados::inicializa() {
         gestor_pantallas.set_pantalla(new PantallaInicio(&gestor_pantallas));
     }
     else if (estado_actual == JUGANDO) {
+        gestor_pantallas.set_pantalla(nullptr);
         switch (tipo_tablero_seleccionado) {
         case TipoTablero::BABY:
             mundo.inicializa_tablero_baby();
@@ -50,7 +53,7 @@ void GestorEstados::dibuja() {
         break;
 
     case PAUSA:
-        // dibujar pausa
+        gestor_pantallas.dibuja();
         break;
 
     case VICTORIA_BLANCO:
@@ -161,18 +164,21 @@ void GestorEstados::mueve() {
                 selectorNivel->reset_accion();
                 tipo_Nivel_seleccionado = NivelBot::NIVEL1;
                 estado_actual = JUGANDO;
+                gestor_pantallas.set_pantalla(nullptr);
                 inicializa();
                 break;
             case AccionNivel::Nivel2:
                 selectorNivel->reset_accion();
                 tipo_Nivel_seleccionado = NivelBot::NIVEL2;
                 estado_actual = JUGANDO;
+                gestor_pantallas.set_pantalla(nullptr);
                 inicializa();
                 break;
             case AccionNivel::Nivel3:
                 selectorNivel->reset_accion();
                 tipo_Nivel_seleccionado = NivelBot::NIVEL3;
                 estado_actual = JUGANDO;
+                gestor_pantallas.set_pantalla(nullptr);
                 inicializa();
             default:
                 break;
@@ -181,6 +187,7 @@ void GestorEstados::mueve() {
     }
 
     if (estado_actual == JUGANDO) {
+       
         mundo.mueve();
         // Turno del bot (negras)
         switch (tipo_VS_seleccionado)
@@ -207,12 +214,63 @@ void GestorEstados::mueve() {
             break;
         }
     }
+
+    if (estado_actual == PAUSA) {
+        gestor_pantallas.actualiza();
+        //auto* pausa = dynamic_cast<PantallaPausa*>(gestor_pantallas.get_pantalla());
+        Pantalla* pantalla = gestor_pantallas.get_pantalla();
+        PantallaPausa* pausa = dynamic_cast<PantallaPausa*>(pantalla);
+        if (pausa) {
+            switch (pausa->get_accion()) {
+            case AccionPausa::REANUDAR:
+                pausa->reset_accion();
+                /*
+                glMatrixMode(GL_PROJECTION);
+                glLoadIdentity();
+                gluOrtho2D(-4.0, 4.0, -4.0, 4.0); // sistema de coordenadas original para pantallas
+                glMatrixMode(GL_MODELVIEW);
+                glLoadIdentity();
+                */
+                estado_actual = JUGANDO;
+                gestor_pantallas.set_pantalla(nullptr);
+                break;
+
+            case AccionPausa::RENDIRSE:
+                pausa->reset_accion();
+                //ir a gameover y luego ir a menu
+                estado_actual = MENU;
+                
+                //reset tablero----
+                inicializa();
+                break;
+
+            case AccionPausa::GUARDAR:
+                pausa->reset_accion();
+                std::cout << "[Guardar partida] aún no implementado\n";
+                break;
+
+            case AccionPausa::SALIR_JUEGO:
+                pausa->reset_accion();
+                exit(0);
+                break;
+
+            default:
+                break;
+            }
+        }
+    }
 }
 
 
 void GestorEstados::tecla(unsigned char key) {
     if (estado_actual == MENU)
         gestor_pantallas.tecla(key);
+
+    //activar la pantalla de pausa
+    if (estado_actual == JUGANDO && key == 'p') {
+        estado_actual = PAUSA;
+        gestor_pantallas.set_pantalla(new PantallaPausa(&gestor_pantallas, &mundo));
+    }
 }
 
 void GestorEstados::raton(int button, int state, int x, int y) {
@@ -220,9 +278,13 @@ void GestorEstados::raton(int button, int state, int x, int y) {
         gestor_pantallas.raton(button, state, x, y);
     if (estado_actual == JUGANDO)
         mundo.gestionar_click(button, state, x, y);
+    if (estado_actual == PAUSA)
+        gestor_pantallas.raton(button, state, x, y);
 }
 
 void GestorEstados::mover_raton(int x, int y) {
     if (estado_actual == MENU)
+        gestor_pantallas.mover_raton(x, y);
+    if (estado_actual == PAUSA)
         gestor_pantallas.mover_raton(x, y);
 }

@@ -7,13 +7,29 @@ void BrochaPantallas::limpiar_pantalla(ColorTextos color) {
 }
 
 void BrochaPantallas::dibujar_texto(const std::string& texto, Coordenada pos, ColorTextos color) {
+    glPushAttrib(GL_ALL_ATTRIB_BITS); //guardamos todos los estados
+
+    glDisable(GL_LIGHTING);
+    glDisable(GL_TEXTURE_2D);
+    glDisable(GL_DEPTH_TEST);
+    glDisable(GL_BLEND);
+
     glColor3f(color.r, color.g, color.b);
     glRasterPos2f(pos.x, pos.y);
     for (char c : texto)
         glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
+
+    glPopAttrib();  // Restauramos todo
 }
 
 void BrochaPantallas::dibujar_barra_carga(float progreso, Coordenada desde, Coordenada hasta, ColorTextos color) {
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+
+    glDisable(GL_LIGHTING);
+    glDisable(GL_TEXTURE_2D);
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
     float ancho = hasta.x - desde.x;
     float progreso_x = desde.x + ancho * progreso;
 
@@ -24,6 +40,8 @@ void BrochaPantallas::dibujar_barra_carga(float progreso, Coordenada desde, Coor
     glVertex2f(progreso_x, hasta.y);
     glVertex2f(desde.x, hasta.y);
     glEnd();
+
+    glPopAttrib();
 }
 
 Coordenada BrochaPantallas::convertir_click_a_opengl(int x, int y) {
@@ -38,4 +56,31 @@ Coordenada BrochaPantallas::convertir_click_a_opengl(int x, int y) {
 
 bool BrochaPantallas::es_clic_izquierdo(int button, int state) {
     return button == GLUT_LEFT_BUTTON && state == GLUT_DOWN;
+}
+
+void BrochaPantallas::dibujar_recuadro(Coordenada desde, Coordenada hasta, ColorTextos color, float opacidad) {
+    glPushAttrib(GL_ALL_ATTRIB_BITS);
+
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+    glDisable(GL_LIGHTING);
+
+    glColor4f(color.r, color.g, color.b, opacidad);
+
+    glBegin(GL_QUADS);
+    glVertex2f(desde.x, desde.y);
+    glVertex2f(hasta.x, desde.y);
+    glVertex2f(hasta.x, hasta.y);
+    glVertex2f(desde.x, hasta.y);
+    glEnd();
+
+    glPopAttrib();
+}
+
+void BrochaPantallas::configurar_proyeccion_pantalla(double num) {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-num, num, -num, num); // sistema de coordenadas original para pantallas
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
 }

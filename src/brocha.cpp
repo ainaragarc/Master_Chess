@@ -2,6 +2,11 @@
 
 
 void Brocha::dibuja_t(int numCasillas, float TamCuadrado) {
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-4.0, 4.0, -4.0, 4.0); // sistema de coordenadas original para pantallas
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
     float BOARD_OFFSET = -((numCasillas * TamCuadrado) / 2.0f);
 
     bool white = true;
@@ -28,6 +33,7 @@ void Brocha::dibuja_t(int numCasillas, float TamCuadrado) {
 
 }
 
+//se puede prescindir de esta funcion, examinar bien donde se llama y eliminarla
 void Brocha::init_t(float longitudVentana)
 {
     glClearColor(0.2f, 0.1f, 0.2f, 1.0f); // Fondo morado

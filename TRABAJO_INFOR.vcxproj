@@ -26,6 +26,7 @@
     <ClCompile Include="src\caballo.cpp" />
     <ClCompile Include="src\dama.cpp" />
     <ClCompile Include="src\PantallaGameOver.cpp" />
+    <ClCompile Include="src\PantallaPausa.cpp" />
     <ClCompile Include="src\PantallaSeleccionBot.cpp" />
     <ClCompile Include="src\PantallaSeleccionNivel.cpp" />
     <ClCompile Include="src\PantallaSeleccionTablero.cpp" />
@@ -51,6 +52,7 @@
     <ClInclude Include="src\caballo.h" />
     <ClInclude Include="src\dama.h" />
     <ClInclude Include="src\PantallaGameOver.h" />
+    <ClInclude Include="src\PantallaPausa.h" />
     <ClInclude Include="src\PantallaSeleccionBot.h" />
     <ClInclude Include="src\PantallaSeleccionNivel.h" />
     <ClInclude Include="src\PantallaSeleccionTablero.h" />

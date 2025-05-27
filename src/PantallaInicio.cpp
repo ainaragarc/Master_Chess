@@ -4,6 +4,8 @@
 #include "PantallaSeleccionTablero.h"
 
 void PantallaInicio::dibuja() {
+	BrochaPantallas::configurar_proyeccion_pantalla(1.0);
+
 	BrochaPantallas::limpiar_pantalla(ColorTextos(0.1f, 0.1f, 0.2f));
 	ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
 	BrochaPantallas::dibujar_texto("MASTERCHESS", Coordenada{ -0.3f, 0.6f },colorTexto);

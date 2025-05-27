@@ -18,4 +18,8 @@ public:
 
     //compruba si se ha hecho cllick
     static bool es_clic_izquierdo(int button, int state);
+
+    static void dibujar_recuadro(Coordenada desde, Coordenada hasta, ColorTextos color, float opacidad = 1.0f);
+
+    static void configurar_proyeccion_pantalla(double num);
 };

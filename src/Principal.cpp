@@ -11,6 +11,7 @@ void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void onMouseClick(int button, int state, int x, int y);
 void onMouseMove(int x, int y);
+void onKey(unsigned char key, int x, int y);
 
 int main(int argc, char* argv[])
 {
@@ -27,6 +28,7 @@ int main(int argc, char* argv[])
 	//glutKeyboardFunc(keyboard);//Función para controlar con el teclado
 	glutMouseFunc(onMouseClick);
 	glutPassiveMotionFunc(onMouseMove);
+	glutKeyboardFunc(onKey);
 
 	juego.inicializa();
 
@@ -70,6 +72,10 @@ void OnTimer(int value)
 
 void onMouseMove(int x, int y) {
 	juego.mover_raton(x, y);
+}
+
+void onKey(unsigned char key, int x, int y) {
+	juego.tecla(key);  
 }
 
 //void keyboard(unsigned char key, int x, int y) {

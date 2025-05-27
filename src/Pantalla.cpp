@@ -20,6 +20,7 @@ void Pantalla::raton(int button, int state, int x, int y) {
 void Boton::dibujar() const {
     ColorTextos colorRecuadro = casilla_seleccionada ? ColorTextos(0.5f, 0.5f, 1.0f) : ColorTextos(0.3f, 0.3f, 0.7f);
     BrochaPantallas::dibujar_barra_carga(1.0f, desde, hasta, colorRecuadro);
+
     float ancho = hasta.x - desde.x;
     float alto = hasta.y - desde.y;
     Coordenada centroTexto = { desde.x + ancho * 0.25f, desde.y + alto * 0.25f };

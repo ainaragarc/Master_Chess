@@ -10,6 +10,7 @@
 #include<vector>
 #include <iostream>
 
+//CAMBIO PARA QUE MARIO PUEDA ACTUALIZAR
 
 vector<Pieza*> Tablero::piezas_B;
 vector<Pieza*> Tablero::piezas_N;

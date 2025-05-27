@@ -7,8 +7,6 @@
 #include "PantallaGameOver.h"
 #include "PantallaPausa.h"
 #include "BrochaPantallas.h"
-#include "PantallaCoronando.h"
-#include "PantallaTablas.h"
 
 
 
@@ -39,14 +37,6 @@ void GestorEstados::inicializa() {
         gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));
         
     }
-    else if (estado_actual == TABLAS) {
-        gestor_pantallas.set_pantalla(new PantallaTablas());
-
-    }
-    else if (estado_actual == CORONACION) {
-        gestor_pantallas.set_pantalla(new PantallaCoronando(&gestor_pantallas));
-
-    }
     mundo.set_estado(this);//pasamos informacion del estado actual a mundo
 
 }
@@ -76,18 +66,6 @@ void GestorEstados::dibuja() {
         mundo.dibuja();
         gestor_pantallas.dibuja();
        
-        break;
-    
-    case TABLAS:
-        mundo.dibuja();
-        gestor_pantallas.dibuja();
-
-        break;
-
-    case CORONACION:
-        //para que se dibuje el tablero tmb
-        mundo.dibuja();
-        gestor_pantallas.dibuja();
         break;
 
     default:
@@ -166,7 +144,7 @@ void GestorEstados::mueve() {
                 selectorVS->reset_accion();
                 tipo_VS_seleccionado = TipoVS::AMIGO;
                 estado_actual = JUGANDO;
-                inicializa();
+             
                 break;
 
             case AccionBot::VOLVER:
@@ -202,10 +180,6 @@ void GestorEstados::mueve() {
                 estado_actual = JUGANDO;
                 gestor_pantallas.set_pantalla(nullptr);
                 inicializa();
-            case AccionNivel::VOLVER:
-                selectorNivel->reset_accion();
-                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
-                break;
             default:
                 break;
             }
@@ -283,32 +257,6 @@ void GestorEstados::mueve() {
             default:
                 break;
             }
-    if (estado_actual==CORONACION){
-
-        gestor_pantallas.actualiza();
-
-        Pantalla* pantalla = gestor_pantallas.get_pantalla();
-        PantallaCoronando* selectorCoronando = dynamic_cast<PantallaCoronando*>(pantalla);
-
-        if (selectorCoronando) {
-            switch (selectorCoronando->get_accion()) {
-            case AccionCoronar::CABALLO:
-                mundo.seleccionar_coronacion('c');
-                break;
-            case AccionCoronar::ALFIL:
-                mundo.seleccionar_coronacion('a');
-                break;
-            case AccionCoronar::TORRE:
-                mundo.seleccionar_coronacion('t');
-                break;
-            case AccionCoronar::DAMA:
-                mundo.seleccionar_coronacion('d');
-                break;
-            default:
-                return;
-            }
-            selectorCoronando->reset_accion();
-            estado_actual = JUGANDO;
         }
     }
 }
@@ -322,9 +270,6 @@ void GestorEstados::tecla(unsigned char key) {
     if (estado_actual == JUGANDO && key == 'p') {
         estado_actual = PAUSA;
         gestor_pantallas.set_pantalla(new PantallaPausa(&gestor_pantallas, &mundo));
-    if (estado_actual==CORONACION){
-        gestor_pantallas.tecla(key);
-
     }
 }
 
@@ -335,10 +280,6 @@ void GestorEstados::raton(int button, int state, int x, int y) {
         mundo.gestionar_click(button, state, x, y);
     if (estado_actual == PAUSA)
         gestor_pantallas.raton(button, state, x, y);
-    /*
-    if (estado_actual == CORONACION)
-        gestor_pantallas.raton(button, state, x, y);
-        */
 }
 
 void GestorEstados::mover_raton(int x, int y) {

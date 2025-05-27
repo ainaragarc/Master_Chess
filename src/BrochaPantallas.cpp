@@ -1,7 +1,5 @@
 #include "BrochaPantallas.h"
 #include "freeglut.h"
-#include <string>
-#include "ETSIDI.h"
 
 void BrochaPantallas::limpiar_pantalla(ColorTextos color) {
     glClearColor(color.r, color.g, color.b, 1.0f);
@@ -85,25 +83,4 @@ void BrochaPantallas::configurar_proyeccion_pantalla(double num) {
     gluOrtho2D(-num, num, -num, num); // sistema de coordenadas original para pantallas
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    return button == GLUT_LEFT_BUTTON && state == GLUT_UP;
-}
-
-
-void BrochaPantallas::insertarimagen(const char* direccion){
-    glEnable(GL_TEXTURE_2D);
-    glEnable(GL_BLEND); //Habilita blending
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Configura c�mo se mezcla
-    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture(direccion).id);
-    glDisable(GL_LIGHTING);
-    glBegin(GL_POLYGON);
-    glColor3f(1, 1, 1);
-    double xcoord1{ -2.0 }, xcoord2{ 2.0 };
-    double ycoord1{ -2.0 }, ycoord2{ 2.0 };
-    glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
-    glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
-    glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
-    glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
-    glEnd();
-    glEnable(GL_LIGHTING);
-    glDisable(GL_TEXTURE_2D);
 }

@@ -7,18 +7,16 @@
 
 
 class GestorEstados;//le digo a mundo que existe la clase para no incluir la clase entera (gestorestados contiene a mundo y haria bucle)
-
 class Mundo {
 private:
 	Pieza* pieza_seleccionada = nullptr;
-
 	std::vector<Posicion> casillas_posibles;
 	bool esperando_segundo_click = false;
 	GestorEstados* estado = nullptr;//puntero gestor estados desde mundo para controlar los estados 
 	
 	//establecemos el turno inicial para las blancas
 	Turno turno_actual = Turno::BLANCO;
-	
+
 public:
 	void dibuja();
 	void mueve();
@@ -31,14 +29,10 @@ public:
 	void set_estado(GestorEstados* g) { estado = g; }
 
 	Turno get_turno() const{ return turno_actual; }
-	void cambiar_turno_bot();
+	void cambiar_turno_bot() { turno_actual = cambiar_turno(turno_actual); }
 	void cambiar_turno_prueba() {
 		turno_actual = (turno_actual == Turno::BLANCO) ? Turno::NEGRO : Turno::BLANCO;
 	}
-
-	//FUNCION PARA PODER RECOGER CARACTER DE GESTOR DE ESTADOS
-	void seleccionar_coronacion(unsigned char tipo);
-
 
 	Tablero TABLERO;
 	Brocha BROCHA;

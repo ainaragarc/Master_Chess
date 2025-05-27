@@ -5,7 +5,6 @@ PantallaSeleccionNivel::PantallaSeleccionNivel(GestorPantallas* gestor) : gestor
     botones.push_back({ "NIVEL 1", Coordenada{-0.5f,  0.1f}, Coordenada{0.3f,  0.25f } });
     botones.push_back({ "NIVEL 2",Coordenada{-0.5f, -0.2f}, Coordenada{0.3f, -0.05f } });
     botones.push_back({ "NIVEL 3", Coordenada{-0.5f, -0.5f}, Coordenada{0.3f, -0.35f} });
-    botones.push_back({ "<- VOLVER", Coordenada{-0.5f, -0.8f}, Coordenada{0.3f, -0.65f} });
 }
 
 void PantallaSeleccionNivel::dibuja() {
@@ -31,8 +30,5 @@ void PantallaSeleccionNivel::raton(int button, int state, int x, int y) {
     }
     else if (botones[2].clic_en(click.x, click.y)) {
         accion_pendiente = AccionNivel::Nivel3;
-    }
-    else if (botones[3].clic_en(click.x, click.y)) {
-        accion_pendiente = AccionNivel:: VOLVER;
     }
 }

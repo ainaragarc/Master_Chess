@@ -170,26 +170,14 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
 	 return false; // El rey no está en jaque
  }
-
  Pieza* Tablero::get_pieza_en_pos(const Posicion& pos) {
      for (Pieza* p : piezas_B) if (p->get_posicion() == pos) return p;
      for (Pieza* p : piezas_N) if (p->get_posicion() == pos) return p;
      return nullptr;
  }
 
- bool Tablero::es_ahogado(Color color) {
-	 if (Jaque(color)) return false; // si hay jaque no esta ahogado
-     auto& piezas_propias = (color == BLANCO) ? piezas_B : piezas_N;
-	 for (auto a : piezas_propias) {
-		 if (!(a->posiciones_posibles().empty())) {
-             return false;
-		 }
-	 }
-     return true;
- }
-
  bool Tablero::es_jaque_mate(Color color) {
-     if (!Jaque(color)||es_ahogado(color)) return false;//Se descarta jaque mate si no hay jaque o esta ahogado
+     if (!Jaque(color)) return false;//Se descarta jaque mate si no hay jaque
      //Definimos las piezas propias y enemigas con la comprobación del color actual
      auto& piezas_propias = (color == BLANCO) ? piezas_B : piezas_N;
      auto& piezas_enemigas = (color == BLANCO) ? piezas_N : piezas_B;
@@ -254,44 +242,4 @@ bool Tablero::hay_pieza(Posicion& pos) {
      }
 
      return nullptr; // No se encontró ninguna pieza
- }
- bool Tablero::comprobar_coronacion(Pieza* p) {
-     //COMPROBACIOBN DE PODER CORONAR
-     if (p->get_tipo() != Tipo::PEON) { return false; }
-     int pos;
-     (p->get_color() == Color::BLANCO) ? pos = get_numCas() - 1 : pos = 0;
-     if (p->get_posicion().Fila != pos) { return false; }
-     
-     return true;
-
- }
- 
-
- void Tablero::coronar(Pieza* p, unsigned char& tipo) {
-     //cambio por pieza seleccionada
-     Pieza* pieza = nullptr;
-     switch (tipo) {
-     case 'c':
-         pieza = new Caballo(p->get_color(), p->get_posicion());
-         break;
-     case 't':
-         pieza = new Torre(p->get_color(), p->get_posicion());
-         break;
-     case 'a':
-         pieza = new Alfil(p->get_color(), p->get_posicion());
-         break;
-     case 'd':
-         pieza = new Dama(p->get_color(), p->get_posicion());
-         break;
-     }
-
-     auto& v = (p->get_color() == BLANCO) ? Tablero::get_piezas_B() : Tablero::get_piezas_N();
-     for (auto a = v.begin(); a != v.end(); ++a) {
-         if (*a == p) {
-             delete* a;
-             *a = pieza;
-             p = pieza; //ANTES NO ACTUALIZABA EL PUNTERO, la excepcion deberia estar solucionada
-             break;
-         }
-     }
  }

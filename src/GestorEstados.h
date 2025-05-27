@@ -2,7 +2,7 @@
 #include "Mundo.h"
 #include "GestorPantallas.h"
 
-enum Estado { MENU, JUGANDO, PAUSA, VICTORIA_BLANCO, VICTORIA_NEGRO, TABLAS, CORONACION, FIN };
+enum Estado { MENU, JUGANDO, PAUSA, VICTORIA_BLANCO, VICTORIA_NEGRO, FIN };
 
 class GestorEstados {
 
@@ -29,8 +29,9 @@ public:
     void raton(int button, int state, int x, int y);
     void mover_raton(int x, int y);
 
-    //esto lo elimine ayer sin querer, lo devuelvo
+    //funcion para poder acceder al gestor desde fuera
     GestorPantallas& get_gestor_pantallas() { return gestor_pantallas; }
+
 
     Bot bot;
 };

@@ -4,7 +4,7 @@
 #include "GestorPantallas.h"
 #include <vector>
 
-enum class AccionNivel { NINGUNO, Nivel1, Nivel2, Nivel3, VOLVER };
+enum class AccionNivel { NINGUNO, Nivel1, Nivel2, Nivel3 };
 
 class PantallaSeleccionNivel : public Pantalla {
     GestorPantallas* gestor;

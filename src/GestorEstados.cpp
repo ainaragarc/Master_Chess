@@ -141,7 +141,12 @@ void GestorEstados::mueve() {
                 selectorVS->reset_accion();
                 tipo_VS_seleccionado = TipoVS::AMIGO;
                 estado_actual = JUGANDO;
-          
+             
+                break;
+
+            case AccionBot::VOLVER:
+                selectorVS->reset_accion();
+                gestor_pantallas.set_pantalla(new PantallaSeleccionTablero(&gestor_pantallas));
                 break;
             default:
                 break;
@@ -169,11 +174,6 @@ void GestorEstados::mueve() {
                 tipo_Nivel_seleccionado = NivelBot::NIVEL3;
                 estado_actual = JUGANDO;
                 inicializa();
-
-            case AccionBot::VOLVER:
-                selectorVS->reset_accion();
-                gestor_pantallas.set_pantalla(new PantallaSeleccionTablero(&gestor_pantallas));
-                break;
             default:
                 break;
             }

@@ -4,7 +4,7 @@
 #include "PantallaSeleccionTablero.h"
 #include "PantallaSeleccionBot.h"
 #include "PantallaGameOver.h"
-
+#include "PantallaCoronando.h"
 
 
 #include <iostream>
@@ -33,6 +33,10 @@ void GestorEstados::inicializa() {
     else if (estado_actual == VICTORIA_NEGRO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));
         
+    }
+    else if (estado_actual == CORONACION) {
+        gestor_pantallas.set_pantalla(new PantallaCoronando(&gestor_pantallas));
+
     }
     mundo.set_estado(this);//pasamos informacion del estado actual a mundo
 
@@ -63,6 +67,16 @@ void GestorEstados::dibuja() {
         mundo.dibuja();
         gestor_pantallas.dibuja();
        
+        break;
+    
+    case TABLAS:
+        // dibujar tablas
+        break;
+
+    case CORONACION:
+        //para que se dibuje el tablero tmb
+        mundo.dibuja();
+        gestor_pantallas.dibuja();
         break;
 
     default:
@@ -155,6 +169,35 @@ void GestorEstados::mueve() {
             break;
         }
     }
+
+    if (estado_actual==CORONACION){
+
+        gestor_pantallas.actualiza();
+
+        Pantalla* pantalla = gestor_pantallas.get_pantalla();
+        PantallaCoronando* selectorCoronando = dynamic_cast<PantallaCoronando*>(pantalla);
+
+        if (selectorCoronando) {
+            switch (selectorCoronando->get_accion()) {
+            case AccionCoronar::CABALLO:
+                mundo.seleccionar_coronacion('c');
+                break;
+            case AccionCoronar::ALFIL:
+                mundo.seleccionar_coronacion('a');
+                break;
+            case AccionCoronar::TORRE:
+                mundo.seleccionar_coronacion('t');
+                break;
+            case AccionCoronar::DAMA:
+                mundo.seleccionar_coronacion('d');
+                break;
+            default:
+                return;
+            }
+            selectorCoronando->reset_accion();
+            estado_actual = JUGANDO;
+        }
+    }
 }
 
 
@@ -168,4 +211,6 @@ void GestorEstados::raton(int button, int state, int x, int y) {
         gestor_pantallas.raton(button, state, x, y);
     if (estado_actual == JUGANDO)
         mundo.gestionar_click(button, state, x, y);
+    if (estado_actual == CORONACION)
+        gestor_pantallas.raton(button, state, x, y);
 }

@@ -37,5 +37,5 @@ Coordenada BrochaPantallas::convertir_click_a_opengl(int x, int y) {
 }
 
 bool BrochaPantallas::es_clic_izquierdo(int button, int state) {
-    return button == GLUT_LEFT_BUTTON && state == GLUT_DOWN;
+    return button == GLUT_LEFT_BUTTON && state == GLUT_UP;
 }

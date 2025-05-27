@@ -2,7 +2,6 @@
 #include "pieza.h"
 
 class Rey : public Pieza {
-	bool en_jaque = false;
 
 public:
 	vector<Posicion> posiciones_posibles_conrey() override;
@@ -20,9 +19,6 @@ public:
 		}
 
 	}
-
-	bool esta_en_jaque() const { return en_jaque; }
-	void set_jaque(bool valor) { en_jaque = valor; }
 	bool casilla_me_da_jaque(Posicion & pos);
 
 };

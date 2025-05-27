@@ -7,6 +7,7 @@
 #include "PantallaGameOver.h"
 #include "PantallaCoronando.h"
 #include "PantallaTablas.h"
+#include "PantallaMedallas.h"
 
 
 
@@ -43,6 +44,9 @@ void GestorEstados::inicializa() {
     else if (estado_actual == CORONACION) {
         gestor_pantallas.set_pantalla(new PantallaCoronando(&gestor_pantallas));
 
+    }
+    else if (estado_actual == MEDALLAS) {
+        gestor_pantallas.set_pantalla(new PantallaMedallas(&gestor_pantallas));
     }
     mundo.set_estado(this);//pasamos informacion del estado actual a mundo
 
@@ -86,6 +90,8 @@ void GestorEstados::dibuja() {
         mundo.dibuja();
         gestor_pantallas.dibuja();
         break;
+    case MEDALLAS:
+        gestor_pantallas.dibuja();
 
     default:
         break;
@@ -166,6 +172,11 @@ void GestorEstados::mueve() {
                 inicializa();
                 break;
 
+            case AccionBot::MEDALLAS:
+                selectorVS->reset_accion();
+                gestor_pantallas.set_pantalla(new PantallaMedallas(&gestor_pantallas));
+                break;
+
             case AccionBot::VOLVER:
                 selectorVS->reset_accion();
                 gestor_pantallas.set_pantalla(new PantallaSeleccionTablero(&gestor_pantallas));
@@ -175,6 +186,17 @@ void GestorEstados::mueve() {
             }
         }
 
+        // Aquí la logica para volver a la selección de nivel
+        /*PantallaMedallas* selectorVS = dynamic_cast<PantallaMedallas*>(pantalla);
+        if (selectorVS) {
+            switch (selectorVS->get_accion()) {
+            case AccionBot::VOLVER:
+                selectorVS->reset_accion();
+                gestor_pantallas.set_pantalla(new PantallaSeleccionTablero(&gestor_pantallas));
+                break;
+            default:
+                break;
+            }*/
         // Aquí la logica para seleccionar el nivel del bot
         PantallaSeleccionNivel* selectorNivel = dynamic_cast<PantallaSeleccionNivel*>(pantalla);
         if (selectorNivel) {
@@ -196,6 +218,7 @@ void GestorEstados::mueve() {
                 tipo_Nivel_seleccionado = NivelBot::NIVEL3;
                 estado_actual = JUGANDO;
                 inicializa();
+                break;
             default:
                 break;
             }
@@ -257,6 +280,11 @@ void GestorEstados::mueve() {
             selectorCoronando->reset_accion();
             estado_actual = JUGANDO;
         }
+    }
+    if (estado_actual == MEDALLAS) {
+
+        gestor_pantallas.actualiza();
+        Pantalla* pantalla = gestor_pantallas.get_pantalla();
     }
 }
 

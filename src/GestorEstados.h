@@ -2,7 +2,7 @@
 #include "Mundo.h"
 #include "GestorPantallas.h"
 
-enum Estado { MENU, JUGANDO, PAUSA, VICTORIA_BLANCO, VICTORIA_NEGRO, TABLAS, CORONACION, FIN };
+enum Estado { MENU, JUGANDO, PAUSA, VICTORIA_BLANCO, VICTORIA_NEGRO, TABLAS, CORONACION, FIN, MEDALLAS };
 
 class GestorEstados {
 
@@ -10,7 +10,7 @@ private:
     Estado estado_actual{MENU};//Define el estado del juego en el momento.
     enum class TipoTablero { NINGUNO, BABY, GARDNER }tipo_tablero_seleccionado{ TipoTablero::NINGUNO };//Define el Tipo de Tablero en el momento
     enum class TipoVS { NINGUNO, BOT, AMIGO }tipo_VS_seleccionado{ TipoVS::NINGUNO };//Define el Tipo de Tablero en el momento
-    enum class NivelBot { NINGUNO, NIVEL1, NIVEL2, NIVEL3 } tipo_Nivel_seleccionado{ NivelBot::NINGUNO };
+    enum class NivelBot { NINGUNO, NIVEL1, NIVEL2, NIVEL3, MEDALLAS } tipo_Nivel_seleccionado{ NivelBot::NINGUNO };
     Mundo mundo; 
     GestorPantallas gestor_pantallas;
 

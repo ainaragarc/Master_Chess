@@ -171,3 +171,23 @@ void Mundo::seleccionar_coronacion(unsigned char tipo) {
     }
 
 }
+
+void Mundo::cambiar_turno_bot() {
+
+    Color color_enemigo = (turno_actual == Turno::BLANCO) ? NEGRO : BLANCO;
+
+    if (TABLERO.es_ahogado(color_enemigo)) {
+        std::cout << "REY AHOGADO " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
+        estado->cambiar_estado(Estado::TABLAS);
+        return;
+    }
+
+    if (TABLERO.es_jaque_mate(color_enemigo) && color_enemigo == BLANCO) {
+        std::cout << "ES JAQUEMATE " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
+        estado->cambiar_estado(Estado::VICTORIA_NEGRO);
+        return;
+    }
+
+    turno_actual = cambiar_turno(turno_actual);
+
+}

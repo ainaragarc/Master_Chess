@@ -24,11 +24,9 @@ void Bot::juegaNivel1(Mundo& mundo) { //Mueve piezas de forma random
                 // Guardamos la pieza que había en el destino
                 pieza->mueve(destino); // simulamos el movimiento
                 bool sigue_en_jaque = mundo.TABLERO.Jaque(color_bot); // comprobamos si sigue en jaque
-
-                if (sigue_en_jaque) {
-                    pieza->mueve(origen); // revertimos movimiento
-                }
-                else if (!sigue_en_jaque) {
+                pieza->mueve(origen); // revertimos movimiento
+                
+                if (!sigue_en_jaque) {
                     movimientos_validos.push_back({ pieza, destino }); // Si evita el jaque, se guarda
                 }
             }
@@ -130,10 +128,8 @@ void Bot::juegaNivel2(Mundo& mundo) { // Mueve piezas con prioridad por captura
 
                 pieza->mueve(destino); // simulamos el movimiento
                 bool sigue_en_jaque = mundo.TABLERO.Jaque(color_bot); // comprobamos si sigue en jaque
-
-                if (sigue_en_jaque) {
-                    pieza->mueve(origen); // revertimos movimiento
-                }
+                pieza->mueve(origen); // revertimos movimiento
+                
                 if (!sigue_en_jaque) {
                     movimientos_validos.push_back({ pieza, destino }); // Si evita el jaque, se guarda
                 }

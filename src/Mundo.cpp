@@ -115,7 +115,6 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
                     TABLERO.coronar(pieza_seleccionada, tipo);
                     */
                     estado->cambiar_estado(CORONACION);
-                    turno_actual = cambiar_turno(turno_actual);
 
                     return;
                 }
@@ -164,6 +163,8 @@ void Mundo::seleccionar_coronacion(unsigned char tipo) {
     //se supone que estamos dentro de la pantalla de coronacion, tipo lo establece la pantalla de coronacion
     if (pieza_seleccionada !=nullptr) {
         TABLERO.coronar(pieza_seleccionada, tipo);
+        turno_actual = cambiar_turno(turno_actual);
+
         pieza_seleccionada = nullptr;
         casillas_posibles.clear();
         esperando_segundo_click = false;

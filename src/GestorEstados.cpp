@@ -222,6 +222,11 @@ void GestorEstados::mueve() {
 void GestorEstados::tecla(unsigned char key) {
     if (estado_actual == MENU)
         gestor_pantallas.tecla(key);
+
+    if (estado_actual==CORONACION){
+        gestor_pantallas.tecla(key);
+
+    }
 }
 
 void GestorEstados::raton(int button, int state, int x, int y) {
@@ -229,8 +234,10 @@ void GestorEstados::raton(int button, int state, int x, int y) {
         gestor_pantallas.raton(button, state, x, y);
     if (estado_actual == JUGANDO)
         mundo.gestionar_click(button, state, x, y);
+    /*
     if (estado_actual == CORONACION)
         gestor_pantallas.raton(button, state, x, y);
+        */
 }
 
 void GestorEstados::mover_raton(int x, int y) {

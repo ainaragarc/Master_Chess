@@ -54,11 +54,15 @@ void GestorEstados::dibuja() {
         break;
 
     case VICTORIA_BLANCO:
+        mundo.dibuja();
         gestor_pantallas.dibuja();
+        
         break;
         
     case VICTORIA_NEGRO:
+        mundo.dibuja();
         gestor_pantallas.dibuja();
+       
         break;
 
     default:

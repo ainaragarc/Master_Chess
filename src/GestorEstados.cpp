@@ -27,8 +27,7 @@ void GestorEstados::inicializa() {
     }
     else if (estado_actual == VICTORIA_BLANCO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver("BLANCAS"));
-     
-
+        
     }
     else if (estado_actual == VICTORIA_NEGRO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));

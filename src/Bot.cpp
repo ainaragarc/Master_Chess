@@ -1,4 +1,6 @@
 #include "Bot.h"
+#include "GestorEstados.h"
+
 
 void Bot::juegaNivel1(Mundo& mundo) { //Mueve piezas de forma random
 
@@ -6,6 +8,7 @@ void Bot::juegaNivel1(Mundo& mundo) { //Mueve piezas de forma random
     const std::vector<Pieza*>& equipo_bot = juega_negras ? mundo.TABLERO.get_piezas_N() : mundo.TABLERO.get_piezas_B();
     std::vector<Pieza*>& equipo_jugador = juega_negras ? mundo.TABLERO.get_piezas_B() : mundo.TABLERO.get_piezas_N(); // ¡Corregido! Enemigo real
     Color color_bot = juega_negras ? NEGRO : BLANCO;
+    Color color_enemigo = juega_negras ? BLANCO : NEGRO;
 
     // En el futuro las piezas del bot podemos hacerlas aleatorias
     std::vector<std::pair<Pieza*, Posicion>> movimientos_validos;
@@ -42,6 +45,13 @@ void Bot::juegaNivel1(Mundo& mundo) { //Mueve piezas de forma random
         }
 
         pieza_elegida->mueve(destino);
+        //EL BOT SIEMPRE CORONA A torre
+        if (mundo.TABLERO.comprobar_coronacion(pieza_elegida)) {
+            unsigned char tipo = 't';
+            std::cout << "CORONAR EL PEON, el bot" << std::endl;
+            mundo.TABLERO.coronar(pieza_elegida, tipo);
+        }
+
         std::cout << "Bot salió del jaque moviendo a (" << destino.Fila << ", " << destino.Columna << ")\n";
         mundo.cambiar_turno_bot();
         return; // Importante: evitamos que siga ejecutando el turno como si no hubiera habido jaque
@@ -85,6 +95,14 @@ void Bot::juegaNivel1(Mundo& mundo) { //Mueve piezas de forma random
     }
 
     pieza_elegida->mueve(destino);
+    //EL BOT SIEMPRE CORONA A torre, nivel 1
+    if (mundo.TABLERO.comprobar_coronacion(pieza_elegida)) {
+        unsigned char tipo = 't';
+        std::cout << "CORONAR EL PEON, el bot" << std::endl;
+        mundo.TABLERO.coronar(pieza_elegida, tipo);
+    }
+
+
     std::cout << "Bot movió una pieza a (" << destino.Fila << ", " << destino.Columna << ")\n";
 
     mundo.cambiar_turno_bot();
@@ -133,6 +151,13 @@ void Bot::juegaNivel2(Mundo& mundo) { // Mueve piezas con prioridad por captura
         }
 
         pieza_elegida->mueve(destino);
+        //EL BOT SIEMPRE CORONA A DAMA
+        if (mundo.TABLERO.comprobar_coronacion(pieza_elegida)) {
+            unsigned char tipo = 'd';
+            std::cout << "CORONAR EL PEON, el bot" << std::endl;
+            mundo.TABLERO.coronar(pieza_elegida, tipo);
+        }
+
         std::cout << "Bot salió del jaque moviendo a (" << destino.Fila << ", " << destino.Columna << ")\n";
         mundo.cambiar_turno_bot();
         return; // Importante: evitamos que siga ejecutando el turno como si no hubiera habido jaque
@@ -185,6 +210,14 @@ void Bot::juegaNivel2(Mundo& mundo) { // Mueve piezas con prioridad por captura
     }
 
     pieza_elegida->mueve(destino);
+
+    //EL BOT SIEMPRE CORONA A DAMA
+    if (mundo.TABLERO.comprobar_coronacion(pieza_elegida)) {
+        unsigned char tipo = 'd';
+        std::cout << "CORONAR EL PEON, el bot" << std::endl;
+        mundo.TABLERO.coronar(pieza_elegida, tipo);
+    }
+
     std::cout << "Bot movió una pieza a (" << destino.Fila << ", " << destino.Columna << ")\n";
 
     mundo.cambiar_turno_bot();
@@ -236,6 +269,13 @@ void Bot::juegaNivel3(Mundo& mundo) { // Mueve piezas con prioridad por captura 
         }
 
         pieza_elegida->mueve(destino);
+
+        //EL BOT SIEMPRE CORONA A DAMA, no creo que nunque corone en esta situacion, pero por si acaso justo se da la situacion
+        if (mundo.TABLERO.comprobar_coronacion(pieza_elegida)) {
+            unsigned char tipo = 'd';
+            std::cout << "CORONAR EL PEON, el bot" << std::endl;
+            mundo.TABLERO.coronar(pieza_elegida, tipo);
+        }
         std::cout << "Bot salió del jaque moviendo a (" << destino.Fila << ", " << destino.Columna << ")\n";
         mundo.cambiar_turno_bot();
         return; // Importante: evitamos que siga ejecutando el turno como si no hubiera habido jaque
@@ -301,7 +341,7 @@ void Bot::juegaNivel3(Mundo& mundo) { // Mueve piezas con prioridad por captura 
         }
 
         // Mecanismo de ordenamiento, no se me ocurría cómo usar el sort, vamos a usar selección directa
-        // Está un poco me, pero quiero ver que funcione, ¡MEJORAR EN EL FUTURO!
+        // Está un poco me, pero quiero ver que funcione
         for (int i = 0; i < puntos.size() - 1; i++) {
             int max = i;
             for (int j = i + 1; j < puntos.size(); j++) {
@@ -331,6 +371,14 @@ void Bot::juegaNivel3(Mundo& mundo) { // Mueve piezas con prioridad por captura 
     }
 
     pieza_elegida->mueve(destino);
+
+    //EL BOT SIEMPRE CORONA A DAMA
+    if (mundo.TABLERO.comprobar_coronacion(pieza_elegida)) {
+        unsigned char tipo = 'd';
+        std::cout << "CORONAR EL PEON, el bot" << std::endl;
+        mundo.TABLERO.coronar(pieza_elegida, tipo);
+    }
+
     std::cout << "Bot movió una pieza a (" << destino.Fila << ", " << destino.Columna << ")\n";
 
     mundo.cambiar_turno_bot();

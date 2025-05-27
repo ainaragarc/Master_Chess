@@ -10,13 +10,14 @@ class GestorEstados;//le digo a mundo que existe la clase para no incluir la cla
 class Mundo {
 private:
 	Pieza* pieza_seleccionada = nullptr;
+
 	std::vector<Posicion> casillas_posibles;
 	bool esperando_segundo_click = false;
 	GestorEstados* estado = nullptr;//puntero gestor estados desde mundo para controlar los estados 
 	
 	//establecemos el turno inicial para las blancas
 	Turno turno_actual = Turno::BLANCO;
-
+	
 public:
 	void dibuja();
 	void mueve();
@@ -33,6 +34,10 @@ public:
 	void cambiar_turno_prueba() {
 		turno_actual = (turno_actual == Turno::BLANCO) ? Turno::NEGRO : Turno::BLANCO;
 	}
+
+	//FUNCION PARA PODER RECOGER CARACTER DE GESTOR DE ESTADOS
+	void seleccionar_coronacion(unsigned char tipo);
+
 
 	Tablero TABLERO;
 	Brocha BROCHA;

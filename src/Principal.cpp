@@ -11,6 +11,8 @@ void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void onMouseClick(int button, int state, int x, int y);
 void onMouseMove(int x, int y);
+void keyboard(unsigned char key, int x, int y);
+
 
 int main(int argc, char* argv[])
 {
@@ -27,6 +29,7 @@ int main(int argc, char* argv[])
 	//glutKeyboardFunc(keyboard);//Función para controlar con el teclado
 	glutMouseFunc(onMouseClick);
 	glutPassiveMotionFunc(onMouseMove);
+	glutKeyboardFunc(keyboard);
 
 	juego.inicializa();
 
@@ -72,7 +75,7 @@ void onMouseMove(int x, int y) {
 	juego.mover_raton(x, y);
 }
 
-//void keyboard(unsigned char key, int x, int y) {
+void keyboard(unsigned char key, int x, int y) {
 //	switch (key) {
 //	case 'w': // Mover peón blanco hacia adelante
 //		mundo.TABLERO.get_piezas_B()[2]->get_posicion().Fila+=1;
@@ -88,5 +91,7 @@ void onMouseMove(int x, int y) {
 //		break;
 //	}
 //
-//	glutPostRedisplay();
-//}
+
+	juego.tecla(key);
+	glutPostRedisplay();
+}

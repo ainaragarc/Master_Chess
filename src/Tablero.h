@@ -32,6 +32,7 @@ public:
 
 	static bool Jaque(Color col);
 	bool es_jaque_mate(Color color);
+	bool es_ahogado(Color color);
 	Pieza* comer_pieza(Posicion pos);
 	Pieza* get_pieza_en_pos(const Posicion& pos);
 
@@ -47,7 +48,9 @@ public:
 	friend class Brocha;
 	friend void keyboard(unsigned char key, int x, int y);
 
-
+	//bool para que sea una comprobacion despues del movimiento :)
+	bool comprobar_coronacion(Pieza* p);
+	void coronar(Pieza* p, unsigned char& tipo);
 	//funciones de prueba
 	void Pruebapiezas();
 

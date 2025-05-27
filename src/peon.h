@@ -5,9 +5,6 @@ class Peon : public Pieza {
 	
 public:
 	vector<Posicion> posiciones_posibles_conrey() override;
-	void mueve(Posicion posicion_final)override;
-
-	void promover(unsigned char&) ;
 	
 	Peon(Color equipo, Posicion pos) {//constructor parametrizado
 		cantidad = 5;

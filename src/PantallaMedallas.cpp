@@ -4,17 +4,18 @@
 #include "ETSIDI.h"
 
 PantallaMedallas::PantallaMedallas(GestorPantallas* gestor) : gestor(gestor) {
-    botones.push_back({ "VOLVEr", Coordenada{-0.5f,  0.4f}, Coordenada{0.3f,  0.50f } });
+    botones.push_back({ "<- VOLVER", Coordenada{0.4f, -0.8f}, Coordenada{1.0f, -0.7f} });
 }
 
 
 void PantallaMedallas::dibuja() {
-	
+    // Dibuja fondo
     glEnable(GL_TEXTURE_2D);
-    glEnable(GL_BLEND); //Habilita blending
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Configura cómo se mezcla
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Fondo_medallas.png").id);
     glDisable(GL_LIGHTING);
+
     glBegin(GL_POLYGON);
     glColor3f(1, 1, 1);
     double xcoord1{ -1.0 }, xcoord2{ 1.0 };
@@ -24,12 +25,18 @@ void PantallaMedallas::dibuja() {
     glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
     glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
     glEnd();
-    glEnable(GL_LIGHTING);
+
+    // Restaurar estado para que los botones se vean bien
     glDisable(GL_TEXTURE_2D);
-   // ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
-   /* for (auto& b : botones)
-        b.dibujar();*/
+    glDisable(GL_BLEND);
+    glDisable(GL_LIGHTING); // por si afecta color del botón
+
+    // Dibujo botón
+    for (auto& b : botones)
+        b.dibujar();
 }
+
+
 
 void PantallaMedallas::raton(int button, int state, int x, int y) {
     if (!BrochaPantallas::es_clic_izquierdo(button, state)) return;

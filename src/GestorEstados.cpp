@@ -141,7 +141,7 @@ void GestorEstados::mueve() {
                 selectorVS->reset_accion();
                 tipo_VS_seleccionado = TipoVS::AMIGO;
                 estado_actual = JUGANDO;
-             
+                inicializa();
                 break;
 
             case AccionBot::VOLVER:

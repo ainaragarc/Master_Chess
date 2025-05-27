@@ -25,7 +25,8 @@ public:
     void dibuja();
     void mueve();
     void tecla(unsigned char key);
-    void raton(int button, int state, int x, int y);       
+    void raton(int button, int state, int x, int y);
+    void mover_raton(int x, int y);
 
     Bot bot;
 };

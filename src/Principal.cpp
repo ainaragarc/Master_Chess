@@ -10,6 +10,7 @@ GestorEstados juego;
 void OnDraw(void); //esta funcion sera llamada para dibujar
 void OnTimer(int value); //esta funcion sera llamada cuando transcurra una temporizacion
 void onMouseClick(int button, int state, int x, int y);
+void onMouseMove(int x, int y);
 
 int main(int argc, char* argv[])
 {
@@ -25,6 +26,7 @@ int main(int argc, char* argv[])
 	glutTimerFunc(25, OnTimer, 0);//le decimos que dentro de 25ms llame 1 vez a la funcion OnTimer()
 	//glutKeyboardFunc(keyboard);//Función para controlar con el teclado
 	glutMouseFunc(onMouseClick);
+	glutPassiveMotionFunc(onMouseMove);
 
 	juego.inicializa();
 
@@ -49,14 +51,12 @@ void OnDraw(void)
 	glutSwapBuffers();
 }
 
-
 void onMouseClick(int button, int state, int x, int y)
 {
 	//mundo.BROCHA.mouse(button, state, x, y,mundo.BROCHA.get_longVent(), mundo.TABLERO.get_TamCuad(), mundo.TABLERO.get_numCas(),mundo.TABLERO.get_fila(), mundo.TABLERO.get_columna());
 	juego.raton(button, state, x, y);
 
 }
-
 
 void OnTimer(int value)
 {
@@ -68,6 +68,9 @@ void OnTimer(int value)
 	glutPostRedisplay();
 }
 
+void onMouseMove(int x, int y) {
+	juego.mover_raton(x, y);
+}
 
 //void keyboard(unsigned char key, int x, int y) {
 //	switch (key) {

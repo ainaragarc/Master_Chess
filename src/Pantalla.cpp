@@ -18,7 +18,7 @@ void Pantalla::raton(int button, int state, int x, int y) {
 
 //funcion para dibujar
 void Boton::dibujar() const {
-    ColorTextos colorRecuadro = ColorTextos(0.3f, 0.3f, 0.7f);
+    ColorTextos colorRecuadro = casilla_seleccionada ? ColorTextos(0.5f, 0.5f, 1.0f) : ColorTextos(0.3f, 0.3f, 0.7f);
     BrochaPantallas::dibujar_barra_carga(1.0f, desde, hasta, colorRecuadro);
     float ancho = hasta.x - desde.x;
     float alto = hasta.y - desde.y;
@@ -30,4 +30,10 @@ void Boton::dibujar() const {
 //funcion que devuelve true si se hace click dentro del boton
 bool Boton::clic_en(float x, float y) const {
     return x >= desde.x && x <= hasta.x && y >= desde.y && y <= hasta.y;
+}
+
+void Pantalla::mover_raton(int x, int y) {
+    Coordenada pos = BrochaPantallas::convertir_click_a_opengl(x, y);
+    for (auto& b : botones)
+        b.set_casilla_seleccionada(b.clic_en(pos.x, pos.y));
 }

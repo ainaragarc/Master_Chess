@@ -8,6 +8,7 @@
 #include "PantallaTablas.h"
 
 
+
 #include <iostream>
 
 void GestorEstados::inicializa() {
@@ -124,18 +125,22 @@ void GestorEstados::mueve() {
                 tipo_tablero_seleccionado = TipoTablero::BABY;
 
                 //Mostrar pantalla de selector de modo del bot
-                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
-                
-                
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));               
                 break;
+
             case AccionTablero::TABLERO_GARDNER:
                 selector->reset_accion();
                 tipo_tablero_seleccionado = TipoTablero::GARDNER;
 
                 //Mostrar pantalla de selector de modo del bot
-                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
-                
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));              
                 break;
+
+            case AccionTablero::VOLVER:
+                selector->reset_accion();
+                gestor_pantallas.set_pantalla(new MenuPrincipal(&gestor_pantallas));
+                break;
+
             default:
                 break;
             }
@@ -150,11 +155,17 @@ void GestorEstados::mueve() {
                 estado_actual = JUGANDO;
                 inicializa();
                 break;
+
             case AccionBot::VS_AMIGO:
                 selectorVS->reset_accion();
                 tipo_VS_seleccionado = TipoVS::AMIGO;
                 estado_actual = JUGANDO;
                 inicializa();
+                break;
+
+            case AccionBot::VOLVER:
+                selectorVS->reset_accion();
+                gestor_pantallas.set_pantalla(new PantallaSeleccionTablero(&gestor_pantallas));
                 break;
             default:
                 break;
@@ -220,4 +231,10 @@ void GestorEstados::raton(int button, int state, int x, int y) {
         mundo.gestionar_click(button, state, x, y);
     if (estado_actual == CORONACION)
         gestor_pantallas.raton(button, state, x, y);
+}
+}
+
+void GestorEstados::mover_raton(int x, int y) {
+    if (estado_actual == MENU)
+        gestor_pantallas.mover_raton(x, y);
 }

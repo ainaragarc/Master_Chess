@@ -19,3 +19,7 @@ void GestorPantallas::tecla(unsigned char key) {
 void GestorPantallas::raton(int button, int state, int x, int y) {
     if (pantalla_actual) pantalla_actual->raton(button, state, x, y);
 }
+
+void GestorPantallas::mover_raton(int x, int y) {
+    if (pantalla_actual) pantalla_actual->mover_raton(x, y);
+}

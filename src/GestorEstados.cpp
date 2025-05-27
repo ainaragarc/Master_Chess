@@ -5,6 +5,7 @@
 #include "PantallaSeleccionBot.h"
 #include "PantallaGameOver.h"
 #include "PantallaCoronando.h"
+#include "PantallaTablas.h"
 
 
 #include <iostream>
@@ -33,6 +34,10 @@ void GestorEstados::inicializa() {
     else if (estado_actual == VICTORIA_NEGRO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));
         
+    }
+    else if (estado_actual == TABLAS) {
+        gestor_pantallas.set_pantalla(new PantallaTablas());
+
     }
     else if (estado_actual == CORONACION) {
         gestor_pantallas.set_pantalla(new PantallaCoronando(&gestor_pantallas));
@@ -70,7 +75,9 @@ void GestorEstados::dibuja() {
         break;
     
     case TABLAS:
-        // dibujar tablas
+        mundo.dibuja();
+        gestor_pantallas.dibuja();
+
         break;
 
     case CORONACION:

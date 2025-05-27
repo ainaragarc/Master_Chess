@@ -196,10 +196,21 @@ void Bot::juegaNivel2(Mundo& mundo) { // Mueve piezas con prioridad por captura
         !movimientos_captura.empty() ? movimientos_captura : movimientos_validos;
 
     std::srand(static_cast<unsigned>(std::time(nullptr))); // Para meterle aleatoriedad basándose en el tiempo
-    int indice = std::rand() % movimientos.size(); // Para que esté dentro de nuestro rango usamos %
+    int indice = std::rand() % movimientos_validos.size(); // Para que esté dentro de nuestro rango usamos %
 
-    Pieza* pieza_elegida = movimientos[indice].first; // AQUI IBA INDICE EN LOS CORCHETES [indice]
-    Posicion destino = movimientos[indice].second;
+    Pieza* pieza_elegida = 0;
+    Posicion destino = { 0,0 };
+
+    if (!movimientos_captura.empty()) {
+
+        pieza_elegida = movimientos[indice].first;
+        destino = movimientos[indice].second;
+    }
+    else if (movimientos_captura.empty()) {
+
+        pieza_elegida = movimientos_validos[indice].first;
+        destino = movimientos_validos[indice].second;
+    }
 
     if (mundo.TABLERO.hay_pieza(destino)) {
         mundo.TABLERO.comer_pieza(destino);
@@ -238,7 +249,6 @@ void Bot::juegaNivel3(Mundo& mundo) { // Mueve piezas con prioridad por captura 
 
             for (const Posicion& destino : movimientos) {
                 // Guardamos la pieza que había en el destino
-
 
                 pieza->mueve(destino); // simulamos el movimiento
                 bool sigue_en_jaque = mundo.TABLERO.Jaque(color_bot); // comprobamos si sigue en jaque
@@ -359,8 +369,22 @@ void Bot::juegaNivel3(Mundo& mundo) { // Mueve piezas con prioridad por captura 
 
 
     // Escogemos el que tiene mayor puntuación, o sea el 0
-    Pieza* pieza_elegida = movimientos[0].first;
-    Posicion destino = movimientos[0].second;
+    
+    Pieza* pieza_elegida = 0;
+    Posicion destino = { 0,0 };
+
+    if (!movimientos_captura.empty()) {
+        pieza_elegida = movimientos[0].first;
+        destino = movimientos[0].second;
+    }
+    else if (movimientos_captura.empty()) {
+
+        std::srand(static_cast<unsigned>(std::time(nullptr))); // Para meterle aleatoriedad basándose en el tiempo
+        int indice = std::rand() % movimientos_validos.size(); // Para que esté dentro de nuestro rango usamos %
+
+        pieza_elegida = movimientos_validos[indice].first;
+        destino = movimientos_validos[indice].second;
+    }
 
     if (mundo.TABLERO.hay_pieza(destino)) {
         mundo.TABLERO.comer_pieza(destino);

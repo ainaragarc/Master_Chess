@@ -232,7 +232,6 @@ void GestorEstados::raton(int button, int state, int x, int y) {
     if (estado_actual == CORONACION)
         gestor_pantallas.raton(button, state, x, y);
 }
-}
 
 void GestorEstados::mover_raton(int x, int y) {
     if (estado_actual == MENU)

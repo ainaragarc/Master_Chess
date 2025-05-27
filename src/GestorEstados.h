@@ -28,5 +28,8 @@ public:
     void raton(int button, int state, int x, int y);
     void mover_raton(int x, int y);
 
+    //esto lo elimine ayer sin querer, lo devuelvo
+    GestorPantallas& get_gestor_pantallas() { return gestor_pantallas; }
+
     Bot bot;
 };

@@ -2,6 +2,7 @@
 #include "Pantalla.h"
 #include <string>
 #include "GestorPantallas.h"
+#include "GestorEstados.h"  
 #include <vector>
 
 
@@ -10,7 +11,6 @@ enum class AccionCoronar { NINGUNO, CABALLO, TORRE, DAMA, ALFIL };
 class PantallaCoronando : public Pantalla {
 private:
     std::string mensaje;
-    std::vector<Boton> botones;
     GestorPantallas* gestor;
     AccionCoronar accion_pendiente = AccionCoronar::NINGUNO;
 

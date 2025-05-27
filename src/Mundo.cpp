@@ -75,7 +75,6 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
             }
 
             pieza_seleccionada->mueve(destino);
-            estado->cambiar_estado(TABLAS);
 
             // Comprobar si el rey propio sigue en jaque
             if (TABLERO.Jaque(pieza_seleccionada->get_color())) {

@@ -290,6 +290,7 @@ bool Tablero::hay_pieza(Posicion& pos) {
          if (*a == p) {
              delete* a;
              *a = pieza;
+             p = pieza; //ANTES NO ACTUALIZABA EL PUNTERO, la excepcion deberia estar solucionada
              break;
          }
      }

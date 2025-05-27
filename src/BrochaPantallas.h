@@ -18,4 +18,6 @@ public:
 
     //compruba si se ha hecho cllick
     static bool es_clic_izquierdo(int button, int state);
+
+    static void insertarimagen(const char* direccion);
 };

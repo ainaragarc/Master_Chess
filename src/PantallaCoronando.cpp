@@ -37,10 +37,7 @@ void PantallaCoronando::tecla(unsigned char key) {
 }
 
 void PantallaCoronando::dibuja() {
-    ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
-    BrochaPantallas::dibujar_texto("SELECCIONA PIEZA PARA CORONAR", Coordenada{ -2.3f, 3.f }, colorTexto);
-    BrochaPantallas::dibujar_texto("Pulsa: C - CABALLO, A - ALFIL, T - TORRE, D - DAMA", Coordenada{ -2.8f, 2.7f }, colorTexto);
-
+	BrochaPantallas::insertarimagen("imagenes/coronacion.png");
     /*
     for (auto& b : botones)
         b.dibujar();

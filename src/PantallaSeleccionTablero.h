@@ -5,12 +5,13 @@
 enum class AccionTablero {
     NINGUNO,
     TABLERO_BABY,
-    TABLERO_GARDNER
+    TABLERO_GARDNER,
+    VOLVER
 };
 class PantallaSeleccionTablero : public Pantalla
 {
     GestorPantallas* gestor;
-    std::vector<Boton> botones;
+    //std::vector<Boton> botones;
     AccionTablero accion_pendiente = AccionTablero::NINGUNO;//inicializamos el estado en ninguna accion (espera a que selecciones una opcion)
 
 

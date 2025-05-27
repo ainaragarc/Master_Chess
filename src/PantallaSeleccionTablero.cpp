@@ -4,6 +4,7 @@
 PantallaSeleccionTablero::PantallaSeleccionTablero(GestorPantallas* gestor) : gestor(gestor) {
     botones.push_back({ "TABLERO BABY", Coordenada{-0.5f,  0.1f}, Coordenada{0.3f,  0.25f } });
     botones.push_back({ "TABLERO GARDNER",Coordenada{-0.5f, -0.2f}, Coordenada{0.3f, -0.05f }});
+    botones.push_back({ "<- VOLVER", Coordenada{-0.5f, -0.45f}, Coordenada{0.3f, -0.30f} });
 }
 
 void PantallaSeleccionTablero::dibuja() {
@@ -24,5 +25,8 @@ void PantallaSeleccionTablero::raton(int button, int state, int x, int y) {
     }
     else if (botones[1].clic_en(click.x, click.y)) {
         accion_pendiente = AccionTablero::TABLERO_GARDNER;
+    }
+    else if (botones[2].clic_en(click.x, click.y)) {
+        accion_pendiente = AccionTablero::VOLVER;
     }
 }

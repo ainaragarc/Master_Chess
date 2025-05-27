@@ -28,8 +28,7 @@ void GestorEstados::inicializa() {
     }
     else if (estado_actual == VICTORIA_BLANCO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver("BLANCAS"));
-     
-
+        
     }
     else if (estado_actual == VICTORIA_NEGRO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));
@@ -55,11 +54,15 @@ void GestorEstados::dibuja() {
         break;
 
     case VICTORIA_BLANCO:
+        mundo.dibuja();
         gestor_pantallas.dibuja();
+        
         break;
         
     case VICTORIA_NEGRO:
+        mundo.dibuja();
         gestor_pantallas.dibuja();
+       
         break;
 
     default:
@@ -100,18 +103,22 @@ void GestorEstados::mueve() {
                 tipo_tablero_seleccionado = TipoTablero::BABY;
 
                 //Mostrar pantalla de selector de modo del bot
-                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
-                
-                
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));               
                 break;
+
             case AccionTablero::TABLERO_GARDNER:
                 selector->reset_accion();
                 tipo_tablero_seleccionado = TipoTablero::GARDNER;
 
                 //Mostrar pantalla de selector de modo del bot
-                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
-                
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));              
                 break;
+
+            case AccionTablero::VOLVER:
+                selector->reset_accion();
+                gestor_pantallas.set_pantalla(new MenuPrincipal(&gestor_pantallas));
+                break;
+
             default:
                 break;
             }
@@ -129,6 +136,7 @@ void GestorEstados::mueve() {
                 gestor_pantallas.set_pantalla(new PantallaSeleccionNivel(&gestor_pantallas));
                 
                 break;
+
             case AccionBot::VS_AMIGO:
                 selectorVS->reset_accion();
                 tipo_VS_seleccionado = TipoVS::AMIGO;
@@ -161,6 +169,11 @@ void GestorEstados::mueve() {
                 tipo_Nivel_seleccionado = NivelBot::NIVEL3;
                 estado_actual = JUGANDO;
                 inicializa();
+
+            case AccionBot::VOLVER:
+                selectorVS->reset_accion();
+                gestor_pantallas.set_pantalla(new PantallaSeleccionTablero(&gestor_pantallas));
+                break;
             default:
                 break;
             }
@@ -207,4 +220,9 @@ void GestorEstados::raton(int button, int state, int x, int y) {
         gestor_pantallas.raton(button, state, x, y);
     if (estado_actual == JUGANDO)
         mundo.gestionar_click(button, state, x, y);
+}
+
+void GestorEstados::mover_raton(int x, int y) {
+    if (estado_actual == MENU)
+        gestor_pantallas.mover_raton(x, y);
 }

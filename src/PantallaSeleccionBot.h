@@ -3,11 +3,11 @@
 #include "GestorPantallas.h"
 #include <vector>
 
-enum class AccionBot {NINGUNO, VS_BOT, VS_AMIGO};
+enum class AccionBot {NINGUNO, VS_BOT, VS_AMIGO, VOLVER};
 
 class PantallaSeleccionBot : public Pantalla {
     GestorPantallas* gestor;
-    std::vector<Boton> botones;
+    //std::vector<Boton> botones;
     AccionBot accion_pendiente = AccionBot::NINGUNO;    //inicializamos el estado en ninguna accion (espera a que selecciones una opcion)
 
 public: 

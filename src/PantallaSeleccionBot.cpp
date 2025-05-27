@@ -4,6 +4,7 @@
 PantallaSeleccionBot::PantallaSeleccionBot(GestorPantallas* gestor) : gestor(gestor) {
     botones.push_back({ "VS BOT", Coordenada{-0.5f,  0.1f}, Coordenada{0.3f,  0.25f } });
     botones.push_back({ "VS AMIGO",Coordenada{-0.5f, -0.2f}, Coordenada{0.3f, -0.05f } });
+    botones.push_back({ "<- VOLVER", Coordenada{-0.5f, -0.45f}, Coordenada{0.3f, -0.30f} });
 }
 
 void PantallaSeleccionBot::dibuja() {
@@ -24,5 +25,8 @@ void PantallaSeleccionBot::raton(int button, int state, int x, int y) {
     }
     else if (botones[1].clic_en(click.x, click.y)) {
         accion_pendiente = AccionBot::VS_AMIGO;
+    }
+    else if (botones[2].clic_en(click.x, click.y)) {
+        accion_pendiente = AccionBot::VOLVER;
     }
 }

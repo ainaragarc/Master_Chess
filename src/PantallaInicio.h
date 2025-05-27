@@ -16,6 +16,7 @@ public:
     void actualiza() override;
     //Para seleccionar la pantalla de selección de tablero
     void set_pantallaselect_tablero();
+    void mover_raton(int, int) override {} //funcion vacia para que no se use la funcion mover_raton
 
     PantallaInicio(GestorPantallas* gestor): gestor(gestor) {}//constructor que recibe un puntero
 };

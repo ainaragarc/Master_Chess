@@ -144,7 +144,7 @@ void GestorEstados::mueve() {
         {
         case GestorEstados::TipoVS::BOT:
             if (mundo.get_turno() == Turno::NEGRO) { // Solo juega el bot si es su turno
-                bot.juega(mundo);
+                bot.juegaNivel2(mundo);
             }
             break;
         default:

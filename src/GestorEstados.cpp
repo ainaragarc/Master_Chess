@@ -78,6 +78,7 @@ void GestorEstados::dibuja() {
 void GestorEstados::mueve() {
     if (estado_actual == MENU) {
         gestor_pantallas.actualiza();
+                
 
         Pantalla* pantalla = gestor_pantallas.get_pantalla();
         MenuPrincipal* menu = dynamic_cast<MenuPrincipal*>(pantalla);
@@ -238,8 +239,12 @@ void GestorEstados::mueve() {
             case AccionPausa::RENDIRSE:
                 pausa->reset_accion();
                 //ir a gameover y luego ir a menu
-                estado_actual = MENU;
-                
+                if (mundo.get_turno()==Turno::BLANCO) { estado_actual = VICTORIA_NEGRO; }
+                else if (mundo.get_turno() == Turno::NEGRO) { estado_actual = VICTORIA_BLANCO; }
+
+                //SE DEBERIA PODER VOVER DESDE VICTORIA AL MENU Y BORRAR LAS FICHAS
+                //NO VA AQUI
+                //mundo.TABLERO.eliminar_piezas();
                 //reset tablero----
                 inicializa();
                 break;

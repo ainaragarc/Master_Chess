@@ -50,6 +50,6 @@ public:
 
 	//funciones de prueba
 	void Pruebapiezas();
-
+	void eliminar_piezas();
 
 };

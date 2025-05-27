@@ -244,3 +244,18 @@ bool Tablero::hay_pieza(Posicion& pos) {
 
      return nullptr; // No se encontró ninguna pieza
  }
+
+ // Función para eliminar todas las piezas de ambos equipos y liberar memoria, se deberia implementar entre game over y menu!!!!
+ void Tablero::eliminar_piezas() {
+     /*
+     // Limpiamos las piezas de ambos equipos
+     for (Pieza* p : Tablero::get_piezas_B()) {
+         delete p; // Liberamos la memoria de cada pieza
+     }
+     Tablero::get_piezas_B().clear(); // Limpiamos el vector
+     for (Pieza* p : Tablero::get_piezas_N()) {
+         delete p; // Liberamos la memoria de cada pieza
+     }
+     Tablero::get_piezas_N().clear(); // Limpiamos el vector
+     */
+ }

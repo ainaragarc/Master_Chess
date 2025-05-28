@@ -7,6 +7,7 @@
 
 
 class GestorEstados;//le digo a mundo que existe la clase para no incluir la clase entera (gestorestados contiene a mundo y haria bucle)
+
 class Mundo {
 private:
 	Pieza* pieza_seleccionada = nullptr;
@@ -30,7 +31,7 @@ public:
 	void set_estado(GestorEstados* g) { estado = g; }
 
 	Turno get_turno() const{ return turno_actual; }
-	void cambiar_turno_bot() { turno_actual = cambiar_turno(turno_actual); }
+	void cambiar_turno_bot();
 	void cambiar_turno_prueba() {
 		turno_actual = (turno_actual == Turno::BLANCO) ? Turno::NEGRO : Turno::BLANCO;
 	}

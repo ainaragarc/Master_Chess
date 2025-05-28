@@ -31,7 +31,16 @@ void GestorEstados::inicializa() {
     }
     else if (estado_actual == VICTORIA_BLANCO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver("BLANCAS"));
-        
+        Pantalla* pantalla = gestor_pantallas.get_pantalla();
+        PantallaGameOver* selectorover = dynamic_cast<PantallaGameOver*>(pantalla);
+        if (selectorover) {
+            switch (selectorover->get_accion()) {
+            case Game_over::VOLVER:
+                selectorover->reset_accion();
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
+                break;
+            }
+        }
     }
     else if (estado_actual == VICTORIA_NEGRO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));
@@ -186,6 +195,16 @@ void GestorEstados::mueve() {
             }
         }
 
+        // Aquí la logica para la pantalla de medallas
+        PantallaMedallas* selectormedallas = dynamic_cast<PantallaMedallas*>(pantalla);
+        if (selectormedallas) {
+            switch (selectormedallas->get_accion()) {
+            case Medallas::VOLVER:
+                selectormedallas->reset_accion();
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
+                break;
+            }
+        }
         // Aquí la logica para volver a la selección de nivel
         /*PantallaMedallas* selectorVS = dynamic_cast<PantallaMedallas*>(pantalla);
         if (selectorVS) {

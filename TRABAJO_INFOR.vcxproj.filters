@@ -76,6 +76,12 @@
     <ClCompile Include="src\Turno.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
+    <ClCompile Include="src\PantallaPausa.cpp">
+      <Filter>Archivos de origen\pantallas</Filter>
+    </ClCompile>
+    <ClCompile Include="src\PantallaMedallas.cpp">
+      <Filter>Archivos de origen\pantallas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Bot.h">
@@ -151,6 +157,12 @@
       <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
     <ClInclude Include="src\PantallaSeleccionBot.h">
+      <Filter>Archivos de encabezado\pantallas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PantallaPausa.h">
+      <Filter>Archivos de encabezado\pantallas</Filter>
+    </ClInclude>
+    <ClInclude Include="src\PantallaMedallas.h">
       <Filter>Archivos de encabezado\pantallas</Filter>
     </ClInclude>
   </ItemGroup>

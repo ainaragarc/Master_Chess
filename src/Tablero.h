@@ -55,5 +55,8 @@ public:
 	//funciones de prueba
 	void Pruebapiezas();
 
+	//PARA RESETEAR EL VECTOR DE LAS PIEZAS ANTES DEL VOLVER AL MENU PRINCIPAL
+	void eliminar_piezas();
+
 
 };

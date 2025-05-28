@@ -237,6 +237,10 @@ void GestorEstados::mueve() {
                 tipo_Nivel_seleccionado = NivelBot::NIVEL3;
                 estado_actual = JUGANDO;
                 inicializa();
+
+            case AccionNivel::VOLVER:
+                selectorNivel->reset_accion();
+                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
                 break;
             default:
                 break;

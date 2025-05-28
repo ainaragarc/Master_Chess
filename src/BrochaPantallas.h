@@ -20,4 +20,8 @@ public:
     static bool es_clic_izquierdo(int button, int state);
 
     static void insertarimagen(const char* direccion, double x1, double y1, double x2, double y2);
+
+    static void dibujar_recuadro(Coordenada desde, Coordenada hasta, ColorTextos color, float opacidad = 1.0f);
+
+    static void configurar_proyeccion_pantalla(double num);
 };

@@ -88,7 +88,7 @@ void GestorEstados::dibuja() {
         break;
 
     case PAUSA:
-        // dibujar pausa
+        gestor_pantallas.dibuja();
         break;
 
     case VICTORIA_BLANCO:
@@ -334,13 +334,6 @@ void GestorEstados::mueve() {
             switch (pausa->get_accion()) {
             case AccionPausa::REANUDAR:
                 pausa->reset_accion();
-                /*
-                glMatrixMode(GL_PROJECTION);
-                glLoadIdentity();
-                gluOrtho2D(-4.0, 4.0, -4.0, 4.0); // sistema de coordenadas original para pantallas
-                glMatrixMode(GL_MODELVIEW);
-                glLoadIdentity();
-                */
                 estado_actual = JUGANDO;
                 gestor_pantallas.set_pantalla(nullptr);
                 break;
@@ -386,6 +379,11 @@ void GestorEstados::tecla(unsigned char key) {
     if (estado_actual == MENU)
         gestor_pantallas.tecla(key);
 
+    if (estado_actual == JUGANDO && key == 'p') {
+        estado_actual = PAUSA;
+        gestor_pantallas.set_pantalla(new PantallaPausa(&gestor_pantallas, &mundo));
+    }
+
     if (estado_actual==CORONACION){
         gestor_pantallas.tecla(key);
 
@@ -397,6 +395,8 @@ void GestorEstados::raton(int button, int state, int x, int y) {
         gestor_pantallas.raton(button, state, x, y);
     if (estado_actual == JUGANDO)
         mundo.gestionar_click(button, state, x, y);
+    if (estado_actual == PAUSA)
+        gestor_pantallas.raton(button, state, x, y);
     /*
     if (estado_actual == CORONACION)
         gestor_pantallas.raton(button, state, x, y);
@@ -405,5 +405,7 @@ void GestorEstados::raton(int button, int state, int x, int y) {
 
 void GestorEstados::mover_raton(int x, int y) {
     if (estado_actual == MENU)
+        gestor_pantallas.mover_raton(x, y);
+    if (estado_actual == PAUSA)
         gestor_pantallas.mover_raton(x, y);
 }

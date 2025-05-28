@@ -10,7 +10,7 @@ PantallaSeleccionTablero::PantallaSeleccionTablero(GestorPantallas* gestor) : ge
 void PantallaSeleccionTablero::dibuja() {
     BrochaPantallas::configurar_proyeccion_pantalla(1.0);
 
-    BrochaPantallas::limpiar_pantalla(ColorTextos(0.15f, 0.15f, 0.15f));
+    BrochaPantallas::limpiar_pantalla(ColorTextos(0.1f, 0.1f, 0.2f));
     ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
     BrochaPantallas::dibujar_texto("SELECCIONA TABLERO", Coordenada{ -0.4f, 0.4f }, colorTexto);
     for (auto& b : botones)

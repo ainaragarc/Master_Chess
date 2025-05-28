@@ -1,13 +1,10 @@
 #include "brocha.h"
+#include "BrochaPantallas.h"
 
 
 void Brocha::dibuja_t(int numCasillas, float TamCuadrado) {
 
-    glMatrixMode(GL_PROJECTION);
-    glLoadIdentity();
-    gluOrtho2D(-4.0, 4.0, -4.0, 4.0); // sistema de coordenadas original para pantallas
-    glMatrixMode(GL_MODELVIEW);
-    glLoadIdentity();
+    BrochaPantallas::configurar_proyeccion_pantalla(4.0);
 
     float BOARD_OFFSET = -((numCasillas * TamCuadrado) / 2.0f);
 

@@ -16,8 +16,17 @@
 void GestorEstados::inicializa() {
     if (estado_actual == MENU) {
         gestor_pantallas.set_pantalla(new PantallaInicio(&gestor_pantallas));
+        
+        //Activamos musica menu
+            ETSIDI::playMusica("sonidos/Menu Pokemon.mp3");
     }
     else if (estado_actual == JUGANDO) {
+        //Desactivamos musica menu
+        ETSIDI::stopMusica();
+
+        //Activamos musica batalla
+        ETSIDI::playMusica("sonidos/Musica batalla.mp3");
+
         switch (tipo_tablero_seleccionado) {
         case TipoTablero::BABY:
             mundo.inicializa_tablero_baby();
@@ -56,6 +65,11 @@ void GestorEstados::inicializa() {
     }
     else if (estado_actual == MEDALLAS) {
         gestor_pantallas.set_pantalla(new PantallaMedallas(&gestor_pantallas));
+        //Desactivamos musica menu
+        ETSIDI::stopMusica();
+
+        //Activamos musica medallas
+        ETSIDI::playMusica("sonidos/Musica medallas.mp3");
     }
     mundo.set_estado(this);//pasamos informacion del estado actual a mundo
 
@@ -117,6 +131,7 @@ void GestorEstados::mueve() {
         MenuPrincipal* menu = dynamic_cast<MenuPrincipal*>(pantalla);
 
         if (menu) {
+            
             switch (menu->get_accion()) {
             case AccionMenu::NUEVA_PARTIDA:
                 menu->reset_accion();
@@ -131,7 +146,7 @@ void GestorEstados::mueve() {
             }
         }
 
-       
+       //Pantalla Seleccion Tablero
         PantallaSeleccionTablero* selector = dynamic_cast<PantallaSeleccionTablero*>(pantalla);
         if (selector) {
             switch (selector->get_accion()) {
@@ -162,6 +177,7 @@ void GestorEstados::mueve() {
         }
         
         // Aquí la logica para seleccionar el tipo de contringante
+        //Pantalla Seleccion Bot
         PantallaSeleccionBot* selectorVS = dynamic_cast<PantallaSeleccionBot*>(pantalla);
         if (selectorVS) {
             switch (selectorVS->get_accion()) {
@@ -251,9 +267,12 @@ void GestorEstados::mueve() {
     if (estado_actual == JUGANDO) {
         mundo.mueve();
         // Turno del bot (negras)
+        
         switch (tipo_VS_seleccionado)
         {
+            
         case GestorEstados::TipoVS::BOT:
+           
             if (mundo.get_turno() == Turno::NEGRO) { // Solo juega el bot si es su turno
                 switch (tipo_Nivel_seleccionado)
                 {

@@ -1,4 +1,5 @@
 #include "GestorPantallas.h"
+#include "ETSIDI.h"
 
 void GestorPantallas::set_pantalla(Pantalla* nueva) {
     pantalla_actual = nueva;

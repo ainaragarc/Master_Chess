@@ -13,6 +13,7 @@ private:
     enum class NivelBot { NINGUNO, NIVEL1, NIVEL2, NIVEL3, MEDALLAS } tipo_Nivel_seleccionado{ NivelBot::NINGUNO };
     Mundo mundo; 
     GestorPantallas gestor_pantallas;
+    bool musica_menu_activada = false;
 
 public:
     

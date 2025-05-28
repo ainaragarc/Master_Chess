@@ -38,6 +38,7 @@
     <ClCompile Include="src\Pantalla.cpp" />
     <ClCompile Include="src\PantallaInicio.cpp" />
     <ClCompile Include="src\PantallaTablas.cpp" />
+    <ClCompile Include="src\PantallaPausa.cpp" />
     <ClCompile Include="src\peon.cpp" />
     <ClCompile Include="src\pieza.cpp" />
     <ClCompile Include="src\Principal.cpp" />
@@ -66,6 +67,7 @@
     <ClInclude Include="src\Pantalla.h" />
     <ClInclude Include="src\PantallaInicio.h" />
     <ClInclude Include="src\PantallaTablas.h" />
+    <ClInclude Include="src\PantallaPausa.h" />
     <ClInclude Include="src\peon.h" />
     <ClInclude Include="src\pieza.h" />
     <ClInclude Include="src\propiedades.h" />

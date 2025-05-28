@@ -2,6 +2,13 @@
 
 
 void Brocha::dibuja_t(int numCasillas, float TamCuadrado) {
+
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-4.0, 4.0, -4.0, 4.0); // sistema de coordenadas original para pantallas
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+
     float BOARD_OFFSET = -((numCasillas * TamCuadrado) / 2.0f);
 
     bool white = true;

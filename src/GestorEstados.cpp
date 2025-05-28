@@ -8,6 +8,7 @@
 #include "PantallaCoronando.h"
 #include "PantallaTablas.h"
 #include "PantallaMedallas.h"
+#include "PantallaPausa.h"
 
 
 
@@ -323,6 +324,56 @@ void GestorEstados::mueve() {
             estado_actual = JUGANDO;
         }
     }
+
+    if (estado_actual == PAUSA) {
+        gestor_pantallas.actualiza();
+        //auto* pausa = dynamic_cast<PantallaPausa*>(gestor_pantallas.get_pantalla());
+        Pantalla* pantalla = gestor_pantallas.get_pantalla();
+        PantallaPausa* pausa = dynamic_cast<PantallaPausa*>(pantalla);
+        if (pausa) {
+            switch (pausa->get_accion()) {
+            case AccionPausa::REANUDAR:
+                pausa->reset_accion();
+                /*
+                glMatrixMode(GL_PROJECTION);
+                glLoadIdentity();
+                gluOrtho2D(-4.0, 4.0, -4.0, 4.0); // sistema de coordenadas original para pantallas
+                glMatrixMode(GL_MODELVIEW);
+                glLoadIdentity();
+                */
+                estado_actual = JUGANDO;
+                gestor_pantallas.set_pantalla(nullptr);
+                break;
+
+            case AccionPausa::RENDIRSE:
+                pausa->reset_accion();
+                //ir a gameover y luego ir a menu
+                if (mundo.get_turno() == Turno::BLANCO) { estado_actual = VICTORIA_NEGRO; }
+                else if (mundo.get_turno() == Turno::NEGRO) { estado_actual = VICTORIA_BLANCO; }
+
+                //SE DEBERIA PODER VOVER DESDE VICTORIA AL MENU Y BORRAR LAS FICHAS
+                //NO VA AQUI
+                //mundo.TABLERO.eliminar_piezas();
+                //reset tablero----
+                inicializa();
+                break;
+
+            case AccionPausa::GUARDAR:
+                pausa->reset_accion();
+                std::cout << "[Guardar partida] aún no implementado\n";
+                break;
+
+            case AccionPausa::SALIR_JUEGO:
+                pausa->reset_accion();
+                exit(0);
+                break;
+
+            default:
+                break;
+            }
+        }
+    }
+
     if (estado_actual == MEDALLAS) {
 
         gestor_pantallas.actualiza();

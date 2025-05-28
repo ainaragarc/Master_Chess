@@ -33,6 +33,7 @@ public:
 	static bool Jaque(Color col);
 	bool es_jaque_mate(Color color);
 	bool es_ahogado(Color color);
+	bool solo_quedan_reyes();
 	Pieza* comer_pieza(Posicion pos);
 	Pieza* get_pieza_en_pos(const Posicion& pos);
 

@@ -37,7 +37,7 @@ void PantallaCoronando::tecla(unsigned char key) {
 }
 
 void PantallaCoronando::dibuja() {
-	BrochaPantallas::insertarimagen("imagenes/coronacion.png");
+	BrochaPantallas::insertarimagen("imagenes/coronacion.png", 2.0, 2.0, 2.0, 2.0);
     /*
     for (auto& b : botones)
         b.dibujar();

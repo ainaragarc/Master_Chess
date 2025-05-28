@@ -189,6 +189,19 @@ bool Tablero::hay_pieza(Posicion& pos) {
      return true;
  }
 
+ bool Tablero::solo_quedan_reyes() {
+     //si solo quedan reyes es tablas
+
+	 int n_blancas = 0, n_negras = 0;
+	 for (Pieza* a : piezas_B) {
+		 if (a->get_tipo() != Tipo::REY) { n_blancas++;}
+	 }
+	 for (Pieza* a : piezas_N) {
+		 if (a->get_tipo() != Tipo::REY) {n_negras++;}
+	 }
+	 return (n_blancas == 0 && n_negras == 0);
+ }
+
  bool Tablero::es_jaque_mate(Color color) {
      if (!Jaque(color)||es_ahogado(color)) return false;//Se descarta jaque mate si no hay jaque o esta ahogado
      //Definimos las piezas propias y enemigas con la comprobación del color actual

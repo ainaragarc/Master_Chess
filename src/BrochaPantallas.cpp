@@ -43,7 +43,7 @@ bool BrochaPantallas::es_clic_izquierdo(int button, int state) {
 }
 
 
-void BrochaPantallas::insertarimagen(const char* direccion){
+void BrochaPantallas::insertarimagen(const char* direccion, double x1, double y1, double x2, double y2){
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_BLEND); //Habilita blending
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA); //Configura cómo se mezcla
@@ -51,8 +51,8 @@ void BrochaPantallas::insertarimagen(const char* direccion){
     glDisable(GL_LIGHTING);
     glBegin(GL_POLYGON);
     glColor3f(1, 1, 1);
-    double xcoord1{ -2.0 }, xcoord2{ 2.0 };
-    double ycoord1{ -2.0 }, ycoord2{ 2.0 };
+    double xcoord1{ -x1 }, xcoord2{ x2 };
+    double ycoord1{ -y1 }, ycoord2{ y2 };
     glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
     glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
     glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);

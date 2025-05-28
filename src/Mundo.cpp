@@ -106,25 +106,21 @@ void Mundo::gestionar_click(int button, int state, int x, int y) {
 
                 if (TABLERO.comprobar_coronacion(pieza_seleccionada)) {
                     std::cout << "CORONAR EL PEON" << std::endl;
-
-                    /*
-                    unsigned char tipo;
-                    do {
-                        std::cin >> tipo;
-                    } while (tipo != 'c' && tipo != 't' && tipo != 'a' && tipo != 'd');
-                    TABLERO.coronar(pieza_seleccionada, tipo);
-                    */
                     estado->cambiar_estado(CORONACION);
-
                     return;
                 }
-                std::cout << "AQUI LLEGO";
+
                  if (TABLERO.es_ahogado(color_enemigo)) {
                      std::cout << "ES AHOGADO DEL REY " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
                      estado->cambiar_estado(TABLAS);
                      return;
                  }
 
+                 if (TABLERO.solo_quedan_reyes()) {
+                     std::cout << "SOLO QUEDAN REYES " << "!\n";
+                     estado->cambiar_estado(Estado::TABLAS);
+                     return;
+                 }
 
                 turno_actual = cambiar_turno(turno_actual);
                 std::cout << "Movimiento exitoso. Turno: " << a_string(turno_actual) << "\n";
@@ -185,6 +181,12 @@ void Mundo::cambiar_turno_bot() {
     if (TABLERO.es_jaque_mate(color_enemigo) && color_enemigo == BLANCO) {
         std::cout << "ES JAQUEMATE " << (color_enemigo == BLANCO ? "BLANCO" : "NEGRO") << "!\n";
         estado->cambiar_estado(Estado::VICTORIA_NEGRO);
+        return;
+    }
+
+    if (TABLERO.solo_quedan_reyes()) {
+        std::cout << "SOLO QUEDAN REYES " << "!\n";
+        estado->cambiar_estado(Estado::TABLAS);
         return;
     }
 

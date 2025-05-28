@@ -13,10 +13,10 @@ PantallaGameOver::PantallaGameOver(const std::string& ganador) {
 void PantallaGameOver::dibuja() {
    
     if (mensaje == "BLANCAS") {
-        BrochaPantallas::insertarimagen("imagenes/Victoria para blancas.png");
+        BrochaPantallas::insertarimagen("imagenes/Victoria para blancas.png", 2.0, 2.0, 2.0, 2.0);
     }
     if (mensaje == "NEGRAS") {
-        BrochaPantallas::insertarimagen("imagenes/Victoria para negras.png");
+        BrochaPantallas::insertarimagen("imagenes/Victoria para negras.png", 2.0, 2.0, 2.0, 2.0);
     }
     // Restaurar estado para que los botones se vean bien
     glDisable(GL_TEXTURE_2D);

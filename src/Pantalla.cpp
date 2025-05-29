@@ -18,6 +18,7 @@ void Pantalla::raton(int button, int state, int x, int y) {
 
 //funcion para dibujar
 void Boton::dibujar() const {
+    /*
     ColorTextos colorRecuadro = casilla_seleccionada ? ColorTextos(1.0f,0.8f,0.0f) : ColorTextos(0.208f,0.416f,0.737f);
     BrochaPantallas::dibujar_barra_carga(1.0f, desde, hasta, colorRecuadro);
     float ancho = hasta.x - desde.x;
@@ -25,6 +26,24 @@ void Boton::dibujar() const {
     Coordenada centroTexto = { desde.x + ancho * 0.25f, desde.y + alto * 0.25f };
     ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
     BrochaPantallas::dibujar_texto(texto, centroTexto, colorTexto);
+    */
+    ColorTextos colorRecuadro = casilla_seleccionada
+        ? ColorTextos(1.0f, 0.8f, 0.0f)
+        : ColorTextos(0.208f, 0.416f, 0.737f);
+
+    BrochaPantallas::dibujar_barra_carga(1.0f, desde, hasta, colorRecuadro);
+
+    float ancho = hasta.x - desde.x;
+    float alto = hasta.y - desde.y;
+
+    float centroX = desde.x + ancho / 2.0f;
+    float centroY = desde.y + alto / 2.0f;
+
+    float ajusteX = BrochaPantallas::calcular_ajuste_centrado_texto(texto);
+
+    Coordenada textoPos = { centroX - ajusteX, centroY - 0.03f };
+
+    BrochaPantallas::dibujar_texto(texto, textoPos, ColorTextos(1.0f, 1.0f, 1.0f));
 }
 
 //funcion que devuelve true si se hace click dentro del boton

@@ -2,10 +2,18 @@
 #include "BrochaPantallas.h"
 
 PantallaSeleccionBot::PantallaSeleccionBot(GestorPantallas* gestor) : gestor(gestor) {
-    botones.push_back({ "VS BOT", Coordenada{-0.5f,  0.1f}, Coordenada{0.3f,  0.25f } });
-    botones.push_back({ "VS AMIGO",Coordenada{-0.5f, -0.2f}, Coordenada{0.3f, -0.05f } });
-    botones.push_back({ "MEDALLAS",Coordenada{-0.5f, -0.45f}, Coordenada{0.3f, -0.30f } });
-    botones.push_back({ "<- VOLVER", Coordenada{-0.5f, -0.65f}, Coordenada{0.3f, -0.50f} });
+    float ancho_total = 0.6f;
+    float alto_boton = 0.15f;
+    float margen = 0.05f;
+    float x1 = -ancho_total / 2.0f;
+    float x2 = ancho_total / 2.0f;
+
+    float y_top = 0.25f;
+
+    botones.push_back({ "VS BOT",{ x1, y_top },{ x2, y_top + alto_boton } });
+    botones.push_back({ "VS AMIGO",{ x1, y_top - 1 * (alto_boton + margen) }, { x2, y_top - 1 * (alto_boton + margen) + alto_boton } });
+    botones.push_back({ "MEDALLAS", { x1, y_top - 2 * (alto_boton + margen) }, { x2, y_top - 2 * (alto_boton + margen) + alto_boton } });
+    botones.push_back({ "<- VOLVER", { x1, y_top - 3 * (alto_boton + margen) }, { x2, y_top - 3 * (alto_boton + margen) + alto_boton } });
 }
 
 void PantallaSeleccionBot::dibuja() {

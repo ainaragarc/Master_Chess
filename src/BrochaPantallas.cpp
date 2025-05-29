@@ -107,3 +107,15 @@ void BrochaPantallas::configurar_proyeccion_pantalla(double num) {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 }
+
+float BrochaPantallas::calcular_ajuste_centrado_texto(const std::string& texto, float ventana_pixeles) {
+    int pixel_width = 0;
+
+    for (char c : texto)
+        pixel_width += glutBitmapWidth(GLUT_BITMAP_HELVETICA_18, c);
+
+    // Convertimos de píxeles a coordenadas OpenGL 
+    float pixel_to_opengl = 2.0f / ventana_pixeles;
+
+    return pixel_width * pixel_to_opengl / 2.0f; // desplazamiento hacia la izquierda
+}

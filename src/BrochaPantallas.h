@@ -24,4 +24,6 @@ public:
     static void dibujar_recuadro(Coordenada desde, Coordenada hasta, ColorTextos color, float opacidad = 1.0f);
 
     static void configurar_proyeccion_pantalla(double num);
+
+    static float calcular_ajuste_centrado_texto(const std::string& texto, float ventana_pixeles = 600.0f);
 };

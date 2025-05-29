@@ -2,8 +2,16 @@
 #include "BrochaPantallas.h"
 
 MenuPrincipal::MenuPrincipal(GestorPantallas* gestor) : gestor(gestor) {
-    botones.push_back({ "Nueva Partida", Coordenada{-0.3f,  0.1f}, Coordenada{ 0.3f,  0.25f} });
-    botones.push_back({ "Salir",         Coordenada{ -0.3f, -0.2f}, Coordenada{0.3f,-0.05f} });
+    float ancho_total = 0.6f;
+    float alto_boton = 0.15f;
+    float margen = 0.15f;
+    float x1 = -ancho_total / 2.0f;
+    float x2 = ancho_total / 2.0f;
+
+    float y_top = 0.0f;
+
+    botones.push_back({ "NUEVA PARTIDA",{ x1, y_top },{ x2, y_top + alto_boton } });
+    botones.push_back({ "SALIR",{ x1, y_top - 1 * (alto_boton + margen) }, { x2, y_top - 1 * (alto_boton + margen) + alto_boton } });
 }
 
 void MenuPrincipal::dibuja() {
@@ -12,7 +20,7 @@ void MenuPrincipal::dibuja() {
     BrochaPantallas::limpiar_pantalla(ColorTextos(0.1f, 0.1f, 0.2f));
     ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
     BrochaPantallas::insertarimagen("imagenes/inicio.png", 1.0, 1.0, 1.0, 1.0);
-    BrochaPantallas::dibujar_texto("MENU PRINCIPAL", Coordenada{ -0.3f, 0.2f }, colorTexto);
+    
     for (auto& b : botones)
         b.dibujar();
 }

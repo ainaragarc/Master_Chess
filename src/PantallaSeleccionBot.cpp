@@ -13,7 +13,8 @@ void PantallaSeleccionBot::dibuja() {
 
     BrochaPantallas::limpiar_pantalla(ColorTextos(0.1f, 0.1f, 0.2f));
     ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
-    BrochaPantallas::dibujar_texto("SELECCIONA ADVERSARIO", Coordenada{ -0.4f, 0.4f }, colorTexto);
+    BrochaPantallas::insertarimagen("imagenes/adversario.png", 1.0, 1.0, 1.0, 1.0);
+    //BrochaPantallas::dibujar_texto("SELECCIONA ADVERSARIO", Coordenada{ -0.4f, 0.4f }, colorTexto);
     for (auto& b : botones)
         b.dibujar();
 }

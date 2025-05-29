@@ -4,6 +4,9 @@
 #include "GestorPantallas.h"
 #include <vector>
 #include "PantallaSeleccionBot.h"
+#include "Bot.h"
+class Bot;//Para que las funciones de dibujo puedan recibir un obj Bot
+
 enum class Medallas { NINGUNO, VOLVER };
 
 class PantallaMedallas:public Pantalla
@@ -12,7 +15,7 @@ class PantallaMedallas:public Pantalla
 	Medallas accion_pendiente = Medallas::NINGUNO;
 public:
 	PantallaMedallas(GestorPantallas* gestor);
-	void dibuja() override;
+	void dibuja()override;
 	void dibuja_medallas();
 	void raton(int button, int state, int x, int y) override;
 

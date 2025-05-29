@@ -40,24 +40,16 @@ void GestorEstados::inicializa() {
         }
     }
     else if (estado_actual == VICTORIA_BLANCO) {
-        gestor_pantallas.set_pantalla(new PantallaGameOver("BLANCAS"));
-        Pantalla* pantalla = gestor_pantallas.get_pantalla();
-        PantallaGameOver* selectorover = dynamic_cast<PantallaGameOver*>(pantalla);
-        if (selectorover) {
-            switch (selectorover->get_accion()) {
-            case Game_over::VOLVER:
-                selectorover->reset_accion();
-                gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
-                break;
-            }
-        }
+        gestor_pantallas.set_pantalla(new PantallaGameOver(&gestor_pantallas, &mundo, "BLANCAS"));
+        
+
     }
     else if (estado_actual == VICTORIA_NEGRO) {
-        gestor_pantallas.set_pantalla(new PantallaGameOver("NEGRAS"));
+        gestor_pantallas.set_pantalla(new PantallaGameOver(&gestor_pantallas, &mundo, "NEGRAS"));
         
     }
     else if (estado_actual == TABLAS) {
-        gestor_pantallas.set_pantalla(new PantallaTablas());
+        gestor_pantallas.set_pantalla(new PantallaGameOver(&gestor_pantallas, &mundo, "TABLAS"));
 
     }
     else if (estado_actual == CORONACION) {
@@ -66,11 +58,6 @@ void GestorEstados::inicializa() {
     }
     else if (estado_actual == MEDALLAS) {
         gestor_pantallas.set_pantalla(new PantallaMedallas(&gestor_pantallas));
-        //Desactivamos musica menu
-        ETSIDI::stopMusica();
-
-        //Activamos musica medallas
-        ETSIDI::playMusica("sonidos/Musica medallas.mp3");
     }
     mundo.set_estado(this);//pasamos informacion del estado actual a mundo
 
@@ -92,19 +79,16 @@ void GestorEstados::dibuja() {
         break;
 
     case VICTORIA_BLANCO:
-        mundo.dibuja();
         gestor_pantallas.dibuja();
         
         break;
         
     case VICTORIA_NEGRO:
-        mundo.dibuja();
         gestor_pantallas.dibuja();
        
         break;
     
     case TABLAS:
-        mundo.dibuja();
         gestor_pantallas.dibuja();
 
         break;
@@ -123,6 +107,7 @@ void GestorEstados::dibuja() {
 
     }
 }
+
 
 void GestorEstados::mueve() {
     if (estado_actual == MENU) {
@@ -200,6 +185,7 @@ void GestorEstados::mueve() {
 
             case AccionBot::MEDALLAS:
                 selectorVS->reset_accion();
+                ETSIDI::playMusica("sonidos/Musica medallas.mp3");
                 gestor_pantallas.set_pantalla(new PantallaMedallas(&gestor_pantallas));
                 break;
 
@@ -219,6 +205,7 @@ void GestorEstados::mueve() {
             case Medallas::VOLVER:
                 selectormedallas->reset_accion();
                 gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
+                ETSIDI::playMusica("sonidos/Menu Pokemon.mp3");
                 break;
             }
         }
@@ -279,12 +266,21 @@ void GestorEstados::mueve() {
                 {
                 case GestorEstados::NivelBot::NIVEL1:
                     bot.juegaNivel1(mundo);
+
+                    //AQUÍ FUNCIONAAAAAAAA
+                    //POR ALGÚN MOTIVO NO SE METE EN EL IF
+                    //if (mundo.TABLERO.es_jaque_mate(NEGRO)) {
+                        Bot::otorgar_medalla_amarilla();
+                   // }
+
                     break;
                 case GestorEstados::NivelBot::NIVEL2:
                     bot.juegaNivel2(mundo);
+                    Bot::otorgar_medalla_fuego();
                     break;
                 case GestorEstados::NivelBot::NIVEL3:
                     bot.juegaNivel3(mundo);
+                    Bot::otorgar_medalla_azul();
                     break;
                 default:
                     break;
@@ -322,6 +318,7 @@ void GestorEstados::mueve() {
             }
             selectorCoronando->reset_accion();
             estado_actual = JUGANDO;
+            gestor_pantallas.set_pantalla(nullptr);
         }
     }
 
@@ -367,6 +364,26 @@ void GestorEstados::mueve() {
         }
     }
 
+    if (estado_actual == VICTORIA_BLANCO || estado_actual == VICTORIA_NEGRO || estado_actual == TABLAS) {
+        gestor_pantallas.actualiza();
+
+        Pantalla* pantalla = gestor_pantallas.get_pantalla();
+        PantallaGameOver* selectorover = dynamic_cast<PantallaGameOver*>(pantalla);
+
+        if (selectorover) {
+            switch (selectorover->get_accion()) {
+            case Game_over::VOLVER:
+                selectorover->reset_accion();
+                gestor_pantallas.set_pantalla(new MenuPrincipal(& gestor_pantallas));
+                estado_actual = MENU;
+                if(mundo.get_turno()==Turno::NEGRO)
+                    mundo.cambiar_turno_prueba();
+                mundo.TABLERO.eliminar_piezas();
+                break;
+            }
+        }
+    }
+
     if (estado_actual == MEDALLAS) {
 
         gestor_pantallas.actualiza();
@@ -397,6 +414,8 @@ void GestorEstados::raton(int button, int state, int x, int y) {
         mundo.gestionar_click(button, state, x, y);
     if (estado_actual == PAUSA)
         gestor_pantallas.raton(button, state, x, y);
+    if (estado_actual == VICTORIA_BLANCO || estado_actual == VICTORIA_NEGRO || estado_actual == TABLAS)
+        gestor_pantallas.raton(button, state, x, y);
     /*
     if (estado_actual == CORONACION)
         gestor_pantallas.raton(button, state, x, y);
@@ -407,5 +426,7 @@ void GestorEstados::mover_raton(int x, int y) {
     if (estado_actual == MENU)
         gestor_pantallas.mover_raton(x, y);
     if (estado_actual == PAUSA)
+        gestor_pantallas.mover_raton(x, y);
+    if (estado_actual == VICTORIA_BLANCO || estado_actual == VICTORIA_NEGRO || estado_actual == TABLAS)
         gestor_pantallas.mover_raton(x, y);
 }

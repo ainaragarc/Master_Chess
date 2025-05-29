@@ -11,6 +11,7 @@ void MenuPrincipal::dibuja() {
 
     BrochaPantallas::limpiar_pantalla(ColorTextos(0.1f, 0.1f, 0.2f));
     ColorTextos colorTexto = ColorTextos(1.0f, 1.0f, 1.0f);
+    BrochaPantallas::insertarimagen("imagenes/inicio.png", 1.0, 1.0, 1.0, 1.0);
     BrochaPantallas::dibujar_texto("MENU PRINCIPAL", Coordenada{ -0.3f, 0.2f }, colorTexto);
     for (auto& b : botones)
         b.dibujar();

@@ -8,11 +8,13 @@ enum class Game_over { NINGUNO, VOLVER };
 
 class PantallaGameOver : public Pantalla {
 private:
+    GestorPantallas* gestor;
+    Mundo* mundo;
     std::string mensaje;
     Game_over accion_pendiente = Game_over::NINGUNO;
 public:
-
-    PantallaGameOver(const std::string& ganador);
+    PantallaGameOver(GestorPantallas* gestor, Mundo* mundo, const std::string& ganador);
+    
     void dibuja() override;
 
     void raton(int button, int state, int x, int y) override;

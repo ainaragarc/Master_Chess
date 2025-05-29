@@ -363,7 +363,7 @@ void GestorEstados::mueve() {
             switch (selectorover->get_accion()) {
             case Game_over::VOLVER:
                 selectorover->reset_accion();
-                gestor_pantallas.set_pantalla(new PantallaInicio(& gestor_pantallas));
+                gestor_pantallas.set_pantalla(new MenuPrincipal(& gestor_pantallas));
                 estado_actual = MENU;
                 mundo.TABLERO.eliminar_piezas();
                 break;

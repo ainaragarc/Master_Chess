@@ -22,10 +22,10 @@ void PantallaGameOver::dibuja() {
     if (mensaje == "NEGRAS") {
         BrochaPantallas::insertarimagen("imagenes/Victoria para negras.png", 0.5, 0.5, 0.5, 0.5);
     }
-    // Restaurar estado para que los botones se vean bien
-    //glDisable(GL_TEXTURE_2D);
-   // glDisable(GL_BLEND);
-   // glDisable(GL_LIGHTING); // por si afecta color del botón
+    if (mensaje == "TABLAS") {
+        BrochaPantallas::insertarimagen("imagenes/Tablas.png", 0.5, 0.5, 0.5, 0.5);
+    }
+    
     //Dibujo boton
     for (auto& b : botones)
         b.dibujar();

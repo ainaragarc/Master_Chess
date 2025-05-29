@@ -103,14 +103,6 @@ void Bot::juegaNivel1(Mundo& mundo) { //Mueve piezas de forma random
         mundo.TABLERO.coronar(pieza_elegida, tipo);
     }
 
-    //MEDALLA SI HAY VICTORIA
-    /*bool mate = mundo.TABLERO.es_jaque_mate(color_enemigo);
-    std::cout << "[DEBUG] ¿Es jaque mate al enemigo? " << (mate ? "SÍ" : "NO") << std::endl;
-    if (mate && !medalla_amarilla) {
-        medalla_amarilla = true;
-        std::cout << "[DEBUG] Medalla amarilla concedida" << std::endl;
-    }*/
-
     std::cout << "Bot movió una pieza a (" << destino.Fila << ", " << destino.Columna << ")\n";
 
     mundo.cambiar_turno_bot();

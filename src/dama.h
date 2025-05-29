@@ -13,7 +13,7 @@ public:
 		posicion = pos;
 		tipo = Tipo::REINA;
 		if (color == BLANCO) {
-			foto_pieza = "imagenes/Mewtwo.png";
+			foto_pieza = "imagenes/equipo blanco/gardevoir.png";
 		}
 		else {
 			foto_pieza = "imagenes/b_queen_1x_ns.png";

@@ -7,6 +7,8 @@
 
 
 class GestorEstados;//le digo a mundo que existe la clase para no incluir la clase entera (gestorestados contiene a mundo y haria bucle)
+class Mundo;//declaracion anticipada para usar el puntero
+extern Mundo* punteroMundo; //puntero global para sacar el nivel del bot, extern para poder usarlo en los demas archivos
 
 class Mundo {
 private:
@@ -24,6 +26,7 @@ public:
 	void mueve();
 	void inicializa_tablero_gardner();
 	void inicializa_tablero_baby();
+	int get_nivel_bot() const;//funcion para sacar el nivel del bot y devolverlo como int para el switch case
 
 	void gestionar_click(int button, int state, int x, int y);
 

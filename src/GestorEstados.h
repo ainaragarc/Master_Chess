@@ -23,6 +23,8 @@ public:
     }
     Estado get_estado() const { return estado_actual; }
 
+    int get_nivel_bot_como_int() const;
+
     void inicializa();
     void dibuja();
     void mueve();

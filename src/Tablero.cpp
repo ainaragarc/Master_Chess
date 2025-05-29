@@ -1,5 +1,6 @@
 #pragma once
 #include "Tablero.h"
+#include "Mundo.h" // para acceder a punteroMundo
 #include "peon.h"
 #include "alfil.h"
 #include "caballo.h"
@@ -18,6 +19,8 @@ vector<Pieza*> Tablero::piezas_N;
 
 void Tablero::inicializa_piezas_GARDNER() {
 
+    int nivelBot = punteroMundo ? punteroMundo->get_nivel_bot() : 1;//si puntero apunta a algo, devolver nivel del bot, si no, definirlo como 1
+
     anadir_piezas_B(piezas_B, new Peon(BLANCO,{1,}));
     anadir_piezas_B(piezas_B, new Caballo(BLANCO,{0,1}));
     anadir_piezas_B(piezas_B, new Torre(BLANCO,{0,0}));
@@ -29,7 +32,7 @@ void Tablero::inicializa_piezas_GARDNER() {
     anadir_piezas_N(piezas_N, new Peon(NEGRO,{2,}));
     anadir_piezas_N(piezas_N, new Caballo(NEGRO, {4,1}));
     anadir_piezas_N(piezas_N, new Torre(NEGRO, {4,0}));
-    anadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2}));
+    anadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2},nivelBot));
     anadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}));
     anadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}));
 
@@ -46,6 +49,8 @@ void Tablero::inicializa_piezas_GARDNER() {
 
 void Tablero::inicializa_piezas_BABY() {
 
+    int nivelBot = punteroMundo ? punteroMundo->get_nivel_bot() : 1;
+
     anadir_piezas_B(piezas_B, new Peon(BLANCO, { 1, }));
     anadir_piezas_B(piezas_B, new Caballo(BLANCO, { 0,1 }));
     anadir_piezas_B(piezas_B, new Torre(BLANCO, { 0,0 }));
@@ -57,7 +62,7 @@ void Tablero::inicializa_piezas_BABY() {
     anadir_piezas_N(piezas_N, new Peon(NEGRO, { 2,}));
     anadir_piezas_N(piezas_N, new Caballo(NEGRO, { 4,3 }));
     anadir_piezas_N(piezas_N, new Torre(NEGRO, { 4,4 }));
-    anadir_piezas_N(piezas_N, new Alfil(NEGRO, { 4,2 }));
+    anadir_piezas_N(piezas_N, new Alfil(NEGRO, { 4,2 },nivelBot));
     anadir_piezas_N(piezas_N, new Rey(NEGRO, { 4,0 }));
     anadir_piezas_N(piezas_N, new Dama(NEGRO, { 4,1 }));
 

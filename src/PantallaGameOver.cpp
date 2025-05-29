@@ -3,25 +3,29 @@
 #include "freeglut.h"
 #include "Mundo.h"
 
-PantallaGameOver::PantallaGameOver(const std::string& ganador) {
-    mensaje = ganador;
+PantallaGameOver::PantallaGameOver(GestorPantallas* gestor, Mundo* mundo, const std::string& ganador) 
+    : gestor(gestor), mundo(mundo), mensaje(ganador) {
     botones.push_back({ "<- VOLVER", Coordenada{0.4f, -0.8f}, Coordenada{1.0f, -0.7f} });
-   
 }
 
-
 void PantallaGameOver::dibuja() {
+    BrochaPantallas::configurar_proyeccion_pantalla(4.0);
+
+    BrochaPantallas::limpiar_pantalla(ColorTextos(0.1f, 0.1f, 0.2f));
+    if (mundo) mundo->dibuja();  //dibujamos el tablero actual
+
+    BrochaPantallas::configurar_proyeccion_pantalla(1.0);
    
     if (mensaje == "BLANCAS") {
-        BrochaPantallas::insertarimagen("imagenes/Victoria para blancas.png", 2.0, 2.0, 2.0, 2.0);
+        BrochaPantallas::insertarimagen("imagenes/Victoria para blancas.png", 0.5, 0.5, 0.5, 0.5);
     }
     if (mensaje == "NEGRAS") {
-        BrochaPantallas::insertarimagen("imagenes/Victoria para negras.png", 2.0, 2.0, 2.0, 2.0);
+        BrochaPantallas::insertarimagen("imagenes/Victoria para negras.png", 0.5, 0.5, 0.5, 0.5);
     }
-    // Restaurar estado para que los botones se vean bien
-    glDisable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LIGHTING); // por si afecta color del botón
+    if (mensaje == "TABLAS") {
+        BrochaPantallas::insertarimagen("imagenes/Tablas.png", 0.5, 0.5, 0.5, 0.5);
+    }
+    
     //Dibujo boton
     for (auto& b : botones)
         b.dibujar();

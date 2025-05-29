@@ -18,7 +18,7 @@ void Pantalla::raton(int button, int state, int x, int y) {
 
 //funcion para dibujar
 void Boton::dibujar() const {
-    ColorTextos colorRecuadro = casilla_seleccionada ? ColorTextos(0.5f, 0.5f, 1.0f) : ColorTextos(0.3f, 0.3f, 0.7f);
+    ColorTextos colorRecuadro = casilla_seleccionada ? ColorTextos(1.0f,0.8f,0.0f) : ColorTextos(0.208f,0.416f,0.737f);
     BrochaPantallas::dibujar_barra_carga(1.0f, desde, hasta, colorRecuadro);
     float ancho = hasta.x - desde.x;
     float alto = hasta.y - desde.y;

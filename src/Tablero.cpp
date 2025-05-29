@@ -309,3 +309,10 @@ bool Tablero::hay_pieza(Posicion& pos) {
          }
      }
  }
+
+ void Tablero::eliminar_piezas() {
+     for (Pieza* p : Tablero::get_piezas_B()) { delete p; }
+     Tablero::get_piezas_B().clear(); 
+     for (Pieza* p : Tablero::get_piezas_N()) { delete p; }
+     Tablero::get_piezas_N().clear(); 
+ }

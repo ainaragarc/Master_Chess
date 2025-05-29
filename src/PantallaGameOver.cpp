@@ -5,7 +5,15 @@
 
 PantallaGameOver::PantallaGameOver(GestorPantallas* gestor, Mundo* mundo, const std::string& ganador) 
     : gestor(gestor), mundo(mundo), mensaje(ganador) {
-    botones.push_back({ "<- VOLVER", Coordenada{0.4f, -0.8f}, Coordenada{1.0f, -0.7f} });
+    float ancho_total = 0.5f;
+    float alto_boton = 0.15f;
+    float margen = 0.05f;
+    float x1 = 0.4f;
+    float x2 = x1 + ancho_total;
+
+    float y_top = -0.7f;
+
+    botones.push_back({ "<- VOLVER",{ x1, y_top },{ x2, y_top + alto_boton } });
 }
 
 void PantallaGameOver::dibuja() {

@@ -2,7 +2,7 @@
 #include "BrochaPantallas.h"
 
 PantallaSeleccionTablero::PantallaSeleccionTablero(GestorPantallas* gestor) : gestor(gestor) {
-    float ancho_total = 0.6f;
+    float ancho_total = 0.7f;
     float alto_boton = 0.15f;
     float margen = 0.07f;
     float x1 = -ancho_total / 2.0f;
@@ -14,9 +14,6 @@ PantallaSeleccionTablero::PantallaSeleccionTablero(GestorPantallas* gestor) : ge
     botones.push_back({ "TABLERO GARDNER",{ x1, y_top - 1 * (alto_boton + margen) }, { x2, y_top - 1 * (alto_boton + margen) + alto_boton } });
     botones.push_back({ "<- VOLVER", { x1, y_top - 2 * (alto_boton + margen) }, { x2, y_top - 2 * (alto_boton + margen) + alto_boton } });
    
-    //botones.push_back({ "TABLERO BABY", Coordenada{-0.5f,  0.1f}, Coordenada{0.3f,  0.25f } });
-    //botones.push_back({ "TABLERO GARDNER",Coordenada{-0.5f, -0.2f}, Coordenada{0.3f, -0.05f }});
-    //botones.push_back({ "<- VOLVER", Coordenada{-0.5f, -0.45f}, Coordenada{0.3f, -0.30f} });
 }
 
 void PantallaSeleccionTablero::dibuja() {

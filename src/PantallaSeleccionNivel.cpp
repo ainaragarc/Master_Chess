@@ -2,10 +2,19 @@
 #include "BrochaPantallas.h"
 
 PantallaSeleccionNivel::PantallaSeleccionNivel(GestorPantallas* gestor) : gestor(gestor) {
-    botones.push_back({ "NIVEL 1", Coordenada{-0.5f,  0.1f}, Coordenada{0.3f,  0.25f } });
-    botones.push_back({ "NIVEL 2",Coordenada{-0.5f, -0.2f}, Coordenada{0.3f, -0.05f } });
-    botones.push_back({ "NIVEL 3", Coordenada{-0.5f, -0.5f}, Coordenada{0.3f, -0.35f} });
-    botones.push_back({ "<- VOLVER", Coordenada{-0.5f, -0.8f}, Coordenada{0.3f, -0.65f} });
+    float ancho_total = 0.6f;
+    float alto_boton = 0.15f;
+    float margen = 0.05f;
+    float x1 = -ancho_total / 2.0f;
+    float x2 = ancho_total / 2.0f;
+
+    float y_top = 0.25f;
+
+    botones.push_back({ "NIVEL 1",{ x1, y_top },{ x2, y_top + alto_boton } });
+    botones.push_back({ "NIVEL 2",{ x1, y_top - 1 * (alto_boton + margen) }, { x2, y_top - 1 * (alto_boton + margen) + alto_boton } });
+    botones.push_back({ "NIVEL 3", { x1, y_top - 2 * (alto_boton + margen) }, { x2, y_top - 2 * (alto_boton + margen) + alto_boton } });
+    botones.push_back({ "<- VOLVER", { x1, y_top - 3 * (alto_boton + margen) }, { x2, y_top - 3 * (alto_boton + margen) + alto_boton } });
+
 }
 
 void PantallaSeleccionNivel::dibuja() {

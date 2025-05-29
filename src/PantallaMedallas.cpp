@@ -12,34 +12,11 @@ PantallaMedallas::PantallaMedallas(GestorPantallas* gestor) : gestor(gestor) {
 
 void PantallaMedallas::dibuja() {
     // Dibuja fondo
-    glEnable(GL_TEXTURE_2D);
-    glEnable(GL_BLEND);
-    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-    glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Fondo_medallas.png").id);
-    glDisable(GL_LIGHTING);
-
-    glBegin(GL_POLYGON);
-    glColor3f(1, 1, 1);
-    double xcoord1{ -1.0 }, xcoord2{ 1.0 };
-    double ycoord1{ -1.0 }, ycoord2{ 1.0 };
-    glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
-    glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
-    glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
-    glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
-    glEnd();
-
-    // Restaurar estado para que los botones se vean bien
-    glDisable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LIGHTING); // por si afecta color del botón
-
+    BrochaPantallas::insertarimagen("imagenes/Fondo_medallas.png", 1.0, 1.0, 1.0, 1.0);
+  
     //Funcion dibuja_medallas
     dibuja_medallas();
 
-    // Restaurar estado para que los botones se vean bien
-    glDisable(GL_TEXTURE_2D);
-    glDisable(GL_BLEND);
-    glDisable(GL_LIGHTING); // por si afecta color del botón
     // Dibujo botón
     for (auto& b : botones)
         b.dibujar();
@@ -47,66 +24,19 @@ void PantallaMedallas::dibuja() {
 
 void PantallaMedallas::dibuja_medallas() {
     //Declaración coordenadas medallas
-    double xcoord1{}, xcoord2{};
-    double ycoord1{}, ycoord2{};
     if (Bot::tiene_medalla_amarilla()) {
         //Medalla amarilla
-        glEnable(GL_TEXTURE_2D);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Medalla amarilla.png").id);
-        glDisable(GL_LIGHTING);
-
-
-        glBegin(GL_POLYGON);
-        glColor3f(1, 1, 1);
-        xcoord1 = -0.9; xcoord2 = 0.1;
-        ycoord1 = 0.0; ycoord2 = 0.9;
-        glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
-        glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
-        glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
-        glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
-        glEnd();
+        BrochaPantallas::insertarimagen("imagenes/Medalla amarilla.png", 0.9, 0.0, 0.1, 0.9);
     }
 
     if (Bot::tiene_medalla_fuego()) {
         //Medalla fuego
-        glEnable(GL_TEXTURE_2D);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Medalla fuego.png").id);
-        glDisable(GL_LIGHTING);
-
-
-        glBegin(GL_POLYGON);
-        glColor3f(1, 1, 1);
-        xcoord1 = -0, 97; xcoord2 = 0.93;
-        ycoord1 = -0.05; ycoord2 = 0.95;
-        glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
-        glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
-        glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
-        glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
-        glEnd();
+        BrochaPantallas::insertarimagen("imagenes/Medalla fuego.png", 0.0, 0.05, 0.93, 0.95);
     }
 
     if (Bot::tiene_medalla_azul()) {
         //Medalla azul
-        glEnable(GL_TEXTURE_2D);
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glBindTexture(GL_TEXTURE_2D, ETSIDI::getTexture("imagenes/Medalla azul.png").id);
-        glDisable(GL_LIGHTING);
-
-
-        glBegin(GL_POLYGON);
-        glColor3f(1, 1, 1);
-        xcoord1 = -0.55; xcoord2 = 0.55;
-        ycoord1 = -0.90; ycoord2 = 0.05;
-        glTexCoord2d(0, 1); glVertex2d(xcoord1, ycoord1);
-        glTexCoord2d(1, 1); glVertex2d(xcoord2, ycoord1);
-        glTexCoord2d(1, 0); glVertex2d(xcoord2, ycoord2);
-        glTexCoord2d(0, 0); glVertex2d(xcoord1, ycoord2);
-        glEnd();
+        BrochaPantallas::insertarimagen("imagenes/Medalla azul.png", 0.55, 0.90, 0.55, 0.05);
     }
 }
 

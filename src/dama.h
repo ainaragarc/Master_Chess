@@ -16,7 +16,7 @@ public:
 			foto_pieza = "imagenes/equipo blanco/gardevoir.png";
 		}
 		else {
-			foto_pieza = "imagenes/b_queen_1x_ns.png";
+			foto_pieza = "imagenes/bot1/gardevoir.png";
 		}
 
 	}

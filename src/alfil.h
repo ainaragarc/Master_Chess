@@ -16,7 +16,7 @@ public:
 			foto_pieza = "imagenes/equipo blanco/bisharp.png";
 		}
 		else {
-			foto_pieza = "imagenes/b_bishop_1x_ns.png";
+			foto_pieza = "imagenes/bot1/bisharp.png";
 		}
 
 	}

@@ -15,7 +15,7 @@ public:
 			foto_pieza = "imagenes/equipo blanco/ash.png";
 		}
 		else {
-			foto_pieza = "imagenes/b_king_1x.png";
+			foto_pieza = "imagenes/bot1/giovanni.png";
 		}
 
 	}

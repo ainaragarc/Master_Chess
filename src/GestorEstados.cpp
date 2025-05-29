@@ -57,11 +57,6 @@ void GestorEstados::inicializa() {
     }
     else if (estado_actual == MEDALLAS) {
         gestor_pantallas.set_pantalla(new PantallaMedallas(&gestor_pantallas));
-        //Desactivamos musica menu
-        ETSIDI::stopMusica();
-
-        //Activamos musica medallas
-        ETSIDI::playMusica("sonidos/Musica medallas.mp3");
     }
     mundo.set_estado(this);//pasamos informacion del estado actual a mundo
 
@@ -188,6 +183,7 @@ void GestorEstados::mueve() {
 
             case AccionBot::MEDALLAS:
                 selectorVS->reset_accion();
+                ETSIDI::playMusica("sonidos/Musica medallas.mp3");
                 gestor_pantallas.set_pantalla(new PantallaMedallas(&gestor_pantallas));
                 break;
 
@@ -207,6 +203,7 @@ void GestorEstados::mueve() {
             case Medallas::VOLVER:
                 selectormedallas->reset_accion();
                 gestor_pantallas.set_pantalla(new PantallaSeleccionBot(&gestor_pantallas));
+                ETSIDI::playMusica("sonidos/Menu Pokemon.mp3");
                 break;
             }
         }

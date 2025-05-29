@@ -6,7 +6,7 @@ class Peon : public Pieza {
 public:
 	vector<Posicion> posiciones_posibles_conrey() override;
 	
-	Peon(Color equipo, Posicion pos) {//constructor parametrizado
+	Peon(Color equipo, Posicion pos, int nivelBot = 1) {//constructor parametrizado
 		cantidad = 5;
 		color = equipo;
 		posicion = pos;

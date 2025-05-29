@@ -434,7 +434,7 @@ void GestorEstados::mover_raton(int x, int y) {
         gestor_pantallas.mover_raton(x, y);
 }
 
-int GestorEstados::get_nivel_bot_como_int() const {
+int GestorEstados::get_nivel_bot_como_int() const {//se necesita esta funcion ya que la enum es privada de gestorestado y necesitamos pasarle el nivel a mundo
     switch (tipo_Nivel_seleccionado) {
     case NivelBot::NIVEL1: return 1;
     case NivelBot::NIVEL2: return 2;

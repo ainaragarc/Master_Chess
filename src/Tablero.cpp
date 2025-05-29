@@ -30,11 +30,11 @@ void Tablero::inicializa_piezas_GARDNER() {
 
     //CASO GARDNER
     anadir_piezas_N(piezas_N, new Peon(NEGRO,{2,}));
-    anadir_piezas_N(piezas_N, new Caballo(NEGRO, {4,1}));
-    anadir_piezas_N(piezas_N, new Torre(NEGRO, {4,0}));
+    anadir_piezas_N(piezas_N, new Caballo(NEGRO, {4,1}, nivelBot));
+    anadir_piezas_N(piezas_N, new Torre(NEGRO, {4,0}, nivelBot));
     anadir_piezas_N(piezas_N, new Alfil(NEGRO, {4,2},nivelBot));
-    anadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}));
-    anadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}));
+    anadir_piezas_N(piezas_N, new Rey(NEGRO, {4,4}, nivelBot));
+    anadir_piezas_N(piezas_N, new Dama(NEGRO,{4,3}, nivelBot));
 
     //Prueba:
     for (auto i : piezas_B) {
@@ -60,11 +60,11 @@ void Tablero::inicializa_piezas_BABY() {
 
     //CASO BABY
     anadir_piezas_N(piezas_N, new Peon(NEGRO, { 2,}));
-    anadir_piezas_N(piezas_N, new Caballo(NEGRO, { 4,3 }));
-    anadir_piezas_N(piezas_N, new Torre(NEGRO, { 4,4 }));
+    anadir_piezas_N(piezas_N, new Caballo(NEGRO, { 4,3 }, nivelBot));
+    anadir_piezas_N(piezas_N, new Torre(NEGRO, { 4,4 }, nivelBot));
     anadir_piezas_N(piezas_N, new Alfil(NEGRO, { 4,2 },nivelBot));
-    anadir_piezas_N(piezas_N, new Rey(NEGRO, { 4,0 }));
-    anadir_piezas_N(piezas_N, new Dama(NEGRO, { 4,1 }));
+    anadir_piezas_N(piezas_N, new Rey(NEGRO, { 4,0 }, nivelBot));
+    anadir_piezas_N(piezas_N, new Dama(NEGRO, { 4,1 }, nivelBot));
 
     //Prueba:
     for (auto i : piezas_B) {

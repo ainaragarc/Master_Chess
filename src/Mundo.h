@@ -31,6 +31,7 @@ public:
 	void set_estado(GestorEstados* g) { estado = g; }
 
 	Turno get_turno() const{ return turno_actual; }
+
 	void cambiar_turno_bot();
 	void cambiar_turno_prueba() {
 		turno_actual = (turno_actual == Turno::BLANCO) ? Turno::NEGRO : Turno::BLANCO;

@@ -41,6 +41,7 @@ void GestorEstados::inicializa() {
     }
     else if (estado_actual == VICTORIA_BLANCO) {
         gestor_pantallas.set_pantalla(new PantallaGameOver(&gestor_pantallas, &mundo, "BLANCAS"));
+        
 
     }
     else if (estado_actual == VICTORIA_NEGRO) {
@@ -106,6 +107,7 @@ void GestorEstados::dibuja() {
 
     }
 }
+
 
 void GestorEstados::mueve() {
     if (estado_actual == MENU) {
@@ -264,12 +266,21 @@ void GestorEstados::mueve() {
                 {
                 case GestorEstados::NivelBot::NIVEL1:
                     bot.juegaNivel1(mundo);
+
+                    //AQUÍ FUNCIONAAAAAAAA
+                    //POR ALGÚN MOTIVO NO SE METE EN EL IF
+                    //if (mundo.TABLERO.es_jaque_mate(NEGRO)) {
+                        Bot::otorgar_medalla_amarilla();
+                   // }
+
                     break;
                 case GestorEstados::NivelBot::NIVEL2:
                     bot.juegaNivel2(mundo);
+                    Bot::otorgar_medalla_fuego();
                     break;
                 case GestorEstados::NivelBot::NIVEL3:
                     bot.juegaNivel3(mundo);
+                    Bot::otorgar_medalla_azul();
                     break;
                 default:
                     break;

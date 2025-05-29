@@ -5,6 +5,13 @@
 
 #include <iostream>
 
+Mundo* punteroMundo = nullptr;//inicializo puntero global el puntero global
+
+//funcion para obtener el nivel del bot
+int Mundo::get_nivel_bot() const {
+    return estado ? estado->get_nivel_bot_como_int() : 1;
+}
+
 void Mundo::dibuja()
 {
 	glMatrixMode(GL_MODELVIEW);
@@ -31,13 +38,17 @@ void Mundo::mueve()
 }
 void Mundo::inicializa_tablero_gardner()
 {
+    punteroMundo = this;//asigno al puntero la instancia actual de mundo
+    TABLERO.inicializa_piezas_GARDNER();
 	BROCHA.init_t(BROCHA.get_longVent());
-	TABLERO.inicializa_piezas_GARDNER();	
+		
 }
 
 void Mundo::inicializa_tablero_baby() {
-    BROCHA.init_t(BROCHA.get_longVent());
+
+    punteroMundo = this;
     TABLERO.inicializa_piezas_BABY();
+    BROCHA.init_t(BROCHA.get_longVent());
 }
 
 void Mundo::gestionar_click(int button, int state, int x, int y) {

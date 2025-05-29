@@ -6,7 +6,6 @@
 #include "PantallaSeleccionNivel.h"
 #include "PantallaGameOver.h"
 #include "PantallaCoronando.h"
-#include "PantallaTablas.h"
 #include "PantallaMedallas.h"
 #include "PantallaPausa.h"
 
@@ -396,7 +395,7 @@ void GestorEstados::tecla(unsigned char key) {
     if (estado_actual == MENU)
         gestor_pantallas.tecla(key);
 
-    if (estado_actual == JUGANDO && key == 'p') {
+    if (estado_actual == JUGANDO && key == 'p'|| estado_actual == JUGANDO && key == 'P') {
         estado_actual = PAUSA;
         gestor_pantallas.set_pantalla(new PantallaPausa(&gestor_pantallas, &mundo));
     }

@@ -1,5 +1,7 @@
 #include "Bot.h"
 #include "GestorEstados.h"
+#include <algorithm>
+
 
 bool Bot::medalla_amarilla = false;
 bool Bot::medalla_fuego = false;

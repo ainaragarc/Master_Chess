@@ -1,6 +1,5 @@
 #pragma once
 #include "Tablero.h"
-#include "Mundo.h" // para acceder a punteroMundo
 #include "peon.h"
 #include "alfil.h"
 #include "caballo.h"
@@ -17,10 +16,9 @@ vector<Pieza*> Tablero::piezas_B;
 vector<Pieza*> Tablero::piezas_N;
 
 
-void Tablero::inicializa_piezas_GARDNER() {
+void Tablero::inicializa_piezas_GARDNER(int nivelBot) {
 
-    int nivelBot = punteroMundo ? punteroMundo->get_nivel_bot() : 1;//si puntero apunta a algo, devolver nivel del bot, si no, definirlo como 1
-
+    
     anadir_piezas_B(piezas_B, new Peon(BLANCO,{1,}));
     anadir_piezas_B(piezas_B, new Caballo(BLANCO,{0,1}));
     anadir_piezas_B(piezas_B, new Torre(BLANCO,{0,0}));
@@ -47,10 +45,9 @@ void Tablero::inicializa_piezas_GARDNER() {
 
 }
 
-void Tablero::inicializa_piezas_BABY() {
+void Tablero::inicializa_piezas_BABY(int nivelBot) {
 
-    int nivelBot = punteroMundo ? punteroMundo->get_nivel_bot() : 1;
-
+    
     anadir_piezas_B(piezas_B, new Peon(BLANCO, { 1, }));
     anadir_piezas_B(piezas_B, new Caballo(BLANCO, { 0,1 }));
     anadir_piezas_B(piezas_B, new Torre(BLANCO, { 0,0 }));

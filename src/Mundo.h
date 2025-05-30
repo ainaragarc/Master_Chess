@@ -8,7 +8,7 @@
 
 class GestorEstados;//le digo a mundo que existe la clase para no incluir la clase entera (gestorestados contiene a mundo y haria bucle)
 class Mundo;//declaracion anticipada para usar el puntero
-extern Mundo* punteroMundo; //puntero global para sacar el nivel del bot, extern para poder usarlo en los demas archivos
+
 
 class Mundo {
 private:

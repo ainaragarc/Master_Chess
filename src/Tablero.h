@@ -40,8 +40,8 @@ public:
 	static  vector<Pieza*>& get_piezas_B() { return piezas_B; }
 	static  vector<Pieza*>& get_piezas_N() { return piezas_N; }
 
-	void inicializa_piezas_GARDNER();
-	void inicializa_piezas_BABY();
+	void inicializa_piezas_GARDNER(int nivelbot);//hacemos que la funcion tenga en cuenta el nivel del bot para inicializarse
+	void inicializa_piezas_BABY(int nivelbot);
 	//funciones para limpiar mas el codigo de inicializa pieza
 	void anadir_piezas_B(vector<Pieza*>& equipo, Pieza* pieza);
 	void anadir_piezas_N(vector<Pieza*>& equipo, Pieza* pieza);

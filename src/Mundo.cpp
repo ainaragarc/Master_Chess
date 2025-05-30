@@ -5,11 +5,11 @@
 
 #include <iostream>
 
-Mundo* punteroMundo = nullptr;//inicializo puntero global el puntero global
+
 
 //funcion para obtener el nivel del bot
 int Mundo::get_nivel_bot() const {
-    return estado ? estado->get_nivel_bot_como_int() : 1;
+    return estado ? estado->get_nivel_bot_como_int() : 1;//obtiene el nivel del bot como int de estado en caso de haberlo, pone el default como 1
 }
 
 void Mundo::dibuja()
@@ -38,16 +38,16 @@ void Mundo::mueve()
 }
 void Mundo::inicializa_tablero_gardner()
 {
-    punteroMundo = this;//asigno al puntero la instancia actual de mundo
-    TABLERO.inicializa_piezas_GARDNER();
+    
+    TABLERO.inicializa_piezas_GARDNER(get_nivel_bot());//le pasa el nivel del bot directamente a inicializa piezas y las negras se inicializan en base a eso
 	BROCHA.init_t(BROCHA.get_longVent());
 		
 }
 
 void Mundo::inicializa_tablero_baby() {
 
-    punteroMundo = this;
-    TABLERO.inicializa_piezas_BABY();
+    
+    TABLERO.inicializa_piezas_BABY(get_nivel_bot());
     BROCHA.init_t(BROCHA.get_longVent());
 }
 

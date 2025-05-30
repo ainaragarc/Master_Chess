@@ -378,8 +378,7 @@ void GestorEstados::mueve() {
                 selectorover->reset_accion();
                 gestor_pantallas.set_pantalla(new MenuPrincipal(& gestor_pantallas));
                 estado_actual = MENU;
-                if(mundo.get_turno()==Turno::NEGRO)
-                    mundo.cambiar_turno_prueba();
+                mundo.volver_a_por_defecto();
                 mundo.TABLERO.eliminar_piezas();
                 break;
             }

@@ -33,6 +33,8 @@ public:
 	//funcion para cambiar el estado del juego durante la partida
 	void set_estado(GestorEstados* g) { estado = g; }
 
+	//necesario para que cuando te rindas no haya nada con contenido, se establece a por defector
+	void volver_a_por_defecto();
 	Turno get_turno() const{ return turno_actual; }
 
 	void cambiar_turno_bot();

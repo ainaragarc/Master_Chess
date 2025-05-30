@@ -204,3 +204,10 @@ void Mundo::cambiar_turno_bot() {
     turno_actual = cambiar_turno(turno_actual);
 
 }
+
+void Mundo::volver_a_por_defecto() {
+    pieza_seleccionada = nullptr;
+    casillas_posibles.clear();
+    esperando_segundo_click = false;
+    turno_actual = Turno::BLANCO;
+}

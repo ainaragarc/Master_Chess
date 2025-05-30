@@ -2,6 +2,7 @@
 #include "pieza.h"
 #include <vector>
 #include "tablero.h"
+#include <cmath>
 
  vector<Posicion> Rey::posiciones_posibles_conrey() {
 	vector<Posicion> posibles;
@@ -29,13 +30,31 @@
          //Evitamos al rey enemigo
          if (a->get_tipo() == Tipo::REY) continue;
 
+         //COMPROBACIONE SPECIAL PARRA EL PEON
+         if (a->get_tipo() == Tipo::PEON) {
+             //LA LINEA RECTA DEL PEON, ES UNA POSICION POSIBLE PERO NO ES JAQUE (SI ESTA EN LA MISMA COLUMNA ES LINE RECTA)
+             if (pos.Columna == a->get_posicion().Columna) continue;
+
+             //LAS DIAGONALES, NO SON POSICION POSIBLE, PORQUE SOLO LO SON SI HAY UNA PIEZA AHI
+             //PERO NO TE PUEDES MOVER PORQUE TE DA JAQUE
+             int direccion = (a->get_color() == BLANCO) ? 1 : -1;
+
+             //SI LA FILA ES LA CORRESPONDIENTE A LA DIAGONAL (direccion para controlar el color) 
+             //Y LA COLUMNA ES UNA DE LAS CONTIUGUAS, ESTA EN LA DIAGONAL!!!!
+             if (pos.Fila == a->get_posicion().Fila + direccion && abs(pos.Columna - a->get_posicion().Columna) == 1) {
+                 return true;
+             }
+
+         }
+
          //verifica si alguna de las posiciones posibles de las piezas enemigas coincide con la posicion del rey
          for (const Posicion& b : a->posiciones_posibles_conrey()) {
+
              if (b == pos) {
                  return true;
              }
+
          }
      }
-
      return false;//Valor de retorno si no hay jaque
  }

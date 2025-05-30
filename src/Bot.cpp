@@ -37,6 +37,8 @@ void Bot::juegaNivel1(Mundo& mundo) { //Mueve piezas de forma random
             }
         }
 
+        if (movimientos_validos.empty()) { mundo.cambiar_turno_bot(); return; }
+
         std::srand(static_cast<unsigned>(std::time(nullptr))); // Para meterle aleatoriedad basándose en el tiempo
         int indice = std::rand() % movimientos_validos.size(); // Para que esté dentro de nuestro rango usamos %
 
@@ -198,6 +200,8 @@ void Bot::juegaNivel2(Mundo& mundo) { // Mueve piezas con prioridad por captura
     // Elegir entre capturas o movimientos normales, dando preferencia a los movimientos de captura
     std::vector<std::pair<Pieza*, Posicion>>& movimientos =
         !movimientos_captura.empty() ? movimientos_captura : movimientos_validos;
+
+    if (movimientos.empty()) { mundo.cambiar_turno_bot(); return; }
 
     std::srand(static_cast<unsigned>(std::time(nullptr))); // Para meterle aleatoriedad basándose en el tiempo
     int indice = std::rand() % movimientos.size(); // Para que esté dentro de nuestro rango usamos %
@@ -375,6 +379,8 @@ void Bot::juegaNivel3(Mundo& mundo) { // Mueve piezas con prioridad por captura 
         destino = movimientos[0].second;
     }
     else if (movimientos_captura.empty()) {
+
+        if (movimientos_validos.empty()) { mundo.cambiar_turno_bot(); return; }
 
         std::srand(static_cast<unsigned>(std::time(nullptr))); // Para meterle aleatoriedad basándose en el tiempo
         int indice = std::rand() % movimientos_validos.size(); // Para que esté dentro de nuestro rango usamos %
